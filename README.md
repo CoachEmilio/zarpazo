@@ -2,7 +2,7 @@
 
 ![Social Preview](public/opengraph-image.png)
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white)
@@ -28,7 +28,7 @@ Targattos is a dark-first landing and catalog for limited drops. The product, br
 
 ## Tech Stack
 
-- Next.js 15 (App Router)
+- Next.js 16 (App Router)
 - TypeScript
 - Tailwind CSS + shadcn/ui
 - Vercel deploy
@@ -61,7 +61,8 @@ Click Deploy. Update this section if any env vars or build steps are added.
 - Global metadata set in `src/app/layout.tsx` (title, description, Open Graph, Twitter)
 - Social preview image present at `public/opengraph-image.png`
 - `metadataBase` points to `https://targattos.vercel.app`
-- Missing: `robots` and `sitemap` routes (add before production crawl)
+- `robots` and `sitemap` routes present in `src/app/`
+- `sitemap` includes `/`, `/nosotros`, and `/product/[slug]`
 - When a custom domain is added, update `metadataBase` to match
 
 ## Domain
@@ -112,6 +113,11 @@ type ProductVariant = {
 - Static mockups exported from Canva
 - All shirts are black
 
+## Contact Config
+
+- Centralized in `src/data/config.ts`
+- Update WhatsApp and Instagram there only
+
 ## Logbook
 
 Use this table for decisions, progress, and changes. Keep entries short.
@@ -119,6 +125,8 @@ Use this table for decisions, progress, and changes. Keep entries short.
 | Date (YYYY-MM-DD) | Entry |
 | --- | --- |
 | 2026-05-22 | Repo initialized. Layout and footer rules defined. |
+| 2026-05-22 | Robots and sitemap added; contact config centralized. |
+| 2026-05-22 | Home split into Hero/ProductGrid/HowItWorks components. |
 
 ## Roadmap (from AGENTS.md)
 
