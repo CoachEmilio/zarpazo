@@ -98,6 +98,12 @@ export const products: Product[] = [
     active: true,
     image: "/products/targattos-logo/front.webp",
     variants: makeVariants("targattos-logo"),
+    colors: [
+        { name: "Negro", image: "/products/targattos-logo/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/targattos-logo/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/targattos-logo/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/targattos-logo/coffee.webp", hex: "#6f4e37" },
+    ]
   },
   {
     id: "7",

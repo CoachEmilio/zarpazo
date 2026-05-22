@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import ColorSelector from "@/components/color-selector"
-import SizeSelector from "@/components/size-selector"
-import WhatsappButton from "@/components/whatsapp-button"
+import ColorSelector from "@/components/product/color-selector"
+import SizeSelector from "@/components/product/size-selector"
+import WhatsappButton from "@/components/product/whatsapp-button"
 
 type Color = {
   name: string

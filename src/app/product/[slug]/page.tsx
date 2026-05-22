@@ -1,6 +1,6 @@
 import { products } from "@/data/products"
 import { notFound } from "next/navigation"
-import ProductActions from "@/components/product-actions"
+import ProductActions from "@/components/product/product-actions"
 
 type Props = {
   params: Promise<{ slug: string }>
