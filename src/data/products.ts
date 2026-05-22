@@ -88,6 +88,9 @@ export const products: Product[] = [
     active: true,
     image: "/products/sweet-home/front.webp",
     variants: makeVariants("sweet-home"),
+    colors: [
+        { name: "Negro", image: "/products/sweet-home/black.webp", hex: "#1a1a1a" },
+    ]
   },
   {
     id: "6",
