@@ -6,13 +6,6 @@ export default function Navbar() {
   return (
     <header className="flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-black sticky top-0 z-50">
       <Link href="/" className="flex items-center gap-3">
-        <Image
-          src={config.brand.logoPath}
-          alt={config.brand.name}
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
         <span className="font-mono text-xl font-bold tracking-tight text-white">
           {config.brand.nameUpper}
         </span>
