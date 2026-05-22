@@ -1,4 +1,5 @@
-import Link from "next/dist/client/link";
+import Link from "next/dist/client/link"
+import { config } from "@/data/config"
 
 export default function Footer() {
   return (
@@ -15,7 +16,7 @@ export default function Footer() {
         </Link>
         <div className="flex items-center gap-6">
           <a
-            href="https://instagram.com/targattos"
+            href={config.instagram}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-zinc-500 text-sm hover:text-white transition-colors"
@@ -23,7 +24,7 @@ export default function Footer() {
             Instagram
           </a>
           <a
-            href="https://wa.me/5491100000000"
+            href={`https://wa.me/${config.whatsapp}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-zinc-500 text-sm hover:text-white transition-colors"

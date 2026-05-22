@@ -12,6 +12,7 @@ export type Product = {
   active: boolean
   image: string
   variants: ProductVariant[]
+  colors?: { name: string; image: string; hex: string }[]
 }
 
 const SIZES = ["S", "M", "L", "XL", "XXL"]
@@ -29,6 +30,12 @@ export const products: Product[] = [
     active: true,
     image: "/products/loading-cafe/front.webp",
     variants: makeVariants("loading-cafe"),
+    colors: [
+        { name: "Negro", image: "/products/loading-cafe/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/loading-cafe/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/loading-cafe/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/loading-cafe/coffee.webp", hex: "#6f4e37" },
+    ]
   },
   {
     id: "2",
@@ -39,6 +46,12 @@ export const products: Product[] = [
     active: true,
     image: "/products/js-do-it/front.webp",
     variants: makeVariants("js-do-it"),
+    colors: [
+        { name: "Negro", image: "/products/js-do-it/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/js-do-it/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/js-do-it/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/js-do-it/coffee.webp", hex: "#6f4e37" },
+    ]
   },
   {
     id: "3",
@@ -49,6 +62,12 @@ export const products: Product[] = [
     active: true,
     image: "/products/sudo-rm-rf/front.webp",
     variants: makeVariants("sudo-rm-rf"),
+    colors: [
+        { name: "Negro", image: "/products/sudo-rm-rf/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/sudo-rm-rf/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/sudo-rm-rf/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/sudo-rm-rf/coffee.webp", hex: "#6f4e37" },
+    ]
   },
   {
     id: "4",
@@ -99,5 +118,11 @@ export const products: Product[] = [
     active: true,
     image: "/products/torre-pisa/front.webp",
     variants: makeVariants("torre-pisa"),
+    colors: [
+        { name: "Negro", image: "/products/torre-pisa/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/torre-pisa/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/torre-pisa/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/torre-pisa/coffee.webp", hex: "#6f4e37" },
+    ]
   },
 ]

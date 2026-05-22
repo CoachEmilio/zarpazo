@@ -19,7 +19,7 @@ export default function Navbar() {
 
       <nav className="flex items-center gap-6">
         <Link
-          href="/"
+          href="/#productos"
           className="font-mono text-sm text-zinc-400 hover:text-white transition-colors"
         >
           Drops

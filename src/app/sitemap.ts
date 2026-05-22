@@ -4,7 +4,7 @@ import { products } from "@/data/products"
 const baseUrl = "https://targattos.vercel.app"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["/", "/products"].map((route) => ({
+  const staticRoutes = ["/", "/nosotros"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
   }))
