@@ -1,6 +1,7 @@
 import { products } from "@/data/products"
 import { notFound } from "next/navigation"
 import ProductActions from "@/components/product/product-actions"
+import { config } from "@/data/config"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props) {
   const product = products.find((p) => p.slug === slug)
   if (!product) return {}
   return {
-    title: `${product.title} — Targattos`,
+    title: `${product.title} — ${config.brand.name}`,
     description: product.description,
   }
 }

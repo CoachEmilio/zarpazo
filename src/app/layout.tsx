@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Analytics } from "@vercel/analytics/next"
+import { config } from "@/data/config"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,34 +16,36 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const brandTitle = `${config.brand.name} — Productos. Diseños que garpan.`
+const brandDescription =
+  "Remeras con diseños únicos y humor para comunidades. Productos, producción propia, identidad real."
+
 export const metadata: Metadata = {
-  title: "Targattos — Drops limitados. Diseños que garpan.",
-  description:
-    "Remeras con diseños únicos y humor para comunidades. Drops limitados, producción propia, identidad real.",
+  title: brandTitle,
+  description: brandDescription,
   keywords: [
     "remeras",
     "estampadas",
     "diseños",
     "developers",
     "argentina",
-    "drops limitados",
-    "targattos",
+    "productos",
+    config.brand.name.toLowerCase(),
   ],
-  authors: [{ name: "Targattos" }],
-  creator: "Targattos",
-  metadataBase: new URL("https://targattos.vercel.app"),
+  authors: [{ name: config.brand.name }],
+  creator: config.brand.name,
+  metadataBase: new URL(config.brand.siteUrl),
   openGraph: {
-    title: "Targattos — Drops limitados. Diseños que garpan.",
-    description:
-      "Remeras con diseños únicos y humor para comunidades. Drops limitados, producción propia, identidad real.",
-    url: "https://targattos.vercel.app",
-    siteName: "Targattos",
+    title: brandTitle,
+    description: brandDescription,
+    url: config.brand.siteUrl,
+    siteName: config.brand.name,
     images: [
       {
         url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Targattos — Drops limitados. Diseños que garpan.",
+        alt: brandTitle,
       },
     ],
     locale: "es_AR",
@@ -50,9 +53,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Targattos — Drops limitados. Diseños que garpan.",
-    description:
-      "Remeras con diseños únicos y humor para comunidades. Drops limitados, producción propia, identidad real.",
+    title: brandTitle,
+    description: brandDescription,
     images: ["/opengraph-image.png"],
   },
   icons: {

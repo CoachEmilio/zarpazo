@@ -1,13 +1,13 @@
-# Targattos — AGENTS.md
+# Zarpazo — AGENTS.md
 
 ## Qué es este proyecto
-Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Drops limitados, producción propia con láminas DTF. Una sola marca paraguas. Modelo: diseño propio + estampado DTF + venta directa.
+Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Productos, producción propia con láminas DTF. Una sola marca paraguas. Modelo: diseño propio + estampado DTF + venta directa.
 
 ## Nombre
-Targattos — fusión de Targaryen + Gatos. Logo: gato hidra heráldico medieval.
+Zarpazo — fusión de Targaryen + Gatos. Logo: gato hidra heráldico medieval.
 
 ## Problema que resuelve
-No existe una marca argentina de nicho con este humor, esta identidad visual y esta comunidad detrás. Targattos no vende ropa, vende cultura.
+No existe una marca argentina de nicho con este humor, esta identidad visual y esta comunidad detrás. Zarpazo no vende ropa, vende cultura.
 
 ## Modelo de negocio
 - Remeras negras compradas en Flores (~$6.000 ARS)
@@ -18,7 +18,7 @@ No existe una marca argentina de nicho con este humor, esta identidad visual y e
 - Margen bruto por unidad: ~$22.750 ARS (75%)
 - Cobro: a definir (transferencia, efectivo, u otro)
 - Envío: a definir
-- Drops limitados por comunidad
+- Productos por comunidad
 - Producción bajo demanda, no stock masivo
 
 ## Validación real
@@ -55,7 +55,7 @@ Construir esto en orden:
 ## Identidad visual
 - Dark mode obligatorio, fondo negro
 - Estética hacker/dev/heráldica medieval
-- Logo: gato hidra Targattos
+- Logo: gato hidra Zarpazo
 - Tipografía monospace para acentos
 - Colores: negro, blanco, toques de naranja o rojo sangre
 - Sin gradientes genéricos

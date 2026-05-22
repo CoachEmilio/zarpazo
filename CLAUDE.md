@@ -1,10 +1,10 @@
 @AGENTS.md
 
-# CLAUDE.md — Targattos
+# CLAUDE.md — Zarpazo
 
 ## Contexto del proyecto
 
-Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Drops limitados, producción propia con láminas DTF. Una sola marca paraguas. El modelo de negocio, stack, y reglas de arquitectura están en AGENTS.md.
+Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Productos, producción propia con láminas DTF. Una sola marca paraguas. El modelo de negocio, stack, y reglas de arquitectura están en AGENTS.md.
 
 ## Quién desarrolla esto
 
@@ -17,19 +17,19 @@ Solo. Sin equipo. Con human on the loop: cada comando se ejecuta uno por uno, se
 - 8 productos hardcodeados en src/data/products.ts a $35.000 ARS
 - Imágenes en public/products/[slug]/front.webp (formato WEBP, 800x800px)
 - loading-cafe y js-do-it tienen variantes de color: black, white, grey, coffee
-- Navbar sticky con logo (public/brand/targattos-logo.png) y links a /#productos y /nosotros
+- Navbar sticky con logo (public/brand/zarpazo-logo.png) y links a /#productos y /nosotros
 - Footer con links placeholder a Instagram y WhatsApp (config.ts)
 - Página /nosotros con logo grande y copy provisorio
 - Página /product/[slug] con selector de color, selector de talle con estado visual y botón WhatsApp que arma el mensaje completo
 - SEO completo en src/app/layout.tsx: title, description, openGraph, twitter, manifest
-- metadataBase apuntando a https://targattos.vercel.app (actualizar cuando targattos.com esté activo)
+- metadataBase apuntando a https://zarpazo.vercel.app (actualizar cuando zarpazo.com esté activo)
 - opengraph-image.png en public/ (1200x630px PNG)
 - Favicon en src/app/favicon.ico generado desde favicon.io
 - site.webmanifest en public/ con theme_color y background_color en negro
-- Logo con fondo transparente en public/brand/targattos-logo.png
+- Logo con fondo transparente en public/brand/zarpazo-logo.png
 - robots.ts y sitemap.ts en src/app/ (sitemap incluye solo / y /nosotros)
 - Configuración centralizada en src/data/config.ts (whatsapp y instagram)
-- Repo en GitHub: https://github.com/CoachEmilio/targattos
+- Repo en GitHub: https://github.com/CoachEmilio/zarpazo
 - Deploy en Vercel: pendiente
 
 ## Estructura de componentes
@@ -72,15 +72,15 @@ Usuario entra → ve grid de productos → hace click en card → página de pro
 
 1. Auditoría pre-deploy con Copilot
 2. Deploy en Vercel importando el repo desde GitHub
-3. Número real de WhatsApp Business para Targattos en config.ts
-4. Instagram real de Targattos en config.ts
+3. Número real de WhatsApp Business para Zarpazo en config.ts
+4. Instagram real de Zarpazo en config.ts
 5. Agregar variantes de color al resto de los 6 diseños cuando estén las imágenes
-6. Actualizar metadataBase cuando targattos.com esté activo en Namecheap
-7. Comprar targattos.com en Namecheap y conectar a Vercel
+6. Actualizar metadataBase cuando zarpazo.com esté activo en Namecheap
+7. Comprar zarpazo.com en Namecheap y conectar a Vercel
 
 ## Dominio
 
-- targattos.com NO comprado en Namecheap aún
+- zarpazo.com NO comprado en Namecheap aún
 - Cuando esté comprado, conectar a Vercel con dos registros DNS
 - Cuando esté conectado, actualizar metadataBase en src/app/layout.tsx y config.ts
 
@@ -102,8 +102,8 @@ Usuario entra → ve grid de productos → hace click en card → página de pro
 - Footer tiene URLs placeholder de Instagram y WhatsApp hasta tener los reales
 - /nosotros tiene copy provisorio
 - 6 productos sin variantes de color todavía (solo front.webp)
-- WhatsApp Business separado para Targattos pendiente para mañana
-- targattos.com sin comprar todavía
+- WhatsApp Business separado para Zarpazo pendiente para mañana
+- zarpazo.com sin comprar todavía
 
 ## Aprendizajes acumulados
 

@@ -1,4 +1,4 @@
-# Targattos
+# Zarpazo
 
 ![Social Preview](public/opengraph-image.png)
 
@@ -11,7 +11,7 @@
 
 ## Overview
 
-Targattos is a dark-first landing and catalog for limited drops. The product, brand, and constraints are defined in [AGENTS.md](AGENTS.md). This README focuses on GitHub documentation and the project logbook.
+Zarpazo is a dark-first landing and catalog for products. The product, brand, and constraints are defined in [AGENTS.md](AGENTS.md). This README focuses on GitHub documentation and the project logbook.
 
 ## Scope and Phase
 
@@ -60,7 +60,7 @@ Click Deploy. Update this section if any env vars or build steps are added.
 
 - Global metadata set in `src/app/layout.tsx` (title, description, Open Graph, Twitter)
 - Social preview image present at `public/opengraph-image.png`
-- `metadataBase` points to `https://targattos.vercel.app`
+- `metadataBase` points to `https://zarpazo.vercel.app`
 - `robots` and `sitemap` routes present in `src/app/`
 - `sitemap` includes `/`, `/nosotros`, and `/product/[slug]`
 - When a custom domain is added, update `metadataBase` to match
@@ -68,10 +68,10 @@ Click Deploy. Update this section if any env vars or build steps are added.
 ## Domain
 
 - Provider: Namecheap
-- Domain: targattos.com
+- Domain: zarpazo.com
 - Pricing noted: $6.79 first year with code NEWCOM679 (new customers, non-premium)
 - Renewal noted: $11.28/yr (retail $14.98/yr)
-- Link: https://www.namecheap.com/domains/registration/results/?domain=targattos.com
+- Link: https://www.namecheap.com/domains/registration/results/?domain=zarpazo.com
 
 ## Project Structure
 

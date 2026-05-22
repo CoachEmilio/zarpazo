@@ -94,18 +94,18 @@ export const products: Product[] = [
   },
   {
     id: "6",
-    slug: "targattos-logo",
-    title: "Targattos",
+    slug: "zarpazo-logo",
+    title: "Zarpazo",
     description: "El logo. La marca. El origen.",
     price: 34900,
     active: true,
-    image: "/products/targattos-logo/black.webp",
-    variants: makeVariants("targattos-logo"),
+    image: "/products/zarpazo-logo/black.webp",
+    variants: makeVariants("zarpazo-logo"),
     colors: [
-        { name: "Negro", image: "/products/targattos-logo/black.webp", hex: "#1a1a1a" },
-        { name: "Blanco", image: "/products/targattos-logo/white.webp", hex: "#ffffff" },
-        { name: "Gris", image: "/products/targattos-logo/grey.webp", hex: "#6b7280" },
-        { name: "Café", image: "/products/targattos-logo/coffee.webp", hex: "#6f4e37" },
+        { name: "Negro", image: "/products/zarpazo-logo/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/zarpazo-logo/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/zarpazo-logo/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/zarpazo-logo/coffee.webp", hex: "#6f4e37" },
     ]
   },
   {

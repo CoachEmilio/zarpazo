@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next"
 import { products } from "@/data/products"
+import { config } from "@/data/config"
 
-const baseUrl = "https://targattos.vercel.app"
+const baseUrl = config.brand.siteUrl
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["/", "/nosotros"].map((route) => ({

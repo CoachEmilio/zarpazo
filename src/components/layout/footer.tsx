@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-zinc-800 bg-black px-6 py-8 mt-auto">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="font-mono text-zinc-500 text-sm">
-          © 2026 Targattos. Drops limitados.
+          © 2026 {config.brand.name}.
         </span>
         <Link
             href="/nosotros"
