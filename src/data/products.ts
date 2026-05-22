@@ -134,4 +134,32 @@ export const products: Product[] = [
         { name: "Café", image: "/products/torre-pisa/coffee.webp", hex: "#6f4e37" },
     ]
   },
+  {
+    id: "9",
+    slug: "docker-kill",
+    title: "Docker Kill",
+    description: "Porque a veces hay que eliminar más que contenedores.",
+    price: 34900,
+    active: true,
+    image: "/products/docker-kill/front.webp",
+    variants: makeVariants("docker-kill"),
+    colors: [
+      { name: "Blanco", image: "/products/docker-kill/white.webp", hex: "#ffffff" },
+
+    ]
+  },
+  {
+    id: "10",
+    slug: "im-not-a-robot",
+    title: "I'm Not a Robot",
+    description: "Porque a veces la autenticación es un desafío.",
+    price: 34900,
+    active: true,
+    image: "/products/not-a-robot/front.webp",
+    variants: makeVariants("im-not-a-robot"),
+    colors: [
+      { name: "Blanco", image: "/products/not-a-robot/white.webp", hex: "#ffffff" },
+
+    ]
+  },
 ]

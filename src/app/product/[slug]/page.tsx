@@ -28,24 +28,15 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-black text-white px-6 py-16">
-      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+      <div className="max-w-4xl mx-auto">
         <ProductActions
           productTitle={product.title}
+          productDescription={product.description}
+          productPrice={product.price}
           productImage={product.image}
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}
         />
-        <div className="flex flex-col gap-6">
-          <h1 className="font-mono text-3xl font-bold tracking-tight">
-            {product.title}
-          </h1>
-          <p className="font-mono text-zinc-400 text-lg">
-            {product.description}
-          </p>
-          <span className="font-mono text-2xl font-bold">
-            ${product.price.toLocaleString("es-AR")}
-          </span>
-        </div>
       </div>
     </main>
   )

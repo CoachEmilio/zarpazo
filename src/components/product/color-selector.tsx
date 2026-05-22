@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
 
 type Color = {
@@ -12,28 +11,29 @@ type Color = {
 type Props = {
   colors: Color[]
   title: string
-  onChange: (colorName: string) => void
+  selected: Color
+  onChange: (color: Color) => void
+  showPreview?: boolean
 }
 
-export default function ColorSelector({ colors, title, onChange }: Props) {
-  const [selected, setSelected] = useState(colors[0])
-
+export default function ColorSelector({ colors, title, selected, onChange, showPreview = true }: Props) {
   function handleSelect(color: Color) {
-    setSelected(color)
-    onChange(color.name)
+    onChange(color)
   }
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="relative aspect-square w-full">
-        <Image
-          src={selected.image}
-          alt={title}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover rounded-lg"
-        />
-      </div>
+      {showPreview && (
+        <div className="relative aspect-square w-full">
+          <Image
+            src={selected.image}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover rounded-lg"
+          />
+        </div>
+      )}
       <div className="flex flex-col gap-2">
         <span className="font-mono text-sm text-zinc-500">Color</span>
         <div className="flex gap-3">
