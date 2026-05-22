@@ -44,7 +44,7 @@ export const products: Product[] = [
     description: "El arma elegida.",
     price: 34900,
     active: true,
-    image: "/products/js-do-it/front.webp",
+    image: "/products/js-do-it/black.webp",
     variants: makeVariants("js-do-it"),
     colors: [
         { name: "Negro", image: "/products/js-do-it/black.webp", hex: "#1a1a1a" },
@@ -86,7 +86,7 @@ export const products: Product[] = [
     description: "There's no place like home.",
     price: 34900,
     active: true,
-    image: "/products/sweet-home/front.webp",
+    image: "/products/sweet-home/black.webp",
     variants: makeVariants("sweet-home"),
     colors: [
         { name: "Negro", image: "/products/sweet-home/black.webp", hex: "#1a1a1a" },
@@ -99,7 +99,7 @@ export const products: Product[] = [
     description: "El logo. La marca. El origen.",
     price: 34900,
     active: true,
-    image: "/products/targattos-logo/front.webp",
+    image: "/products/targattos-logo/black.webp",
     variants: makeVariants("targattos-logo"),
     colors: [
         { name: "Negro", image: "/products/targattos-logo/black.webp", hex: "#1a1a1a" },
@@ -125,7 +125,7 @@ export const products: Product[] = [
     description: "Nuestro Norte es el Sur.",
     price: 34900,
     active: true,
-    image: "/products/torre-pisa/front.webp",
+    image: "/products/torre-pisa/white.webp",
     variants: makeVariants("torre-pisa"),
     colors: [
         { name: "Negro", image: "/products/torre-pisa/black.webp", hex: "#1a1a1a" },
