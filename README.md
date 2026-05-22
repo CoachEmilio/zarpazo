@@ -1,36 +1,132 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Targattos
+
+![Social Preview](public/opengraph-image.png)
+
+![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white)
+![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-ui-black)
+![Vercel](https://img.shields.io/badge/Vercel-deploy-black?logo=vercel)
+
+## Overview
+
+Targattos is a dark-first landing and catalog for limited drops. The product, brand, and constraints are defined in [AGENTS.md](AGENTS.md). This README focuses on GitHub documentation and the project logbook.
+
+## Scope and Phase
+
+- Current phase: Phase 1 (landing + catalog + simple order form)
+- No auth, no inventory, no admin panel
+- Hardcoded products in `src/data/products.ts`
+
+## Design Principles
+
+- Dark mode only, black background
+- Hacker / dev / heraldic medieval aesthetic
+- Monospace accents, sharp contrast
+- Minimal motion, strong moments
+
+## Tech Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- Tailwind CSS + shadcn/ui
+- Vercel deploy
+- Supabase (phase 2)
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy (Vercel)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When the repo appears in Vercel, click Import and keep the defaults:
 
-## Learn More
+- Framework Preset: Next.js (auto-detected)
+- Root Directory: ./
+- Build Command: empty (defaults to `next build`)
+- Output Directory: empty (handled by Next.js)
+- Install Command: empty (defaults to `npm install`)
+- Environment Variables: none for now
 
-To learn more about Next.js, take a look at the following resources:
+Click Deploy. Update this section if any env vars or build steps are added.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## SEO Checklist (Pre-deploy)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Global metadata set in `src/app/layout.tsx` (title, description, Open Graph, Twitter)
+- Social preview image present at `public/opengraph-image.png`
+- `metadataBase` points to `https://targattos.vercel.app`
+- Missing: `robots` and `sitemap` routes (add before production crawl)
+- When a custom domain is added, update `metadataBase` to match
 
-## Deploy on Vercel
+## Domain
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Provider: Namecheap
+- Domain: targattos.com
+- Pricing noted: $6.79 first year with code NEWCOM679 (new customers, non-premium)
+- Renewal noted: $11.28/yr (retail $14.98/yr)
+- Link: https://www.namecheap.com/domains/registration/results/?domain=targattos.com
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+src/
+	app/
+	components/
+	data/
+	features/
+	lib/
+	shared/
+	store/
+```
+
+## Product Model
+
+```ts
+type Product = {
+	id: string
+	slug: string
+	title: string
+	description: string
+	price: number
+	active: boolean
+	variants: ProductVariant[]
+}
+
+type ProductVariant = {
+	id: string
+	size: string
+	image: string
+}
+```
+
+## Assets and Images
+
+- Use WEBP only
+- `public/products/[slug]/front.webp`
+- Static mockups exported from Canva
+- All shirts are black
+
+## Logbook
+
+Use this table for decisions, progress, and changes. Keep entries short.
+
+| Date (YYYY-MM-DD) | Entry |
+| --- | --- |
+| 2026-05-22 | Repo initialized. Layout and footer rules defined. |
+
+## Roadmap (from AGENTS.md)
+
+- Phase 1: landing + catalog + order form + manual confirmation
+- Phase 2: Supabase + orders + statuses + simple admin
+- Phase 3: real checkout + payments + emails
+- Phase 4: CMS + analytics + automation + scale to new communities
+
+## References
+
+- [AGENTS.md](AGENTS.md)

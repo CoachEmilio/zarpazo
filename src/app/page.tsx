@@ -3,16 +3,7 @@ import Image from "next/image"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white">
-      <header className="flex items-center justify-between px-6 py-6 border-b border-zinc-800">
-        <span className="font-mono text-xl font-bold tracking-tight">
-          Targattos
-        </span>
-        <span className="font-mono text-zinc-500 text-sm">
-          drops limitados
-        </span>
-      </header>
-
+    <main className="flex-1 bg-black text-white">
       <section className="px-6 py-16 text-center">
         <h1 className="font-mono text-4xl font-bold tracking-tight">
           Diseños que garpan.
