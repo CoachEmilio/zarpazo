@@ -9,6 +9,8 @@ export type Product = {
   title: string
   description: string
   price: number
+  price_original: number
+  discount_label: string
   active: boolean
   image: string
   variants: ProductVariant[]
@@ -26,7 +28,9 @@ export const products: Product[] = [
     slug: "loading-cafe",
     title: "<Loading/>",
     description: "Porque sin café no arranca nada.",
-    price: 34900,
+    price: 45000,
+    price_original: 50000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/loading-cafe/front.webp",
     variants: makeVariants("loading-cafe"),
@@ -43,6 +47,8 @@ export const products: Product[] = [
     title: "JS Do It",
     description: "El arma elegida.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/js-do-it/black.webp",
     variants: makeVariants("js-do-it"),
@@ -58,7 +64,9 @@ export const products: Product[] = [
     slug: "sudo-rm-rf",
     title: "sudo rm -rf/*",
     description: "El comando que todos tememos.",
-    price: 34900,
+    price: 39900,
+    price_original: 45000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/sudo-rm-rf/front.webp",
     variants: makeVariants("sudo-rm-rf"),
@@ -75,6 +83,8 @@ export const products: Product[] = [
     title: "Layer 8 Problem",
     description: "El error siempre está entre la silla y el teclado.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/layer-8/front.webp",
     variants: makeVariants("layer-8"),
@@ -84,7 +94,9 @@ export const products: Product[] = [
     slug: "sweet-home",
     title: "127.0.0.1 Sweet Home",
     description: "There's no place like home.",
-    price: 34900,
+    price: 44900,
+    price_original: 50000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/sweet-home/black.webp",
     variants: makeVariants("sweet-home"),
@@ -98,6 +110,8 @@ export const products: Product[] = [
     title: "Zarpazo",
     description: "El logo. La marca. El origen.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/zarpazo-logo/black.webp",
     variants: makeVariants("zarpazo-logo"),
@@ -114,6 +128,8 @@ export const products: Product[] = [
     title: "Super Nintendo",
     description: "El arma de la infancia.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/super-nintendo/front.webp",
     variants: makeVariants("super-nintendo"),
@@ -124,6 +140,8 @@ export const products: Product[] = [
     title: "<i> Torre </i>",
     description: "Nuestro Norte es el Sur.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
     image: "/products/torre-pisa/white.webp",
     variants: makeVariants("torre-pisa"),
@@ -140,8 +158,10 @@ export const products: Product[] = [
     title: "Docker Kill",
     description: "Porque a veces hay que eliminar más que contenedores.",
     price: 34900,
+    price_original: 40000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
-    image: "/products/docker-kill/front.webp",
+    image: "/products/docker-kill/white.webp",
     variants: makeVariants("docker-kill"),
     colors: [
       { name: "Blanco", image: "/products/docker-kill/white.webp", hex: "#ffffff" },
@@ -153,12 +173,30 @@ export const products: Product[] = [
     slug: "im-not-a-robot",
     title: "I'm Not a Robot",
     description: "Porque a veces la autenticación es un desafío.",
-    price: 34900,
+    price: 39900,
+    price_original: 45000,
+    discount_label: "Oferta de lanzamiento",
     active: true,
-    image: "/products/not-a-robot/front.webp",
+    image: "/products/not-a-robot/white.webp",
     variants: makeVariants("im-not-a-robot"),
     colors: [
       { name: "Blanco", image: "/products/not-a-robot/white.webp", hex: "#ffffff" },
+
+    ]
+  },
+  {
+    id: "11",
+    slug: "capitan-del-espacio",
+    title: "Capitán del Espacio",
+    description: "El héroe de la galaxia.",
+    price: 39900,
+    price_original: 45000,
+    discount_label: "Oferta de lanzamiento",
+    active: true,
+    image: "/products/capitan-del-espacio/white.webp",
+    variants: makeVariants("capitan-del-espacio"),
+    colors: [
+      { name: "Blanco", image: "/products/capitan-del-espacio/white.webp", hex: "#ffffff" },
 
     ]
   },

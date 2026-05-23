@@ -1,11 +1,12 @@
 import { products } from "@/data/products"
 import Image from "next/image"
 import Link from "next/link"
+import PriceTag from "@/components/ui/PriceTag"
 
 export default function ProductGrid() {
   return (
     <section id="productos" className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 pb-16">
-      {products.filter((p) => p.active).map((product) => (
+      {products.filter((p) => p.active).map((product, index) => (
         <Link
           key={product.id}
           href={`/product/${product.slug}`}
@@ -16,8 +17,9 @@ export default function ProductGrid() {
               src={product.image}
               alt={product.title}
               fill
+              priority={index === 0}
               sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover rounded-md"
+              className="object-cover"
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -27,9 +29,14 @@ export default function ProductGrid() {
             <span className="font-mono text-zinc-400 text-xs">
               {product.description}
             </span>
-            <span className="font-mono text-white text-sm mt-1">
-              ${product.price.toLocaleString("es-AR")}
-            </span>
+            <div className="mt-1">
+              <PriceTag
+                price={product.price}
+                price_original={product.price_original}
+                discount_label={product.discount_label}
+                variant="compact"
+              />
+            </div>
           </div>
         </Link>
       ))}

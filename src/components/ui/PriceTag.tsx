@@ -1,48 +1,45 @@
-import type { PricingConfig } from "../../../config/pricing"
-
-const localeByCurrency: Record<string, string> = {
-  ARS: "es-AR",
-  USD: "en-US",
-  EUR: "es-ES",
-}
-
 type Props = {
-  pricing: PricingConfig
+  price: number
+  price_original?: number
+  discount_label?: string
+  variant?: "default" | "compact"
 }
 
-export default function PriceTag({ pricing }: Props) {
-  const locale = localeByCurrency[pricing.moneda] ?? "en-US"
-  const formatter = new Intl.NumberFormat(locale, {
+export default function PriceTag({ price, price_original, discount_label, variant = "default" }: Props) {
+  const formatter = new Intl.NumberFormat("es-AR", {
     style: "currency",
-    currency: pricing.moneda,
+    currency: "ARS",
     maximumFractionDigits: 0,
   })
 
-  if (!pricing.activo) {
+  const hasDiscount = !!price_original && price_original > price
+  const discountPercent = hasDiscount
+    ? Math.round(((price_original! - price) / price_original!) * 100)
+    : 0
+
+  const isCompact = variant === "compact"
+
+  if (!hasDiscount) {
     return (
-      <div className="font-sans">
-        <span className="text-2xl font-bold">
-          {formatter.format(pricing.precio_original)}
-        </span>
-      </div>
+      <span className={`font-sans font-bold ${isCompact ? "text-sm" : "text-2xl"}`}>
+        {formatter.format(price)}
+      </span>
     )
   }
 
   return (
-    <div className="font-sans flex flex-col gap-2">
+    <div className={`font-sans flex flex-col ${isCompact ? "gap-1.5" : "gap-2"}`}>
       <div className="flex items-center gap-3">
-        <span className="text-sm text-zinc-500 line-through">
-          {formatter.format(pricing.precio_original)}
+        <span className={`${isCompact ? "text-xs" : "text-sm"} text-zinc-500 line-through`}>
+          {formatter.format(price_original!)}
         </span>
-        <span className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-3 py-1 text-xs text-zinc-200 motion-safe:animate-in motion-safe:fade-in motion-safe:zoom-in-95 duration-300">
-          {pricing.etiqueta}
-          <span className="text-zinc-400">
-            -{pricing.porcentaje_descuento}%
-          </span>
+        <span className={`inline-flex items-center gap-2 rounded-full border border-zinc-700 ${isCompact ? "px-2 py-0.5 text-[10px]" : "px-3 py-1 text-xs"} text-zinc-200`}>
+          {discount_label}
+          <span className="text-zinc-400">-{discountPercent}%</span>
         </span>
       </div>
-      <span className="text-3xl font-bold motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2 duration-300">
-        {formatter.format(pricing.precio_descuento)}
+      <span className={`${isCompact ? "text-lg" : "text-3xl"} font-bold`}>
+        {formatter.format(price)}
       </span>
     </div>
   )

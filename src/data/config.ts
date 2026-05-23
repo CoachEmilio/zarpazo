@@ -1,8 +1,8 @@
 export const config = {
   brand: {
     name: "Zarpazo",
-    nameUpper: "ZARPAZO",
-    siteUrl: "https://zarpazo.vercel.app",
+    nameUpper: "<ZARPAZO/>",
+    siteUrl: "https://zarpazo.com",
     logoPath: "/brand/zarpazo-logo.png",
   },
   whatsapp: "56929961782",

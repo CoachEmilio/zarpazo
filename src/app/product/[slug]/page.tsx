@@ -32,7 +32,9 @@ export default async function ProductPage({ params }: Props) {
         <ProductActions
           productTitle={product.title}
           productDescription={product.description}
-          productPrice={product.price}
+          price={product.price}
+          price_original={product.price_original}
+          discount_label={product.discount_label}
           productImage={product.image}
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}

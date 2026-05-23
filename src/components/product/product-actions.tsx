@@ -5,6 +5,7 @@ import Image from "next/image"
 import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
 import WhatsappButton from "@/components/product/whatsapp-button"
+import PriceTag from "@/components/ui/PriceTag"
 
 type Color = {
   name: string
@@ -15,13 +16,15 @@ type Color = {
 type Props = {
   productTitle: string
   productDescription: string
-  productPrice: number
+  price: number
+  price_original?: number
+  discount_label?: string
   productImage: string
   colors?: Color[]
   sizes: string[]
 }
 
-export default function ProductActions({ productTitle, productDescription, productPrice, productImage, colors, sizes }: Props) {
+export default function ProductActions({ productTitle, productDescription, price, price_original, discount_label, productImage, colors, sizes }: Props) {
   const [selectedColor, setSelectedColor] = useState<Color | null>(
     colors ? colors[0] : null
   )
@@ -48,9 +51,7 @@ export default function ProductActions({ productTitle, productDescription, produ
         <p className="font-mono text-zinc-400 text-lg">
           {productDescription}
         </p>
-        <span className="font-mono text-2xl font-bold">
-          ${productPrice.toLocaleString("es-AR")}
-        </span>
+        <PriceTag price={price} price_original={price_original} discount_label={discount_label} />
 
         {colors && selectedColor && (
           <ColorSelector
@@ -62,10 +63,7 @@ export default function ProductActions({ productTitle, productDescription, produ
           />
         )}
 
-        <SizeSelector
-          sizes={sizes}
-          onChange={setSelectedSize}
-        />
+        <SizeSelector sizes={sizes} onChange={setSelectedSize} />
 
         <WhatsappButton
           productTitle={productTitle}
