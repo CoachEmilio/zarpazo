@@ -83,26 +83,6 @@ src/
 	store/
 ```
 
-## Product Model
-
-```ts
-type Product = {
-	id: string
-	slug: string
-	title: string
-	description: string
-	price: number
-	active: boolean
-	variants: ProductVariant[]
-}
-
-type ProductVariant = {
-	id: string
-	size: string
-	image: string
-}
-```
-
 ## Assets and Images
 
 - Use WEBP only

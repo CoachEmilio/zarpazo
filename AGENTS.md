@@ -1,8 +1,3 @@
-# Zarpazo — AGENTS.md
-
-## Qué es este proyecto
-Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Productos, producción propia con láminas DTF. Una sola marca paraguas. Modelo: diseño propio + estampado DTF + venta directa.
-
 ## Nombre
 Zarpazo — fusión de Targaryen + Gatos. Logo: gato hidra heráldico medieval.
 
@@ -10,58 +5,7 @@ Zarpazo — fusión de Targaryen + Gatos. Logo: gato hidra heráldico medieval.
 No existe una marca argentina de nicho con este humor, esta identidad visual y esta comunidad detrás. Zarpazo no vende ropa, vende cultura.
 
 ## Modelo de negocio
-
-## Validación real
-
-## Diseños actuales (Fase 1)
-Todos con fondo negro, estampa de pecho 25x30cm:
-
-## Stack
-
-## Fase actual: 1 — Landing vitrina
-Construir esto en orden:
-1. Landing con identidad visual fuerte, dark mode, estética hacker/heráldica
-2. Catálogo de diseños con selector de talle
-3. Formulario de pedido simple
-4. Confirmación manual (transferencia o efectivo)
-5. Sin auth, sin inventario, sin panel admin todavía
-
-## Identidad visual
-## Estructura de carpetas
-src/
-  app/
-    page.tsx
-    products/
-    product/[slug]/
-    api/
-  features/
-    products/
-    cart/
-    orders/
-  shared/
-    ui/
-    utils/
-    types/
-  data/
-    products.ts
-  store/
-    cart-store.ts
-  lib/
-    utils.ts
-
- # Zarpazo — AGENTS.md
-
-## Qué es este proyecto
-Marca de remeras con diseños únicos y humor para comunidades específicas (devs, abogados, tango, etc). Productos, producción propia con láminas DTF. Una sola marca paraguas. Modelo: diseño propio + estampado DTF + venta directa.
-
-## Nombre
-Zarpazo — fusión de Targaryen + Gatos. Logo: gato hidra heráldico medieval.
-
-## Problema que resuelve
-No existe una marca argentina de nicho con este humor, esta identidad visual y esta comunidad detrás. Zarpazo no vende ropa, vende cultura.
-
-## Modelo de negocio
-- Remeras negras compradas en Flores (~$6.000 ARS)
+- Remeras negras compradas (~$6.000 ARS)
 - Láminas DTF impresas externamente ($10.000 ARS por metro de 50x100cm)
 - Estampa de pecho: 25x30cm = 8 estampas por metro = $1.250 por estampa
 - Costo total por unidad: ~$7.250 ARS
@@ -84,8 +28,7 @@ Todos con fondo negro, estampa de pecho 25x30cm:
 - sudo rm -rf/*
 - Layer 8 problem (Bender)
 - Choose Your Weapon
-- 127.0.0.1 Sweet Home
-- Nuestro Norte es el Sur
+- 127.0.0.1 Sweet 127.0.0.1
 - Super Nintendo
 
 ## Stack
@@ -135,21 +78,24 @@ src/
     utils.ts
 
 ## Modelo de producto
-type Product = {
-  id: string
-  slug: string
-  title: string
-  description: string
-  price: number
-  active: boolean
-  variants: ProductVariant[]
-}
-
-type ProductVariant = {
-  id: string
-  size: string
-  image: string
-}
+{
+    id: "int",
+    slug: "string",
+    title: "Nombre",
+    description: "Porque sin café no arranca nada.",
+    price: 45000,
+    price_original: 50000,
+    discount_label: "Oferta de lanzamiento",
+    active: true,
+    image: "/products/loading-cafe/front.webp",
+    variants: makeVariants("loading-cafe"),
+    colors: [
+        { name: "Negro", image: "/products/loading-cafe/black.webp", hex: "#1a1a1a" },
+        { name: "Blanco", image: "/products/loading-cafe/white.webp", hex: "#ffffff" },
+        { name: "Gris", image: "/products/loading-cafe/grey.webp", hex: "#6b7280" },
+        { name: "Café", image: "/products/loading-cafe/coffee.webp", hex: "#6f4e37" },
+    ]
+  }
 
 ## Imágenes
 - Formato WEBP obligatorio
