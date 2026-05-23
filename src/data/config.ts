@@ -2,7 +2,7 @@ export const config = {
   brand: {
     name: "Zarpazo",
     nameUpper: "ZARPAZO",
-    siteUrl: "https://zarpazo.com",
+    siteUrl: "https://www.zarpazo.art",
     logoPath: "/brand/zarpazo-logo.png",
   },
   whatsapp: "56929961782",
