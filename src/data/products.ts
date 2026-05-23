@@ -92,7 +92,7 @@ export const products: Product[] = [
   {
     id: "5",
     slug: "sweet-home",
-    title: "127.0.0.1 Sweet Home",
+    title: "Home Sweet Home",
     description: "There's no place like home.",
     price: 44900,
     price_original: 50000,

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Geist_Mono } from "next/font/google";
+import { Space_Grotesk, Geist_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
@@ -14,6 +14,12 @@ const spaceGrotesk = Space_Grotesk({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-brand",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const brandTitle = `${config.brand.name} — Productos. Diseños que garpan.`
@@ -72,7 +78,7 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${spaceGrotesk.variable} ${geistMono.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
