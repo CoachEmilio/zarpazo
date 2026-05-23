@@ -1,7 +1,7 @@
 export const config = {
   brand: {
     name: "Zarpazo",
-    nameUpper: "<ZARPAZO/>",
+    nameUpper: "ZARPAZO",
     siteUrl: "https://zarpazo.com",
     logoPath: "/brand/zarpazo-logo.png",
   },

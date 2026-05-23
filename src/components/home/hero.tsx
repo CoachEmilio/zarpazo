@@ -5,8 +5,8 @@ export default function Hero() {
     <section className="relative w-full h-125 flex flex-col items-center justify-center text-center bg-black overflow-hidden">
     <div className="absolute inset-0">
     <Image
-      src="/landing-hero.webp"
-      alt="Zarpazo"
+    src="/landing-hero.webp"
+    alt="Zarpazo"
       fill
       className="object-contain opacity-60"
       priority

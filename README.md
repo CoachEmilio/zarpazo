@@ -69,9 +69,6 @@ Click Deploy. Update this section if any env vars or build steps are added.
 
 - Provider: Namecheap
 - Domain: zarpazo.com
-- Pricing noted: $6.79 first year with code NEWCOM679 (new customers, non-premium)
-- Renewal noted: $11.28/yr (retail $14.98/yr)
-- Link: https://www.namecheap.com/domains/registration/results/?domain=zarpazo.com
 
 ## Project Structure
 
