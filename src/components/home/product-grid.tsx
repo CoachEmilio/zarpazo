@@ -5,21 +5,21 @@ import PriceTag from "@/components/ui/PriceTag"
 
 export default function ProductGrid() {
   return (
-    <section id="productos" className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6 pb-16">
+    <section id="productos" className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-6 pb-16">
       {products.filter((p) => p.active).map((product, index) => (
         <Link
           key={product.id}
           href={`/product/${product.slug}`}
           className="flex flex-col gap-3 border border-zinc-800 rounded-lg p-4 hover:border-zinc-600 transition-colors cursor-pointer"
         >
-          <div className="relative aspect-square w-full">
+          <div className="relative aspect-square w-full overflow-hidden rounded-md">
             <Image
               src={product.image}
               alt={product.title}
               fill
               priority={index === 0}
-              sizes="(max-width: 768px) 50vw, 25vw"
-              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 25vw"
+              className="object-contain"
             />
           </div>
           <div className="flex flex-col gap-1">
