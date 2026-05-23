@@ -11,6 +11,7 @@ export default function Nosotros() {
             alt={config.brand.name}
             width={200}
             height={200}
+            unoptimized
           />
         </div>
         <h1 className="font-mono text-4xl font-bold tracking-tight mb-6">
