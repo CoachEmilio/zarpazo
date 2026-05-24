@@ -35,7 +35,7 @@ export default function WhatsappButton({ productTitle, selectedSize, selectedCol
         </p>
       )}
       {selectedSize && selectedColor && (
-        <p className="font-mono text-zinc-600 text-xs">
+        <p className="font-mono text-zinc-400 text-xs">
           Confirmación manual por transferencia.
         </p>
       )}

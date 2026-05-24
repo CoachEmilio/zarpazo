@@ -10,9 +10,9 @@ export default function Footer() {
         <div className="md:col-span-2 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
             <span className="font-mono text-white font-bold text-xl tracking-tight">
-              &lt;{config.brand.name}/&gt;
+              {config.brand.nameUpper}
             </span>
-            <p className="font-mono text-zinc-500 text-xs leading-relaxed max-w-xs">
+            <p className="font-mono text-zinc-400 text-xs leading-relaxed max-w-xs">
               Diseños que garpan. Remeras con identidad para devs, geeks y cultura.
             </p>
           </div>
