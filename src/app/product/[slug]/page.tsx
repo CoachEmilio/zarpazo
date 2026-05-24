@@ -2,6 +2,7 @@ import { products } from "@/data/products"
 import { notFound } from "next/navigation"
 import ProductActions from "@/components/product/product-actions"
 import { config } from "@/data/config"
+import RelatedProducts from "@/components/product/related-products"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -39,6 +40,8 @@ export default async function ProductPage({ params }: Props) {
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}
         />
+        // dentro del return, debajo de ProductActions:
+        <RelatedProducts currentSlug={slug} />
       </div>
     </main>
   )
