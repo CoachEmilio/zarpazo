@@ -6,5 +6,5 @@ export const config = {
     logoPath: "/brand/zarpazo-logo.png",
   },
   whatsapp: "56929961782",
-  instagram: "https://instagram.com/zarpazo",
+  instagram: "https://instagram.com/zarpazo.art",
 }
