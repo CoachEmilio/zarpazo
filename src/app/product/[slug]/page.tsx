@@ -40,7 +40,6 @@ export default async function ProductPage({ params }: Props) {
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}
         />
-        // dentro del return, debajo de ProductActions:
         <RelatedProducts currentSlug={slug} />
       </div>
     </main>
