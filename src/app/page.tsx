@@ -7,6 +7,7 @@ import AnnouncementBar from "@/components/layout/announcement-bar"
 export default function Home() {
   return (
     <main className="flex-1 bg-black text-white">
+      <AnnouncementBar />
       <Hero />
       <ProductGrid />
       <AnnouncementBar />

@@ -77,10 +77,10 @@ export const products: Product[] = [
     image: "/products/sudo-rm-rf/grey.webp",
     variants: makeVariants("sudo-rm-rf"),
     colors: [
-      { name: "Negro", image: "/products/sudo-rm-rf/black.webp", hex: "#1a1a1a" },
       { name: "Blanco", image: "/products/sudo-rm-rf/white.webp", hex: "#ffffff" },
       { name: "Gris", image: "/products/sudo-rm-rf/grey.webp", hex: "#6b7280" },
       { name: "Café", image: "/products/sudo-rm-rf/coffee.webp", hex: "#6f4e37" },
+      { name: "Negro", image: "/products/sudo-rm-rf/black.webp", hex: "#1a1a1a" },
     ]
   },
   {
