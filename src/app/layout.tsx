@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Geist_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
+import Navbar from "@/components/layout/navbar/navbar";
 import Footer from "@/components/layout/footer";
 import { Analytics } from "@vercel/analytics/next"
 import { config } from "@/data/config"
+
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",

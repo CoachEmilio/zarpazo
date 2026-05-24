@@ -1,6 +1,7 @@
-import Image from "next/image"
 import Link from "next/link"
 import { config } from "@/data/config"
+import { navLinks } from "./nav-links"
+import MobileMenu from "./mobile-menu"
 
 export default function Navbar() {
   return (
@@ -11,20 +12,21 @@ export default function Navbar() {
         </span>
       </Link>
 
-      <nav className="flex items-center gap-6">
-        <Link
-          href="/#productos"
-          className="font-mono text-sm text-zinc-400 hover:text-white transition-colors"
-        >
-          Productos
-        </Link>
-        <Link
-            href="/nosotros"
+      {/* Desktop */}
+      <nav className="hidden md:flex items-center gap-6">
+        {navLinks.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
             className="font-mono text-sm text-zinc-400 hover:text-white transition-colors"
-        >
-            Nosotros
-        </Link>
+          >
+            {link.label}
+          </Link>
+        ))}
       </nav>
+
+      {/* Mobile */}
+      <MobileMenu />
     </header>
   )
 }
