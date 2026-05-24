@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import ProductActions from "@/components/product/product-actions"
 import { config } from "@/data/config"
 import RelatedProducts from "@/components/product/related-products"
+import Link from "next/link"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -41,6 +42,15 @@ export default async function ProductPage({ params }: Props) {
           sizes={product.variants.map((v) => v.size)}
         />
         <RelatedProducts currentSlug={slug} />
+      </div>
+
+      <div className="max-w-4xl mx-auto mt-16 pt-12 border-t border-zinc-800 flex justify-center">
+        <Link
+          href="/#productos"
+          className="font-mono text-sm border border-zinc-700 hover:border-white text-zinc-400 hover:text-white px-6 py-3 rounded-lg transition-all duration-200 hover:bg-white/5"
+        >
+          Ver catálogo completo →
+        </Link>
       </div>
     </main>
   )

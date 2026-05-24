@@ -87,7 +87,7 @@ export const products: Product[] = [
     id: "4",
     slug: "layer-8",
     title: "Layer 8 Problem",
-    description: "El error siempre está entre la silla y el teclado.",
+    description: "Siempre está entre la silla y el teclado.",
     price: withDiscount(BASE_PRICE),
     price_original: BASE_PRICE,
     discount_label: DISCOUNT_LABEL,
