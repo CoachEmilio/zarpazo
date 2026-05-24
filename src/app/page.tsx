@@ -12,7 +12,6 @@ export default function Home() {
       <AnnouncementBar />
       <HowItWorks />
       <Carousel />
-      <AnnouncementBar />
     </main>
   )
 }

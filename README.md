@@ -11,11 +11,11 @@
 
 ## Overview
 
-Zarpazo is a dark-first landing and catalog for products. The product, brand, and constraints are defined in [AGENTS.md](AGENTS.md). This README documents the current implementation, deployment status, structure, and change log.
+Zarpazo is a dark-first landing and catalog for niche T-shirts with a strong hacker / heraldic identity. The product, brand, and constraints are defined in [AGENTS.md](AGENTS.md). This README documents the current implementation, deployment status, structure, and change log.
 
 ## Scope and Phase
 
-- Current phase: Phase 1 (landing + catalog + simple order form)
+- Current phase: Phase 1 (landing + catalog + product detail + WhatsApp order flow)
 - No auth, no inventory, no admin panel
 - Hardcoded products in `src/data/products.ts`
 - Public site: `https://www.zarpazo.art`
@@ -27,6 +27,7 @@ Zarpazo is a dark-first landing and catalog for products. The product, brand, an
 - Strong contrast and minimal motion
 - Brand logo uses Space Mono
 - UI/body text uses Space Grotesk and Geist Mono where appropriate
+- Text contrast is tuned for readability on dark surfaces
 
 ## Tech Stack
 
@@ -151,6 +152,7 @@ src/
 
 - Centralized in `src/data/config.ts`
 - Update WhatsApp and Instagram there only
+- Footer and product CTA links read from the same config values
 
 ## Typography
 
@@ -164,6 +166,8 @@ Use this table for decisions, progress, and changes. Keep entries short.
 
 | Date (YYYY-MM-DD) | Entry |
 | --- | --- |
+| 2026-05-24 | Footer copy and contrast were cleaned up for readability on dark background. |
+| 2026-05-24 | Product CTA helper text was brightened for better contrast. |
 | 2026-05-23 | Brand cleaned up from zarpaso to zarpazo across source, assets, and history. |
 | 2026-05-23 | Domain switched to zarpazo.art and connected in Vercel. |
 | 2026-05-23 | Social preview and metadata updated to use the live domain. |

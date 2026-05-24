@@ -4,6 +4,7 @@ import ProductActions from "@/components/product/product-actions"
 import { config } from "@/data/config"
 import RelatedProducts from "@/components/product/related-products"
 import Link from "next/link"
+import Carousel from "@/components/home/carousel"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -51,6 +52,9 @@ export default async function ProductPage({ params }: Props) {
         >
           Ver catálogo completo →
         </Link>
+      </div>
+      <div className="max-w-4xl mx-auto mt-16">
+        <Carousel />
       </div>
     </main>
   )

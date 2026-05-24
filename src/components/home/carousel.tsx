@@ -40,7 +40,7 @@ export default function Carousel() {
     : "opacity-100 translate-x-0"
 
   return (
-    <section className="w-full bg-zinc-950 border-t border-zinc-900">
+    <section className="w-full bg-zinc-950 border-t border-zinc-900 my-12 md:my-16">
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2">
         
         {/* Imagen */}

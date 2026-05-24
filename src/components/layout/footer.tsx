@@ -1,9 +1,11 @@
 import Link from "next/link"
 import { config } from "@/data/config"
+import AnnouncementBar from "./announcement-bar"
 
 export default function Footer() {
   return (
     <footer className="border-t border-zinc-800 bg-zinc-950 mt-auto">
+      <AnnouncementBar />
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
 
         {/* Marca */}
