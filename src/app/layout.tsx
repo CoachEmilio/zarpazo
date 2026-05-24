@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Analytics } from "@vercel/analytics/next"
 import { config } from "@/data/config"
+import AnnouncementBar from "@/components/layout/announcement-bar"
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
@@ -82,6 +83,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
+        <AnnouncementBar />
         {children}
         <Footer />
         <Analytics />
