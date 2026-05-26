@@ -5,6 +5,7 @@ export const config = {
     siteUrl: "https://www.zarpazo.art",
     logoPath: "/brand/zarpazo-logo.png",
   },
-  whatsapp: "56929961782",
-  instagram: "https://instagram.com/zarpazo.art",
+  whatsapp: "54911737346352",
+  correo: "infozarpazo@gmail.com",
+  instagram: "https://instagram.com/zarpazo.art"
 }

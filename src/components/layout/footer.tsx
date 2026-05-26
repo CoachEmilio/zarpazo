@@ -25,6 +25,9 @@ export default function Footer() {
             <a href={`https://wa.me/${config.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
               WhatsApp ↗
             </a>
+            <a href={`mailto:${config.correo}`} className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
+              Email ↗
+            </a>
           </div>
         </div>
 
@@ -47,6 +50,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3">
             <a href={config.instagram} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Instagram</a>
             <a href={`https://wa.me/${config.whatsapp}`} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">WhatsApp</a>
+            <a href={`mailto:${config.correo}`} className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Email</a>
           </div>
         </div>
 

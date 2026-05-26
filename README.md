@@ -111,11 +111,18 @@ src/
     layout/
       navbar.tsx
       footer.tsx
+      announcement-bar.tsx
+      WhatsAppFloat.tsx
     home/
       hero.tsx
       product-grid.tsx
       how-it-works.tsx
       carousel.tsx
+    nosotros/
+      nosotros-hero.tsx
+      nosotros-story.tsx
+      nosotros-values.tsx
+      nosotros-cta.tsx
     product/
       color-selector.tsx
       size-selector.tsx
@@ -151,8 +158,16 @@ src/
 ## Contact Config
 
 - Centralized in `src/data/config.ts`
-- Update WhatsApp and Instagram there only
+- Update WhatsApp, Instagram, and email there only
+- WhatsApp is used both for the product CTA and the floating site-wide CTA
+- Instagram and email are also consumed from the same config object
 - Footer and product CTA links read from the same config values
+
+## Nosotros Structure
+
+- `src/app/nosotros/page.tsx` is now a thin orchestrator
+- Hero, story, values, and CTA are split into `src/components/nosotros/`
+- The announcement bar stays at the top of the page instead of interrupting the sections
 
 ## Typography
 
@@ -166,6 +181,8 @@ Use this table for decisions, progress, and changes. Keep entries short.
 
 | Date (YYYY-MM-DD) | Entry |
 | --- | --- |
+| 2026-05-26 | Nosotros page split into hero, story, values, and CTA components. |
+| 2026-05-26 | Contact config expanded with WhatsApp, Instagram, and email references. |
 | 2026-05-24 | Footer copy and contrast were cleaned up for readability on dark background. |
 | 2026-05-24 | Product CTA helper text was brightened for better contrast. |
 | 2026-05-23 | Brand cleaned up from zarpaso to zarpazo across source, assets, and history. |
