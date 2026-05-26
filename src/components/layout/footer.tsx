@@ -11,9 +11,9 @@ export default function Footer() {
         {/* Marca */}
         <div className="md:col-span-2 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-white font-bold text-xl tracking-tight">
+            <Link href="/" className="font-mono text-white font-bold text-xl tracking-tight hover:text-zinc-300 transition-colors duration-200">
               {config.brand.nameUpper}
-            </span>
+            </Link>
             <p className="font-mono text-zinc-400 text-xs leading-relaxed max-w-xs">
               Diseños que garpan. Remeras con identidad para devs, geeks y cultura.
             </p>
