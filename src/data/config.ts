@@ -7,5 +7,6 @@ export const config = {
   },
   whatsapp: "5491173746352",
   correo: "infozarpazo@gmail.com",
-  instagram: "https://instagram.com/zarpazo.art"
+  instagram: "https://instagram.com/zarpazo.art",
+  youtubeUrl: "https://youtu.be/CEJawOzI18s"
 }

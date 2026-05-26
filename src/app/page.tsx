@@ -2,6 +2,7 @@ import Hero from "@/components/home/hero"
 import ProductGrid from "@/components/home/product-grid"
 import HowItWorks from "@/components/home/how-it-works"
 import Carousel from "@/components/home/carousel"
+import YoutubeVideoSection from "@/components/home/youtube-video-section"
 import AnnouncementBar from "@/components/layout/announcement-bar"
 
 export default function Home() {
@@ -12,6 +13,7 @@ export default function Home() {
       <ProductGrid />
       <AnnouncementBar />
       <HowItWorks />
+      <YoutubeVideoSection />
       <Carousel />
     </main>
   )
