@@ -7,7 +7,7 @@ export default function Hero() {
       aria-labelledby="hero-title"
       className="relative w-full overflow-hidden bg-black px-6 pb-4 pt-3 md:pb-12 md:pt-8"
     >
-      <div className="mx-auto flex min-h-[28svh] md:min-h-[58svh] max-w-5xl flex-col items-center justify-start text-center">
+      <div className="mx-auto flex min-h-[28svh] md:min-h-[58svh] max-w-7xl flex-col items-center justify-start text-center">
         <div className="relative mb-4 h-36 w-36 max-w-full md:h-64 md:w-64 lg:h-72 lg:w-72">
           <Image
             src={config.brand.logoPath}

@@ -4,6 +4,7 @@ import NosotrosStory from "../../components/nosotros/nosotros-story"
 import NosotrosValues from "../../components/nosotros/nosotros-values"
 import NosotrosCTA from "../../components/nosotros/nosotros-cta"
 import YoutubeVideoSection from "@/components/home/youtube-video-section"
+import Carousel from "@/components/home/carousel"
 
 export default function Nosotros() {
   return (
@@ -14,6 +15,7 @@ export default function Nosotros() {
       <NosotrosValues />
       <YoutubeVideoSection />
       <NosotrosCTA />
+      <Carousel />
     </main>
   )
 }

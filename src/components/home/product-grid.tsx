@@ -2,6 +2,7 @@ import { products } from "@/data/products"
 import Image from "next/image"
 import Link from "next/link"
 import PriceTag from "@/components/ui/PriceTag"
+import { getCategoryLabel } from "@/data/categories"
 
 export default function ProductGrid() {
   return (
@@ -23,6 +24,7 @@ export default function ProductGrid() {
             />
           </div>
           <div className="flex flex-col gap-1">
+            <span className="inline-block font-mono text-[10px] text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2 py-1 rounded-md">{getCategoryLabel(product.category)}</span>
             <span className="font-mono text-sm font-bold">
               {product.title}
             </span>

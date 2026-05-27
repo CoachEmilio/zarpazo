@@ -70,15 +70,15 @@ export default function ProductLayerShowcase() {
   return (
     <section className="px-6 py-10 md:py-14">
       <div className="mx-auto max-w-7xl space-y-6">
-        <div className="space-y-2">
+        <div className="space-y-2 text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
             Destacados
           </span>
           <h2 className="font-brand text-2xl font-bold tracking-[0.18em] text-white md:text-4xl">
             Zarpazo en movimiento
           </h2>
-          <p className="max-w-2xl font-mono text-sm leading-relaxed text-zinc-400 md:text-base">
-            Una selección editable desde <span className="text-zinc-200">src/data/home-showcase.json</span>. Tocá cualquier imagen para ir al producto.
+          <p className="max-w-2xl mx-auto font-mono text-sm leading-relaxed text-zinc-400 md:text-base">
+            Tocá cualquier imagen para ver el producto.
           </p>
         </div>
 

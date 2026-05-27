@@ -3,9 +3,13 @@ export type ProductVariant = {
   size: string
 }
 
+import { CATEGORY_KEYS, isValidCategory } from "./categories"
+import type { CategoryKey } from "./categories"
+
 export type Product = {
   id: string
   slug: string
+  category: CategoryKey
   title: string
   description: string
   price: number
@@ -28,10 +32,11 @@ const makeVariants = (slug: string): ProductVariant[] =>
 const withDiscount = (original: number) =>
   Math.round(original * (1 - DISCOUNT))
 
-export const products: Product[] = [
+export const productsRaw = [
   {
     id: "1",
     slug: "loading-cafe",
+    category: "dev",
     title: "<Loading/>",
     description: "Porque sin café no arranca nada.",
     price: withDiscount(BASE_PRICE),
@@ -50,6 +55,7 @@ export const products: Product[] = [
   {
     id: "2",
     slug: "js-do-it",
+    category: "dev",
     title: "JS Do It",
     description: "El arma elegida.",
     price: withDiscount(BASE_PRICE),
@@ -68,6 +74,7 @@ export const products: Product[] = [
   {
     id: "3",
     slug: "sudo-rm-rf",
+    category: "dev",
     title: "sudo rm -rf/*",
     description: "El comando que todos tememos.",
     price: withDiscount(BASE_PRICE),
@@ -86,6 +93,7 @@ export const products: Product[] = [
   {
     id: "4",
     slug: "layer-8",
+    category: "dev",
     title: "Layer 8 Problem",
     description: "Siempre está entre la silla y el teclado.",
     price: withDiscount(BASE_PRICE),
@@ -102,6 +110,7 @@ export const products: Product[] = [
   {
     id: "5",
     slug: "sweet-home",
+    category: "dev",
     title: "Home Sweet Home",
     description: "There's no place like home.",
     price: withDiscount(BASE_PRICE),
@@ -117,6 +126,7 @@ export const products: Product[] = [
   {
     id: "6",
     slug: "zarpazo-logo",
+    category: "cultura",
     title: "Zarpazo",
     description: "El logo. La marca. El origen.",
     price: withDiscount(BASE_PRICE),
@@ -135,6 +145,7 @@ export const products: Product[] = [
   {
     id: "7",
     slug: "super-nintendo",
+    category: "gaming",
     title: "Super Nintendo",
     description: "El arma de la infancia.",
     price: withDiscount(BASE_PRICE),
@@ -151,6 +162,7 @@ export const products: Product[] = [
   {
     id: "8",
     slug: "torre-pisa",
+    category: "dev",
     title: "<i> Torre </i>",
     description: "Nuestro Norte es el Sur.",
     price: withDiscount(BASE_PRICE),
@@ -169,6 +181,7 @@ export const products: Product[] = [
   {
     id: "9",
     slug: "docker-kill",
+    category: "dev",
     title: "Docker Kill",
     description: "Porque a veces hay que eliminar más que contenedores.",
     price: withDiscount(BASE_PRICE),
@@ -184,6 +197,7 @@ export const products: Product[] = [
   {
     id: "10",
     slug: "im-not-a-robot",
+    category: "dev",
     title: "I'm Not a Robot",
     description: "Porque a veces la autenticación es un desafío.",
     price: withDiscount(BASE_PRICE),
@@ -199,6 +213,7 @@ export const products: Product[] = [
   {
     id: "11",
     slug: "capitan-del-espacio",
+    category: "cultura",
     title: "Capitán del Espacio",
     description: "El héroe de la galaxia.",
     price: withDiscount(BASE_PRICE),
@@ -214,6 +229,7 @@ export const products: Product[] = [
   {
     id: "12",
     slug: "snack-developer",
+    category: "dev",
     title: "Full Snack Developer",
     description: "Para los desarrolladores que necesitan recarga.",
     price: withDiscount(BASE_PRICE),
@@ -230,6 +246,7 @@ export const products: Product[] = [
   {
     id: "13",
     slug: "senior-developer",
+    category: "dev",
     title: "Señor Developer",
     description: "La remera que solo unos pocos pueden tener",
     price: withDiscount(BASE_PRICE),
@@ -246,6 +263,7 @@ export const products: Product[] = [
   {
     id: "14",
     slug: "switch-please",
+    category: "dev",
     title: "Switch Please",
     description: "Para los que conectan el switch al monitor y esperan magia.",
     price: withDiscount(BASE_PRICE),
@@ -262,6 +280,7 @@ export const products: Product[] = [
   {
     id: "15",
     slug: "just-sudo-it",
+    category: "dev",
     title: "Just Sudo It",
     description: "Para los que quieren borrar todo y no saben por qué.",
     price: withDiscount(BASE_PRICE),
@@ -277,6 +296,7 @@ export const products: Product[] = [
   {
     id: "16",
     slug: "kali-linux",
+    category: "dev",
     title: "Kali Assassin",
     description: "Remeras para los que se dicen hackers éticos",
     price: withDiscount(BASE_PRICE),
@@ -289,4 +309,14 @@ export const products: Product[] = [
       { name: "Blanco", image: "/products/kali-linux/white.webp", hex: "#ffffff" },
     ]
   }
-]
+] as unknown as Array<Product & { category: string }>
+
+export const products: Product[] = productsRaw.map((p) => {
+  if (!isValidCategory(p.category)) {
+    const fallback = CATEGORY_KEYS[0]
+    // eslint-disable-next-line no-console
+    console.warn(`[products] product ${p.slug} has invalid category "${p.category}" — falling back to "${fallback}"`)
+    return { ...p, category: fallback }
+  }
+  return p as Product
+})
