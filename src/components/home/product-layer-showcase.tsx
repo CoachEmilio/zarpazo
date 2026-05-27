@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
 import { products } from "@/data/products"
+import { homeShowcaseCopy } from "@/data/home-showcase-copy"
 import showcase from "@/data/home-showcase.json"
 
 type ShowcaseItem = {
@@ -72,13 +73,13 @@ export default function ProductLayerShowcase() {
       <div className="mx-auto max-w-7xl space-y-6">
         <div className="space-y-2 text-center">
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
-            Destacados
+            {homeShowcaseCopy.eyebrow}
           </span>
           <h2 className="font-brand text-2xl font-bold tracking-[0.18em] text-white md:text-4xl">
-            Zarpazo en movimiento
+            {homeShowcaseCopy.title}
           </h2>
           <p className="max-w-2xl mx-auto font-mono text-sm leading-relaxed text-zinc-400 md:text-base">
-            Tocá cualquier imagen para ver el producto.
+            {homeShowcaseCopy.description}
           </p>
         </div>
 
@@ -124,7 +125,7 @@ export default function ProductLayerShowcase() {
                     <h3 className="mt-2 font-mono text-base font-bold text-white transition-colors group-hover:text-[#f1e6cc]">
                       {item.product.title}
                     </h3>
-                    <p className="mt-1 font-mono text-xs text-zinc-400">Hover para abrir y ver el producto</p>
+                    <p className="mt-1 font-mono text-xs text-zinc-400">{homeShowcaseCopy.cardCta}</p>
                   </div>
                 </div>
               </Link>

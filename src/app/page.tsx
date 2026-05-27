@@ -4,8 +4,8 @@ import HowItWorks from "@/components/home/how-it-works"
 import FaqSection from "@/components/home/faq-section"
 import OrderCTA from "@/components/home/order-cta"
 import YoutubeVideoSection from "@/components/home/youtube-video-section"
-import AnnouncementBar from "@/components/layout/announcement-bar"
 import Carousel from "@/components/home/carousel"
+import AnnouncementBar from "@/components/layout/announcement-bar"
 
 export default function Home() {
   return (

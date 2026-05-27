@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar/navbar";
 import Footer from "@/components/layout/footer";
 import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
-import AnnouncementBar from "@/components/layout/announcement-bar";
 import { Analytics } from "@vercel/analytics/next"
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { config } from "@/data/config"
@@ -84,7 +83,6 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${geistMono.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <AnnouncementBar />
         <Navbar />
         {children}
         <Footer />

@@ -1,4 +1,7 @@
 import Image from "next/image"
+import Link from "next/link"
+
+import { Button } from "@/components/ui/button"
 import { config } from "@/data/config"
 
 export default function Hero() {
@@ -30,6 +33,15 @@ export default function Hero() {
         <h2 className="mt-3 font-mono text-lg font-medium tracking-wide text-[#f1e6cc]/90 md:text-2xl">
           Diseños que garpan.
         </h2>
+
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Button asChild className="h-11 rounded-full border border-zinc-700 bg-white px-6 font-mono text-xs font-bold uppercase tracking-widest text-black hover:bg-zinc-900 hover:text-[#f1e6cc] focus-visible:bg-zinc-900 focus-visible:text-[#f1e6cc]">
+            <Link href="/catalogo">Ver catálogo</Link>
+          </Button>
+          <Button asChild variant="outline" className="h-11 rounded-full border border-[#f1e6cc]/30 bg-transparent px-6 font-mono text-xs font-bold uppercase tracking-widest text-[#f1e6cc] hover:border-[#f1e6cc] hover:bg-[#f1e6cc] hover:text-black focus-visible:border-[#f1e6cc] focus-visible:bg-[#f1e6cc] focus-visible:text-black">
+            <Link href="/nosotros">Nosotros</Link>
+          </Button>
+        </div>
       </div>
     </section>
   )
