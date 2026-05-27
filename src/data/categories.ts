@@ -1,7 +1,9 @@
 export const CATEGORIES = [
   { key: "dev", label: "Dev" },
   { key: "gaming", label: "Gaming" },
-  { key: "cultura", label: "Cultura" },
+  { key: "conurbano", label: "Conurbano" },
+  { key: "borges", label: "Borges" },
+  { key: "zarpazo", label: "Zarpazo" },
 ] as const
 
 export type CategoryKey = (typeof CATEGORIES)[number]["key"]

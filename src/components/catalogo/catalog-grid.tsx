@@ -19,11 +19,13 @@ export default function CatalogGrid() {
   const filtered = products.filter((p) => {
     const matchesCategory = activeCategory === "todos" || p.category === activeCategory
     const q = searchQuery.trim().toLowerCase()
+    const categoryLabel = getCategoryLabel(p.category).toLowerCase()
     const matchesSearch =
       q === "" ||
       p.title.toLowerCase().includes(q) ||
       p.description.toLowerCase().includes(q) ||
-      p.slug.toLowerCase().includes(q)
+      p.slug.toLowerCase().includes(q) ||
+      categoryLabel.includes(q)
     return p.active && matchesCategory && matchesSearch
   })
 

@@ -126,7 +126,7 @@ export const productsRaw = [
   {
     id: "6",
     slug: "zarpazo-logo",
-    category: "cultura",
+    category: "zarpazo",
     title: "Zarpazo",
     description: "El logo. La marca. El origen.",
     price: withDiscount(BASE_PRICE),
@@ -213,7 +213,7 @@ export const productsRaw = [
   {
     id: "11",
     slug: "capitan-del-espacio",
-    category: "cultura",
+    category: "conurbano",
     title: "Capitán del Espacio",
     description: "El héroe de la galaxia.",
     price: withDiscount(BASE_PRICE),
@@ -307,6 +307,74 @@ export const productsRaw = [
     variants: makeVariants("kali-linux"),
     colors: [
       { name: "Blanco", image: "/products/kali-linux/white.webp", hex: "#ffffff" },
+    ]
+    },
+    {
+    id: "17",
+    slug: "fenix",
+      category: "borges",
+    title: "La Secta del Fénix",
+    description: "No hay grupo humano en el que no figuren partidarios del fénix",
+    price: withDiscount(BASE_PRICE),
+    price_original: BASE_PRICE,
+    discount_label: DISCOUNT_LABEL,
+    active: true,
+    image: "/products/fenix/white.webp",
+    variants: makeVariants("fenix"),
+    colors: [
+      { name: "Negro", image: "/products/fenix/black.webp", hex: "#1a1a1a" },
+      { name: "Blanco", image: "/products/fenix/white.webp", hex: "#ffffff" },
+    ]
+  },
+  {
+    id: "18",
+    slug: "escritura-de-dios",
+    category: "borges",
+    title: "La Escritura de Dios",
+    description: "El lenguaje sagrado que solo unos pocos pueden entender",
+    price: withDiscount(BASE_PRICE),
+    price_original: BASE_PRICE,
+    discount_label: DISCOUNT_LABEL,
+    active: true,
+    image: "/products/escritura-de-dios/black.webp",
+    variants: makeVariants("escritura-de-dios"),
+    colors: [
+      { name: "Negro", image: "/products/escritura-de-dios/black.webp", hex: "#1a1a1a" },
+      { name: "Blanco", image: "/products/escritura-de-dios/white.webp", hex: "#ffffff" },
+    ]
+  },
+  {
+    id: "19",
+    slug: "casa-de-asterion",
+    category: "borges",
+    title: "La Casa de Asterion",
+    description: "El minotauro que vive en el laberinto de la sociedad moderna",
+    price: withDiscount(BASE_PRICE),
+    price_original: BASE_PRICE,
+    discount_label: DISCOUNT_LABEL,
+    active: true,
+    image: "/products/casa-de-asterion/black.webp",
+    variants: makeVariants("casa-de-asterion"),
+    colors: [
+      { name: "Negro", image: "/products/casa-de-asterion/black.webp", hex: "#1a1a1a" },
+      { name: "Blanco", image: "/products/casa-de-asterion/white.webp", hex: "#ffffff" },
+    ]
+  },
+  {
+    id: "20",
+    slug: "wilkins",
+    category: "borges",
+    title: "El idioma analítico de John Wilkins",
+    description: "Emporio celestial de conocimientos benévolos",
+    price: withDiscount(BASE_PRICE),
+    price_original: BASE_PRICE,
+    discount_label: DISCOUNT_LABEL,
+    active: true,
+    image: "/products/wilkins/white.webp",
+    variants: makeVariants("wilkins"),
+    colors: [
+      { name: "Negro", image: "/products/wilkins/black.webp", hex: "#1a1a1a" },
+      { name: "Blanco", image: "/products/wilkins/white.webp", hex: "#ffffff" },
     ]
   }
 ] as unknown as Array<Product & { category: string }>
