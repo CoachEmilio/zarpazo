@@ -21,7 +21,8 @@ export default function Hero() {
 
         <h1
           id="hero-title"
-          className="font-brand text-4xl font-semibold tracking-[0.18em] text-[#f1e6cc] md:text-6xl"
+          className="font-brand text-4xl font-semibold tracking-[0.18em] md:text-6xl"
+          style={{ color: config.brand.accentColor }}
         >
           ZARPAZO
         </h1>

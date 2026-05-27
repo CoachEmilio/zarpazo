@@ -5,7 +5,7 @@ import { config } from "@/data/config"
 const baseUrl = config.brand.siteUrl
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["/", "/nosotros"].map((route) => ({
+  const staticRoutes = ["/", "/catalogo", "/guia-de-talles", "/nosotros", "/contacto"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
   }))

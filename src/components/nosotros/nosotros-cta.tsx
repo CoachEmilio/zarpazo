@@ -13,7 +13,7 @@ export default function NosotrosCTA() {
         </p>
         <div className="flex items-center gap-4 flex-wrap justify-center">
           <Link
-            href="/#productos"
+            href="/catalogo"
             className="font-mono text-sm bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-zinc-200 transition-colors duration-200"
           >
             Ver catálogo →

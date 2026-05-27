@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { config } from "@/data/config"
 import AnnouncementBar from "./announcement-bar"
 
@@ -11,9 +12,21 @@ export default function Footer() {
         {/* Marca */}
         <div className="md:col-span-2 flex flex-col gap-6">
           <div className="flex flex-col gap-2">
-            <Link href="/" className="font-mono text-white font-bold text-xl tracking-tight hover:text-zinc-300 transition-colors duration-200">
-              {config.brand.nameUpper}
+            <Link href="/" className="inline-flex w-fit items-center">
+              <Image
+                src={config.brand.logoPath}
+                alt={config.brand.name}
+                width={200}
+                height={200}
+                className="h-16 w-auto"
+              />
             </Link>
+            <span
+              className="font-mono font-bold text-xl tracking-tight"
+              style={{ color: config.brand.accentColor }}
+            >
+              {config.brand.nameUpper}
+            </span>
             <p className="font-mono text-zinc-400 text-xs leading-relaxed max-w-xs">
               Diseños que garpan. Remeras con identidad para devs, geeks y cultura.
             </p>
@@ -21,6 +34,9 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <a href={config.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
               Instagram ↗
+            </a>
+            <a href={config.youtubeChannelUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
+              YouTube ↗
             </a>
             <a href={`https://wa.me/${config.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
               WhatsApp ↗
@@ -37,8 +53,11 @@ export default function Footer() {
             Tienda
           </span>
           <div className="flex flex-col gap-3">
-            <Link href="/#productos" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Productos</Link>
+            <Link href="/" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Inicio</Link>
+            <Link href="/catalogo" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Catálogo</Link>
+            <Link href="/guia-de-talles" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Guía de talles</Link>
             <Link href="/nosotros" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Nosotros</Link>
+            <Link href="/contacto" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Contacto</Link>
           </div>
         </div>
 
@@ -49,6 +68,7 @@ export default function Footer() {
           </span>
           <div className="flex flex-col gap-3">
             <a href={config.instagram} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Instagram</a>
+            <a href={config.youtubeChannelUrl} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">YouTube</a>
             <a href={`https://wa.me/${config.whatsapp}`} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">WhatsApp</a>
             <a href={`mailto:${config.correo}`} className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Email</a>
           </div>

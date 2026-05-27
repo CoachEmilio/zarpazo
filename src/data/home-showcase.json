@@ -1,0 +1,8 @@
+[
+  { "slug": "loading-cafe", "label": "Best seller" },
+  { "slug": "js-do-it", "label": "Dev favorite" },
+  { "slug": "sudo-rm-rf", "label": "Warning" },
+  { "slug": "layer-8", "label": "Classic" },
+  { "slug": "super-nintendo", "label": "Retro" },
+  { "slug": "zarpazo-logo", "label": "Brand" }
+]

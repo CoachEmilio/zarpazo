@@ -60,7 +60,7 @@ export default function YoutubeVideoSection() {
             </h2>
           </div>
           <p className="font-mono text-xs text-zinc-500 max-w-sm">
-            Se reproduce en silencio, en loop y ocupa poco espacio visual.
+            Mirá nuestro proceso de creación y cómo toma forma cada diseño.
           </p>
         </div>
 

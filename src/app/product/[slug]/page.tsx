@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: Props) {
 
       <div className="max-w-4xl mx-auto mt-16 pt-12 border-t border-zinc-800 flex justify-center">
         <Link
-          href="/#productos"
+          href="/catalogo"
           className="font-mono text-sm border border-zinc-700 hover:border-white text-zinc-400 hover:text-white px-6 py-3 rounded-lg transition-all duration-200 hover:bg-white/5"
         >
           Ver catálogo completo →
