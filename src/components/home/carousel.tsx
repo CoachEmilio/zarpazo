@@ -113,15 +113,17 @@ export default function Carousel() {
           {/* Controles */}
           <div className="flex items-center gap-4 relative z-10">
             <button
+              type="button"
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800"
+              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               aria-label="Anterior"
             >
               ←
             </button>
             <button
+              type="button"
               onClick={next}
-              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800"
+              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               aria-label="Siguiente"
             >
               →
@@ -130,8 +132,9 @@ export default function Carousel() {
               {featured.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => go(i, i > current ? "next" : "prev")}
-                  className="relative flex-1 h-0.5 bg-zinc-800 rounded-full overflow-hidden"
+                  className="relative flex-1 h-0.5 bg-zinc-800 rounded-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
                   aria-label={`Ir al producto ${i + 1}`}
                 >
                   {i === current && (

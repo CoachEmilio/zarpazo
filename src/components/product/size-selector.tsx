@@ -24,12 +24,14 @@ export default function SizeSelector({ sizes, onChange }: Props) {
         {sizes.map((size) => (
           <button
             key={size}
+            type="button"
             onClick={() => handleSelect(size)}
+            aria-pressed={selected === size}
             className={`font-mono text-sm px-4 py-2 rounded border transition-all ${
               selected === size
                 ? "border-white text-white bg-zinc-800"
                 : "border-zinc-700 text-zinc-400 hover:border-zinc-400"
-            }`}
+            } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60`}
           >
             {size}
           </button>

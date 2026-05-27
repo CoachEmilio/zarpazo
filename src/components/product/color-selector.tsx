@@ -40,13 +40,16 @@ export default function ColorSelector({ colors, title, selected, onChange, showP
           {colors.map((c) => (
             <button
               key={c.name}
+              type="button"
               onClick={() => handleSelect(c)}
               title={c.name}
+              aria-label={`Seleccionar color ${c.name}`}
+              aria-pressed={selected.name === c.name}
               className={`w-8 h-8 rounded-full border-2 transition-all ${
                 selected.name === c.name
                   ? "border-white scale-110"
                   : "border-zinc-600 hover:border-zinc-400"
-              }`}
+              } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60`}
               style={{ backgroundColor: c.hex }}
             />
           ))}

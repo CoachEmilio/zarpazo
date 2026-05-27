@@ -27,9 +27,10 @@ export default function CatalogFilters({ activeCategory, onCategoryChange }: Pro
         return (
           <button
             key={b.key}
+            type="button"
             onClick={() => onCategoryChange(b.key)}
             aria-pressed={active}
-            className={`${base} ${active ? activeClasses : inactiveClasses}`}
+            className={`${base} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60 ${active ? activeClasses : inactiveClasses}`}
           >
             {b.label}
           </button>

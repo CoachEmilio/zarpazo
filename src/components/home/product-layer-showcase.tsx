@@ -30,10 +30,22 @@ const showcaseItems = (showcase as ShowcaseItem[])
 export default function ProductLayerShowcase() {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [paused, setPaused] = useState(false)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+
+    const updatePreference = () => setPrefersReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener("change", updatePreference)
+
+    return () => mediaQuery.removeEventListener("change", updatePreference)
+  }, [])
 
   useEffect(() => {
     const el = containerRef.current
-    if (!el) return
+    if (!el || prefersReducedMotion) return
 
     let rafId = 0
     let last: number | null = null
@@ -58,7 +70,7 @@ export default function ProductLayerShowcase() {
 
     rafId = requestAnimationFrame(step)
     return () => cancelAnimationFrame(rafId)
-  }, [paused])
+  }, [paused, prefersReducedMotion])
 
   function scrollBy(amount: number) {
     const el = containerRef.current
@@ -97,6 +109,8 @@ export default function ProductLayerShowcase() {
             ref={containerRef}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
+            onFocusCapture={() => setPaused(true)}
+            onBlurCapture={() => setPaused(false)}
             className="flex gap-4 overflow-x-auto px-4 pb-2 scroll-smooth scrollbar-none [&::-webkit-scrollbar]:hidden"
           >
             {showcaseItems.map((item, index) => (

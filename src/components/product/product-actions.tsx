@@ -37,7 +37,7 @@ export default function ProductActions({ productTitle, productDescription, price
       <div className="relative aspect-square w-full">
         <Image
           src={imageSrc}
-          alt={productTitle}
+          alt={selectedColorName ? `${productTitle} - ${selectedColorName}` : productTitle}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover rounded-lg"
