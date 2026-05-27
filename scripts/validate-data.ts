@@ -1,18 +1,31 @@
-import { productsRaw } from "../src/data/products"
-import { CATEGORY_KEYS } from "../src/data/categories"
+import { readFileSync } from "node:fs"
+import { resolve } from "node:path"
 
-const invalid: { slug: string; category: string }[] = []
+const root = process.cwd()
+const productsPath = resolve(root, "src/data/products.ts")
+const categoriesPath = resolve(root, "src/data/categories.ts")
 
-for (const p of productsRaw as any) {
-  if (!CATEGORY_KEYS.includes(p.category)) {
-    invalid.push({ slug: p.slug, category: p.category })
-  }
-}
+const productsSource = readFileSync(productsPath, "utf8")
+const categoriesSource = readFileSync(categoriesPath, "utf8")
+
+const categoryKeys = Array.from(
+  new Set(
+    Array.from(categoriesSource.matchAll(/key:\s*"([^"]+)"/g), (match) => match[1])
+  )
+)
+
+const productCategories = Array.from(
+  new Set(
+    Array.from(productsSource.matchAll(/category:\s*"([^"]+)"/g), (match) => match[1])
+  )
+)
+
+const invalid = productCategories.filter((category) => !categoryKeys.includes(category))
 
 if (invalid.length === 0) {
   console.log("OK: all product categories are valid")
   process.exit(0)
-} else {
-  console.error("Invalid product categories:\n", invalid.map(i => `${i.slug}: ${i.category}`).join("\n"))
-  process.exit(2)
 }
+
+console.error("Invalid product categories:\n", invalid.join("\n"))
+process.exit(2)

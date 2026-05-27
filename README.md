@@ -274,6 +274,8 @@ Usá esta tabla para decisiones, progreso y cambios. Las entradas deben ser cort
 
 | Date (YYYY-MM-DD) | Entry |
 | --- | --- |
+| 2026-05-27 | `scripts/validate-data.ts` quedó autocontenido para no romper `npm run build` con imports TS en ESM. |
+| 2026-05-27 | `npm run build` volvió a pasar después de corregir el prebuild de categorías. |
 | 2026-05-26 | Se auditó GA4: `@next/third-parties` + `@vercel/analytics` conviven sin scripts manuales. |
 | 2026-05-26 | El ID de GA4 pasó a `NEXT_PUBLIC_GA_ID` en `.env.local`. |
 | 2026-05-26 | Se compartimentó `src/app/contacto/page.tsx` en `ContactHero`, `ContactActions` y `ContactChannels`. |
