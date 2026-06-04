@@ -6,19 +6,34 @@
     "women": "/products/sizes/women.webp"
   },
   "men": [
-    { "size": "XS", "width": "45 cm", "length": "64 cm" },
-    { "size": "S", "width": "48 cm", "length": "67 cm" },
-    { "size": "M", "width": "51 cm", "length": "70 cm" },
-    { "size": "L", "width": "54 cm", "length": "73 cm" },
+    { "size": "S", "width": "50 cm", "length": "68 cm" },
+    { "size": "M", "width": "52 cm", "length": "70 cm" },
+    { "size": "L", "width": "54 cm", "length": "72 cm" },
     { "size": "XL", "width": "57 cm", "length": "76 cm" },
-    { "size": "XXL", "width": "60 cm", "length": "79 cm" }
+    { "size": "XXL", "width": "60 cm", "length": "80 cm" }
   ],
   "women": [
-    { "size": "XS", "width": "42 cm", "length": "60 cm" },
-    { "size": "S", "width": "45 cm", "length": "63 cm" },
-    { "size": "M", "width": "48 cm", "length": "66 cm" },
-    { "size": "L", "width": "51 cm", "length": "69 cm" },
-    { "size": "XL", "width": "54 cm", "length": "72 cm" },
-    { "size": "XXL", "width": "57 cm", "length": "75 cm" }
+    {
+      "size": "XS", "width": "42 cm", "length": "60 cm"},
+    {"size": "S", "width": "45 cm", "length": "63 cm"},
+    {"size": "M",
+      "width": "48 cm",
+      "length": "66 cm"
+    },
+    {
+      "size": "L",
+      "width": "51 cm",
+      "length": "69 cm"
+    },
+    {
+      "size": "XL",
+      "width": "54 cm",
+      "length": "72 cm"
+    },
+    {
+      "size": "XXL",
+      "width": "57 cm",
+      "length": "75 cm"
+    }
   ]
 }
