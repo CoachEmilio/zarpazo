@@ -31,7 +31,8 @@ export default function Footer() {
               Diseños que garpan. Remeras con identidad para devs, geeks y cultura.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          {/* ✅ flex-wrap va ACÁ */}
+          <div className="flex items-center gap-3 flex-wrap">
             <a href={config.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 font-mono text-xs text-zinc-500 hover:text-white border border-zinc-800 hover:border-zinc-600 px-3 py-1.5 rounded-md transition-all duration-200">
               Instagram ↗
             </a>
@@ -61,7 +62,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Contacto */}
+        {/* Contacto — ✅ restaurado a como estaba originalmente */}
         <div className="flex flex-col gap-4">
           <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
             Contacto
