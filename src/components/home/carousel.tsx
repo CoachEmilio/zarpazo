@@ -77,10 +77,10 @@ export default function Carousel() {
 
           {/* Header */}
           <div className="flex items-center justify-between relative z-10">
-            <span className="font-mono text-xs text-zinc-600 tracking-widest uppercase">
+            <span className="font-mono text-xs text-zinc-400 tracking-widest uppercase">
               Destacados
             </span>
-            <span className="font-mono text-xs text-zinc-600 tabular-nums">
+            <span className="font-mono text-xs text-zinc-400 tabular-nums">
               {String(current + 1).padStart(2, "0")} / {String(featured.length).padStart(2, "0")}
             </span>
           </div>
@@ -115,7 +115,7 @@ export default function Carousel() {
             <button
               type="button"
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
+              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               aria-label="Anterior"
             >
               ←
@@ -123,7 +123,7 @@ export default function Carousel() {
             <button
               type="button"
               onClick={next}
-              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-500 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
+              className="w-10 h-10 rounded-full border border-zinc-800 hover:border-zinc-500 flex items-center justify-center text-zinc-400 hover:text-white transition-all duration-200 hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               aria-label="Siguiente"
             >
               →

@@ -26,7 +26,7 @@ function SizeTable({ title, rows }: { title: string; rows: SizeRow[] }) {
     <div className="rounded-[1.5rem] border border-zinc-900 bg-zinc-950 p-5 md:p-6">
       <div className="mb-4 flex items-center justify-between gap-4">
         <h3 className="font-mono text-lg font-bold text-white">{title}</h3>
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500">
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-400">
           Ancho / Largo
         </span>
       </div>
@@ -82,7 +82,7 @@ export default function GuiaDeTalles() {
     <section className="px-6 py-16 md:py-20">
       <div className="mx-auto max-w-7xl space-y-10">
         <header className="space-y-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-400">
             Medidas
           </span>
           <h1 className="font-brand text-4xl font-bold tracking-[0.18em] text-white md:text-6xl">

@@ -35,7 +35,7 @@ export default function ColorSelector({ colors, title, selected, onChange, showP
         </div>
       )}
       <div className="flex flex-col gap-2">
-        <span className="font-mono text-sm text-zinc-500">Color</span>
+        <span className="font-mono text-sm text-zinc-400">Color</span>
         <div className="flex gap-3">
           {colors.map((c) => (
             <button

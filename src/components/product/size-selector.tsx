@@ -17,7 +17,7 @@ export default function SizeSelector({ sizes, onChange }: Props) {
 
   return (
     <div className="flex flex-col gap-2">
-      <span className="font-mono text-sm text-zinc-500">
+      <span className="font-mono text-sm text-zinc-400">
         Seleccioná tu talle
       </span>
       <div className="flex gap-3 flex-wrap">

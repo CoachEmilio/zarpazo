@@ -9,7 +9,7 @@ export default function GuiaDeTallesCTA() {
       <div className="mx-auto max-w-4xl rounded-[2rem] border border-zinc-900 bg-zinc-950 px-6 py-8 md:px-8 md:py-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl space-y-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-400">
               ¿Y ahora qué?
             </span>
             <h2 className="font-brand text-3xl font-bold tracking-[0.18em] text-white md:text-5xl">

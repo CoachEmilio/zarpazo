@@ -30,7 +30,7 @@ export default function PriceTag({ price, price_original, discount_label, varian
   return (
     <div className={`font-sans flex flex-col ${isCompact ? "gap-1.5" : "gap-2"}`}>
       <div className="flex items-center gap-2 flex-wrap">
-        <span className={`${isCompact ? "text-xs" : "text-sm"} text-zinc-500 line-through`}>
+        <span className={`${isCompact ? "text-xs" : "text-sm"} text-zinc-400 line-through`}>
           {formatter.format(price_original!)}
         </span>
         <span className={`inline-flex items-center gap-1 rounded-full border border-red-900 bg-red-950 ${isCompact ? "px-2 py-0.5 text-[10px]" : "px-3 py-1 text-xs"} text-red-400 whitespace-nowrap`}>

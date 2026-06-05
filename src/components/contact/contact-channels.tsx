@@ -66,7 +66,7 @@ export default function ContactChannels() {
               <div className="flex items-start gap-4">
                 <div className="text-zinc-300 shrink-0">{icon(c.key)}</div>
                 <div>
-                  <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">{c.title}</span>
+                  <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">{c.title}</span>
                   <p className="mt-3 font-mono text-sm text-zinc-300">{c.desc}</p>
                 </div>
               </div>

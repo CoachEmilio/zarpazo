@@ -39,7 +39,7 @@ export default function MobileMenu() {
         </nav>
 
         <div className="mt-auto px-6 py-8 border-t border-zinc-800 flex flex-col gap-3">
-          <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">Seguinos</span>
+          <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">Seguinos</span>
           <a href={config.instagram} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors">Instagram ↗</a>
           <a href={`https://wa.me/${config.whatsapp}`} target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors">WhatsApp ↗</a>
         </div>

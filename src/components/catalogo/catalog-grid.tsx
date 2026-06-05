@@ -38,8 +38,8 @@ export default function CatalogGrid() {
 
       {filtered.length === 0 ? (
         <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col items-center gap-3">
-          <span className="font-mono text-zinc-600 text-sm">No encontramos "{searchQuery}"</span>
-          <button onClick={() => setSearchQuery("")} className="font-mono text-xs text-zinc-500 hover:text-white transition-colors underline">
+          <span className="font-mono text-zinc-400 text-sm">No encontramos "{searchQuery}"</span>
+          <button onClick={() => setSearchQuery("")} className="font-mono text-xs text-zinc-400 hover:text-white transition-colors underline">
             Limpiar búsqueda
           </button>
         </div>
@@ -64,7 +64,7 @@ export default function CatalogGrid() {
                 />
               </div>
               <div className="flex flex-col gap-1">
-                <span className="inline-block font-mono text-[10px] text-zinc-500 uppercase tracking-widest border border-zinc-800 px-2 py-1 rounded-md">{getCategoryLabel(product.category)}</span>
+                <span className="inline-block font-mono text-[10px] text-zinc-400 uppercase tracking-widest border border-zinc-800 px-2 py-1 rounded-md">{getCategoryLabel(product.category)}</span>
                 <span className="font-mono text-sm font-bold">
                   {product.title}
                 </span>

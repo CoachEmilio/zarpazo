@@ -26,7 +26,7 @@ export default function WhatsappButton({ productTitle, selectedSize, selectedCol
         Pedir por WhatsApp
       </a>
       {(!selectedSize || !selectedColor) && (
-        <p className="font-mono text-zinc-600 text-xs">
+        <p className="font-mono text-zinc-400 text-xs">
           {!selectedSize && !selectedColor
             ? "Elegí color y talle antes de pedir"
             : !selectedSize

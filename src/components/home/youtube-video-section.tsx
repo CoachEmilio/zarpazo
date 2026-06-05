@@ -52,14 +52,14 @@ export default function YoutubeVideoSection() {
       <div className="max-w-5xl mx-auto flex flex-col gap-6">
         <div className="flex items-end justify-between gap-4 flex-wrap">
           <div className="flex flex-col gap-2">
-            <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+            <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">
               Video
             </span>
             <h2 className="font-mono text-2xl font-bold text-white">
               Miralo en acción
             </h2>
           </div>
-          <p className="font-mono text-xs text-zinc-500 max-w-sm">
+          <p className="font-mono text-xs text-zinc-400 max-w-sm">
             Mirá nuestro proceso de creación y cómo toma forma cada diseño.
           </p>
         </div>

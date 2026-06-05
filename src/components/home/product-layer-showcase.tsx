@@ -84,7 +84,7 @@ export default function ProductLayerShowcase() {
     <section className="px-6 py-10 md:py-14">
       <div className="mx-auto max-w-7xl space-y-6">
         <div className="space-y-2 text-center">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-400">
             {homeShowcaseCopy.eyebrow}
           </span>
           <h2 className="font-brand text-2xl font-bold tracking-[0.18em] text-white md:text-4xl">

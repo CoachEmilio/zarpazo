@@ -22,7 +22,7 @@ export default function CatalogFilters({ activeCategory, onCategoryChange }: Pro
         const active = b.key === activeCategory
         const base = "font-mono text-xs uppercase tracking-widest px-3 py-2 rounded-md border transition-colors"
         const activeClasses = "text-white border-white"
-        const inactiveClasses = "text-zinc-500 border-zinc-800"
+        const inactiveClasses = "text-zinc-400 border-zinc-800"
 
         return (
           <button

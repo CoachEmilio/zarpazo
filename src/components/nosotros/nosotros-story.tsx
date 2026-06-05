@@ -4,7 +4,7 @@ export default function NosotrosStory() {
   return (
     <section className="px-6 py-12 border-b border-zinc-900">
       <div className="max-w-2xl mx-auto flex flex-col gap-6 font-mono text-zinc-400 text-base leading-8">
-        <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">
           El origen
         </span>
         <p>

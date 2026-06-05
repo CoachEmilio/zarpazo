@@ -16,7 +16,7 @@ export default function RelatedProducts({ currentSlug }: Props) {
 
   return (
     <section className="mt-24 border-t border-zinc-800 pt-12">
-      <h2 className="font-mono text-xs text-zinc-600 uppercase tracking-widest mb-8">
+      <h2 className="font-mono text-xs text-zinc-400 uppercase tracking-widest mb-8">
         También te puede gustar
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

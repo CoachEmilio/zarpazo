@@ -8,7 +8,7 @@ export default function NosotrosCTA() {
         <h2 className="font-mono text-2xl font-bold text-white">
           ¿Ya viste el catálogo?
         </h2>
-        <p className="font-mono text-zinc-500 text-sm leading-relaxed max-w-sm">
+        <p className="font-mono text-zinc-400 text-sm leading-relaxed max-w-sm">
           Si llegaste hasta acá es porque algo te copó. Fijate en los diseños — seguro hay uno que te representa.
         </p>
         <div className="flex items-center gap-4 flex-wrap justify-center">

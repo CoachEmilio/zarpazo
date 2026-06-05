@@ -12,7 +12,7 @@ export default function FaqSection() {
     <section className="px-6 py-20 border-t border-zinc-900 bg-black">
       <div className="max-w-4xl mx-auto space-y-10">
         <div className="space-y-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-400">
             FAQ
           </span>
           <h2 className="font-brand text-3xl font-bold tracking-[0.18em] text-white md:text-5xl">
@@ -38,7 +38,7 @@ export default function FaqSection() {
                   strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
-                  className="h-4 w-4 shrink-0 text-zinc-500 transition-transform duration-200 group-hover:text-[#f1e6cc] group-open:rotate-180 group-open:text-[#f1e6cc]"
+                  className="h-4 w-4 shrink-0 text-zinc-400 transition-transform duration-200 group-hover:text-[#f1e6cc] group-open:rotate-180 group-open:text-[#f1e6cc]"
                   aria-hidden="true"
                 >
                   <path d="m6 9 6 6 6-6" />

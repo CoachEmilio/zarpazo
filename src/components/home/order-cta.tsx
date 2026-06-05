@@ -5,7 +5,7 @@ export default function OrderCTA() {
     <section className="px-6 py-20 border-t border-zinc-900 bg-zinc-950">
       <div className="max-w-4xl mx-auto flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
         <div className="max-w-2xl space-y-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-600">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-zinc-400">
             Pedido por WhatsApp
           </span>
           <h2 className="font-brand text-3xl font-bold tracking-[0.18em] text-white md:text-5xl">

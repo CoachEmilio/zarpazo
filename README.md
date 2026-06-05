@@ -11,31 +11,30 @@
 
 ## Resumen
 
-Zarpazo es una vitrina oscura para remeras de nicho con identidad hacker / heráldica. El producto, la marca y las restricciones base están definidos en [AGENTS.md](AGENTS.md). Este README documenta el estado actual de implementación, estructura, despliegue y cambios recientes.
+Zarpazo es una marca argentina de remeras de nicho con identidad hacker / heráldica. Diseños propios, producción DTF, pedido por WhatsApp. El producto, la marca y las restricciones base están definidos en [AGENTS.md](AGENTS.md). Este README documenta el estado actual de implementación, estructura, despliegue y cambios recientes.
 
 ## Alcance y Fase
 
-- Fase actual: Fase 1 (landing + catálogo + detalle de producto + pedido por WhatsApp)
+- Fase actual: Fase 1 (landing + catálogo + guía de talles + detalle de producto + pedido por WhatsApp)
 - Sin auth, sin inventario, sin panel admin
-- Productos hardcodeados en `src/data/products.ts`
+- 20 productos hardcodeados en `src/data/products.ts`
 - Sitio público: `https://www.zarpazo.art`
 
 ## Principios de Diseño
 
 - Modo oscuro obligatorio, fondo negro
 - Estética hacker / dev / heráldica medieval
-- Alto contraste y motion mínimo
-- El logo usa Space Mono
-- El texto UI/body usa Space Grotesk y Geist Mono donde corresponde
-- El contraste está ajustado para legibilidad en superficies oscuras
+- Alto contraste (WCAG AA) y motion mínimo
+- Tipografía Space Mono para marca, Space Grotesk para body, Geist Mono para acentos técnicos
 
 ## Stack Técnico
 
-- Next.js 16 (App Router)
-- TypeScript
-- Tailwind CSS + shadcn/ui
+- Next.js 16.2.6 (App Router)
+- React 19
+- TypeScript 5
+- Tailwind CSS v4 + shadcn/ui (Radix + Lucide)
 - Vercel deploy
-- Supabase (phase 2)
+- Supabase (Fase 2)
 
 ## Primeros Pasos
 
@@ -44,144 +43,158 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000
+Abrir http://localhost:3000
 
 ## Despliegue (Vercel)
 
-El repositorio está conectado a Vercel y desplegado en `zarpazo.art`.
+El repositorio está conectado a Vercel y desplegado en `zarpazo.art`. Los deploys son automáticos desde `main`.
 
-Defaults a conservar si el proyecto necesita reimportarse o reconfigurarse:
+Configuración base si el proyecto necesita reimportarse:
 
 - Framework Preset: Next.js (auto-detected)
-- Root Directory: ./
-- Build Command: empty (defaults to `next build`)
-- Output Directory: empty (handled by Next.js)
-- Install Command: empty (defaults to `npm install`)
-- Environment Variables: none for now
+- Root Directory: `./`
+- Build Command: vacío (por defecto `next build`)
+- Output Directory: vacío (manejado por Next.js)
+- Install Command: vacío (por defecto `npm install`)
+- Variables de entorno: `NEXT_PUBLIC_GA_ID` (ID de Google Analytics 4)
 
-- Los despliegues son automáticos desde `main`.
+## Rutas
 
-## Cómo mirar Analytics
+| Ruta | Descripción |
+|---|---|
+| `/` | Home: hero, carousel, showcase, product grid, cómo funciona, FAQ, CTAs |
+| `/catalogo` | Catálogo filtrable y buscable de todos los productos activos |
+| `/product/[slug]` | Detalle de producto: selector de color, talle y botón WhatsApp |
+| `/guia-de-talles` | Guía de medidas con tabla hombre/mujer y CTA |
+| `/nosotros` | Historia, valores y CTA de la marca |
+| `/contacto` | Canales de contacto: WhatsApp, email, Instagram |
 
-### Google Analytics 4
+## Catálogo de Productos
 
-Entrás a `analytics.google.com`.
+20 productos activos, organizados por categoría:
 
-Lo más útil para Zarpazo ahora:
+| Categoría | Productos |
+|---|---|
+| **Dev** | `<Loading/>`, JS Do It, sudo rm -rf/*, Layer 8 Problem, Home Sweet Home, `<i> Torre </i>`, Docker Kill, I'm Not a Robot, Full Snack Developer, Señor Developer, Switch Please, Just Sudo It, Kali Assassin |
+| **Gaming** | Super Nintendo |
+| **Conurbano** | Capitán del Espacio |
+| **Borges** | La Secta del Fénix, La Escritura de Dios, La Casa de Asterion, El idioma analítico de John Wilkins |
+| **Zarpazo** | Zarpazo (logo) |
 
-- Tiempo real: ves visitas en este momento, de dónde vienen y qué página están mirando. Sirve para verificar que funciona y para cuando publiques en Instagram.
-- Adquisición → Visión general: muestra de dónde vienen los usuarios. Directo, Instagram, Google o WhatsApp. Es clave para saber qué canal trae más gente.
-- Compromiso → Páginas y pantallas: indica qué páginas se visitan más. Si `/product/loading-cafe` tiene muchas vistas y pocas conversiones por WhatsApp, algo falla en esa página.
-- Retención: muestra cuántos usuarios vuelven. Si nadie vuelve, el producto o la comunicación necesita trabajo.
+Precio de venta: $40.000 ARS. Descuento de lanzamiento del 10% activo → $36.000 ARS.
 
-### Vercel Analytics
+## Configuración de Contacto
 
-Entrás a `vercel.com` → tu proyecto → Analytics.
+Centralizada en `src/data/config.ts`. Un solo lugar para actualizar:
 
-Lo más útil:
+- `whatsapp`: número en formato internacional sin `+`
+- `correo`: email de contacto
+- `instagram`: URL completa del perfil
+- `youtubeChannelUrl`: URL del canal
+- `youtubeUrl`: URL del video embebido en la home
+- `brand.siteUrl`: dominio base para SEO y Open Graph
 
-- Visitas y visitantes únicos: es más simple y preciso que GA4 porque mide server-side, sin bloqueadores de ads.
-- Top páginas: muestra cuáles se visitan más.
-- Países y dispositivos: si el 90% es mobile, el diseño mobile es crítico.
-- Web Vitals: velocidad real de carga. Si el LCP está alto, las imágenes están tardando demasiado.
+## Tipografía
 
-### Qué mirar primero después del deploy
+- Logo / wordmark de marca: **Space Mono** (`--font-brand`)
+- Body / UI: **Space Grotesk** (`--font-sans`)
+- Acentos técnicos / monospace: **Geist Mono** (`--font-geist-mono`)
 
-- ¿Llega tráfico desde Instagram?
-- ¿Qué producto se visita más?
-- ¿El sitio carga rápido en mobile?
+Las tres fuentes se cargan desde Google Fonts vía `next/font/google` en `src/app/layout.tsx`.
 
-## Checklist SEO
+## SEO
 
-- Metadata global en `src/app/layout.tsx` (title, description, Open Graph, Twitter)
-- Imagen de social preview en `public/opengraph-image.png`
+- Metadata global en `src/app/layout.tsx` (title, description, Open Graph, Twitter Card)
 - `metadataBase` apunta a `https://www.zarpazo.art`
-- Rutas `robots` y `sitemap` presentes en `src/app/`
-- `sitemap` incluye `/` y `/nosotros`
-- Las tarjetas de Open Graph y Twitter resuelven a `public/opengraph-image.png`
+- Imagen de social preview: `public/opengraph-image.png` (1200×630px)
+- `src/app/robots.ts` y `src/app/sitemap.ts` presentes
+- El sitemap incluye `/`, `/catalogo`, `/nosotros`, `/contacto` y `/guia-de-talles`
+
+## Analytics
+
+- `@vercel/analytics` integrado en `src/app/layout.tsx`
+- `GoogleAnalytics` de `@next/third-parties/google` integrado en `src/app/layout.tsx`
+- El ID de GA4 se lee desde `NEXT_PUBLIC_GA_ID` en `.env.local`
+- No hay scripts manuales de `gtag.js`
+- Las tarjetas de contacto envían eventos enriquecidos con `trackEvent` (`src/lib/analytics.ts`)
+
+### Qué mirar en Google Analytics 4
+
+- **Tiempo real**: visitas en este momento, origen y página activa
+- **Adquisición → Visión general**: de dónde vienen los usuarios (Instagram, WhatsApp, directo, Google)
+- **Compromiso → Páginas y pantallas**: qué productos se ven más
+- **Retención**: si los usuarios vuelven
+
+### Qué mirar en Vercel Analytics
+
+- Visitas y visitantes únicos (server-side, sin bloqueadores de ads)
+- Top páginas y dispositivos
+- Web Vitals: si el LCP está alto, las imágenes están tardando
 
 ## Dominio
 
 - Proveedor: Namecheap
 - Dominio: `zarpazo.art`
-- Conectado a Vercel
-
-## Analytics y Etiquetado
-
-- `@vercel/analytics` está integrado en `src/app/layout.tsx`
-- `GoogleAnalytics` de `@next/third-parties/google` está integrado en `src/app/layout.tsx`
-- El ID de GA4 se lee desde `NEXT_PUBLIC_GA_ID` en `.env.local`
-- No hay scripts manuales de `gtag.js` en el source
-- Las tarjetas de contacto envían eventos enriquecidos con `trackEvent`
-- `trackEvent` soporta `gtag` y `dataLayer` si existen
-
-## Catálogo
-
-- El catálogo quedó dividido en `CatalogHeader`, `CatalogFilters`, `CatalogSearch` y `CatalogGrid`
-- Las categorías están centralizadas en `src/data/categories.ts`
-- La búsqueda incluye título, descripción y `slug`
-- El buscador muestra un ícono de lupa SVG
-- El header y los filtros quedaron alineados para una lectura más limpia
-- El hero de home se ajustó a `max-w-7xl` para mantener consistencia visual
-- La tarjeta de destacados de home ahora muestra sólo copy público en producción
-
-## Contacto
-
-- La página `src/app/contacto/page.tsx` quedó compartimentada en componentes
-- Se separaron `ContactHero`, `ContactActions` y `ContactChannels`
-- Las tarjetas de contacto ahora son enlaces clicables
-- WhatsApp, email e Instagram se leen desde `src/data/config.ts`
-- Las tarjetas tienen hover visual y tracking de clicks
+- Conectado a Vercel con dos registros DNS
 
 ## Estructura del Proyecto
 
-```txt
+```
 public/
   brand/
-    zarpazo-logo.png
     zarpazo-logov2.png
   products/
     [slug]/
-      front.webp
+      front.webp        (o black.webp como imagen principal)
       black.webp
       white.webp
       grey.webp
-      coffee.webp
+      coffee.webp       (solo algunos slugs)
     sizes/
       hombre.webp
       mujer.webp
-  favicon-16x16.png
-  favicon-32x32.png
-  favicon.ico
   opengraph-image.png
   site.webmanifest
 
 src/
   app/
+    layout.tsx          ← metadata, fuentes, analytics, layout global
+    page.tsx            ← home
     globals.css
-    layout.tsx
-    page.tsx
-    contacto/
-      page.tsx
     robots.ts
     sitemap.ts
+    favicon.ico
+    catalogo/
+      page.tsx
+    contacto/
+      page.tsx
+    guia-de-talles/
+      page.tsx
     nosotros/
       page.tsx
     product/
       [slug]/
         page.tsx
+
   components/
     layout/
-      navbar.tsx
-      footer.tsx
       announcement-bar.tsx
-      WhatsAppFloat.tsx
+      footer.tsx
+      navbar/
+        navbar.tsx
+        mobile-menu.tsx
+        nav-links.tsx
     home/
       hero.tsx
-      product-grid.tsx
-      how-it-works.tsx
       carousel.tsx
+      product-grid.tsx
       product-layer-showcase.tsx
+      how-it-works.tsx
+      faq-section.tsx
+      guia-de-talles.tsx
+      guia-de-talles-cta.tsx
+      order-cta.tsx
+      youtube-video-section.tsx
     catalogo/
       catalog-header.tsx
       catalog-filters.tsx
@@ -201,58 +214,37 @@ src/
       size-selector.tsx
       whatsapp-button.tsx
       product-actions.tsx
+      related-products.tsx
     ui/
       button.tsx
       PriceTag.tsx
+      WhatsAppFloat.tsx
+
   data/
-    config.ts
-    categories.ts
-    products.ts
-  features/
-    cart/
-    orders/
-    products/
+    config.ts           ← contacto, marca, URLs
+    categories.ts       ← dev | gaming | conurbano | borges | zarpazo
+    products.ts         ← 20 productos hardcodeados
+    faq.json
+    home-showcase.json
+    home-showcase-copy.ts
+    size-guide.json
+
   lib/
-    analytics.ts
+    analytics.ts        ← trackEvent (gtag + dataLayer)
     utils.ts
-  shared/
-    types/
-    ui/
-    utils/
-  store/
+
+scripts/
+  validate-data.ts      ← prebuild: valida categorías de productos
 ```
 
-## Assets and Images
+## Imágenes
 
-- Use WEBP only for product assets
-- Product images live in `public/products/[slug]/`
-- Static mockups exported from Canva
-- All shirts are black
-- Brand logo asset: `public/brand/zarpazo-logo.png`
-
-## Configuración de Contacto
-
-- Centralizada en `src/data/config.ts`
-- Actualizar WhatsApp, Instagram y email sólo ahí
-- WhatsApp se usa tanto para el CTA del producto como para el CTA flotante global
-- Instagram y email también se consumen desde el mismo objeto de config
-- El footer y los CTAs usan los mismos valores de configuración
-
-## Estructura de Nosotros
-
-- `src/app/nosotros/page.tsx` ahora es un orquestador liviano
-- Hero, historia, valores y CTA están divididos en `src/components/nosotros/`
-- La announcement bar se mantiene arriba de todo y no interrumpe las secciones
-
-## Tipografía
-
-- Logo / wordmark de marca: Space Mono
-- Base UI/body: Space Grotesk
-- Acentos técnicos: Geist Mono
+- Formato WEBP obligatorio
+- Estructura: `public/products/[slug]/[color].webp`
+- Mockups exportados desde Canva
+- No hay generación dinámica de imágenes
 
 ## Mantenimiento Mensual
-
-Checklist corto para revisar el proyecto una vez por mes:
 
 ```bash
 npm outdated
@@ -261,43 +253,38 @@ npm run lint
 npm run build
 ```
 
-- Revisar si hay dependencias con actualización menor o de seguridad
-- Confirmar que `npm audit` no haya introducido nuevas alertas importantes
+- Revisar dependencias con actualización menor o de seguridad
+- Confirmar que `npm audit` no tenga nuevas alertas importantes
 - Validar que el build pase antes de hacer deploy
 - Revisar `src/data/config.ts` si cambiaron links, WhatsApp o Instagram
 - Confirmar que `NEXT_PUBLIC_GA_ID` siga apuntando al entorno correcto
-- Chequear visualmente la home, el catálogo y la página de contacto
+- Chequear visualmente home, catálogo y contacto
 
 ## Registro de Cambios
 
-Usá esta tabla para decisiones, progreso y cambios. Las entradas deben ser cortas.
-
-| Date (YYYY-MM-DD) | Entry |
-| --- | --- |
+| Fecha | Entrada |
+|---|---|
+| 2026-06-05 | Auditoría de contraste WCAG AA: todos los `text-zinc-500/600/700` en superficies oscuras reemplazados por `text-zinc-400` en 19 archivos. |
 | 2026-05-27 | `scripts/validate-data.ts` quedó autocontenido para no romper `npm run build` con imports TS en ESM. |
 | 2026-05-27 | `npm run build` volvió a pasar después de corregir el prebuild de categorías. |
 | 2026-05-26 | Se auditó GA4: `@next/third-parties` + `@vercel/analytics` conviven sin scripts manuales. |
 | 2026-05-26 | El ID de GA4 pasó a `NEXT_PUBLIC_GA_ID` en `.env.local`. |
 | 2026-05-26 | Se compartimentó `src/app/contacto/page.tsx` en `ContactHero`, `ContactActions` y `ContactChannels`. |
 | 2026-05-26 | Las tarjetas de contacto pasaron a ser enlaces con iconos, hover y tracking enriquecido. |
-| 2026-05-26 | El catálogo quedó refactorizado con header, filtros, buscador y grilla separados. |
-| 2026-05-26 | La búsqueda del catálogo ahora incluye `slug` y el buscador usa una lupa SVG. |
-| 2026-05-26 | El texto de home que mencionaba `src/data/home-showcase.json` quedó sólo como copy público en producción. |
-| 2026-05-26 | Nosotros page split into hero, story, values, and CTA components. |
-| 2026-05-26 | Contact config expanded with WhatsApp, Instagram, and email references. |
-| 2026-05-24 | Footer copy and contrast were cleaned up for readability on dark background. |
-| 2026-05-24 | Product CTA helper text was brightened for better contrast. |
-| 2026-05-23 | Brand cleaned up from zarpaso to zarpazo across source, assets, and history. |
-| 2026-05-23 | Domain switched to zarpazo.art and connected in Vercel. |
-| 2026-05-23 | Social preview and metadata updated to use the live domain. |
-| 2026-05-23 | Hero and logo typography adjusted; logo uses Space Mono. |
-| 2026-05-22 | Repo initialized. Layout and footer rules defined. |
-| 2026-05-22 | Robots and sitemap added; contact config centralized. |
-| 2026-05-22 | Home split into Hero/ProductGrid/HowItWorks components. |
+| 2026-05-26 | Catálogo refactorizado: header, filtros, buscador y grilla separados. |
+| 2026-05-26 | Búsqueda del catálogo incluye `slug` y `categoryLabel`; buscador usa lupa SVG. |
+| 2026-05-26 | Nosotros dividida en hero, story, values y CTA. |
+| 2026-05-24 | Footer copy y contraste limpiados para legibilidad en fondo oscuro. |
+| 2026-05-23 | Dominio cambiado a `zarpazo.art` y conectado en Vercel. |
+| 2026-05-23 | Social preview y metadata actualizados al dominio live. |
+| 2026-05-23 | Tipografía del hero y logo ajustada; logo usa Space Mono. |
+| 2026-05-22 | Repo inicializado. Layout y reglas del footer definidos. |
+| 2026-05-22 | Robots y sitemap agregados; config de contacto centralizada. |
+| 2026-05-22 | Home dividida en Hero / ProductGrid / HowItWorks. |
 
 ## Roadmap (desde AGENTS.md)
 
-- Fase 1: landing + catálogo + formulario de pedido + confirmación manual
+- Fase 1: landing + catálogo + formulario de pedido + confirmación manual ✓
 - Fase 2: Supabase + órdenes + estados + admin simple
 - Fase 3: checkout real + pagos + emails
 - Fase 4: CMS + analytics + automatizaciones + escala a otras comunidades
@@ -305,3 +292,4 @@ Usá esta tabla para decisiones, progreso y cambios. Las entradas deben ser cort
 ## Referencias
 
 - [AGENTS.md](AGENTS.md)
+- [CLAUDE.md](CLAUDE.md)

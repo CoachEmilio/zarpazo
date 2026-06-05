@@ -5,7 +5,7 @@ export default function ContactHero() {
   return (
     <section className="px-6 py-20 border-b border-zinc-900">
       <div className="max-w-3xl mx-auto flex flex-col gap-6">
-        <span className="font-mono text-[10px] text-zinc-600 uppercase tracking-widest">
+        <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest">
           Contacto
         </span>
         <h1 className="font-brand text-4xl font-bold tracking-[0.18em] text-[#f1e6cc] md:text-6xl">
