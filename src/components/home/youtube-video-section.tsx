@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { config } from "@/data/config"
 
 function getYouTubeVideoId(videoUrl: string): string {
@@ -77,11 +78,12 @@ export default function YoutubeVideoSection() {
               className="group absolute inset-0 w-full h-full"
               aria-label="Reproducir video"
             >
-              <img
+              <Image
                 src={thumbnailUrl}
                 alt="Vista previa del video de Zarpazo"
-                className="absolute inset-0 w-full h-full object-cover"
-                loading="lazy"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 1024px"
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-200" />
               <div className="absolute inset-0 flex items-center justify-center">
