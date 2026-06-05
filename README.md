@@ -8,6 +8,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white)
 ![shadcn/ui](https://img.shields.io/badge/shadcn%2Fui-ui-black)
 ![Vercel](https://img.shields.io/badge/Vercel-deploy-black?logo=vercel)
+![Lighthouse](https://img.shields.io/badge/Lighthouse-100%2F100%2F100%2F100-00C853?logo=lighthouse&logoColor=white)
 
 ## Resumen
 
@@ -19,6 +20,24 @@ Zarpazo es una marca argentina de remeras de nicho con identidad hacker / herál
 - Sin auth, sin inventario, sin panel admin
 - 20 productos hardcodeados en `src/data/products.ts`
 - Sitio público: `https://www.zarpazo.art`
+
+## Lighthouse
+
+Score 100/100 en todas las categorías en mobile y desktop (zarpazo.art, junio 2026):
+
+| Categoría | Score |
+|---|---|
+| Performance | 100 |
+| Accessibility | 100 |
+| Best Practices | 100 |
+| SEO | 100 |
+
+**Optimizaciones aplicadas para llegar a 100:**
+- YouTube video section usa facade pattern: thumbnail servido vía `/_next/image`, iframe inyectado solo al hacer click → sin cookies de terceros en page load
+- Fuentes cargadas con `display: "swap"` en los tres `next/font/google` definitions
+- `imageSizes: [16, 32, 48, 64, 96, 128, 256, 384]` en `next.config.ts` para que las cards sirvan `w=256` en lugar de `w=640`
+- Contraste WCAG AA auditado: todos los textos sobre fondos oscuros usan mínimo `text-zinc-400`
+- GA4 ID hardcodeado en `layout.tsx` para evitar `id=undefined` en builds de Vercel
 
 ## Principios de Diseño
 
@@ -56,7 +75,7 @@ Configuración base si el proyecto necesita reimportarse:
 - Build Command: vacío (por defecto `next build`)
 - Output Directory: vacío (manejado por Next.js)
 - Install Command: vacío (por defecto `npm install`)
-- Variables de entorno: `NEXT_PUBLIC_GA_ID` (ID de Google Analytics 4)
+- Variables de entorno: ninguna requerida (GA4 ID hardcodeado en `layout.tsx`)
 
 ## Rutas
 
@@ -114,7 +133,7 @@ Las tres fuentes se cargan desde Google Fonts vía `next/font/google` en `src/ap
 
 - `@vercel/analytics` integrado en `src/app/layout.tsx`
 - `GoogleAnalytics` de `@next/third-parties/google` integrado en `src/app/layout.tsx`
-- El ID de GA4 se lee desde `NEXT_PUBLIC_GA_ID` en `.env.local`
+- GA4 ID (`G-0XY9DXNLBQ`) hardcodeado directamente — no depende de variables de entorno en Vercel
 - No hay scripts manuales de `gtag.js`
 - Las tarjetas de contacto envían eventos enriquecidos con `trackEvent` (`src/lib/analytics.ts`)
 
@@ -151,8 +170,8 @@ public/
       grey.webp
       coffee.webp       (solo algunos slugs)
     sizes/
-      hombre.webp
-      mujer.webp
+      men.webp
+      women.webp
   opengraph-image.png
   site.webmanifest
 
@@ -235,6 +254,8 @@ src/
 
 scripts/
   validate-data.ts      ← prebuild: valida categorías de productos
+
+next.config.ts          ← imageSizes extendido + remotePatterns (img.youtube.com)
 ```
 
 ## Imágenes
@@ -257,13 +278,19 @@ npm run build
 - Confirmar que `npm audit` no tenga nuevas alertas importantes
 - Validar que el build pase antes de hacer deploy
 - Revisar `src/data/config.ts` si cambiaron links, WhatsApp o Instagram
-- Confirmar que `NEXT_PUBLIC_GA_ID` siga apuntando al entorno correcto
 - Chequear visualmente home, catálogo y contacto
+- Correr Lighthouse en producción y confirmar que sigue en 100/100/100/100
 
 ## Registro de Cambios
 
 | Fecha | Entrada |
 |---|---|
+| 2026-06-05 | Lighthouse 100/100/100/100 en mobile y desktop confirmado en producción. |
+| 2026-06-05 | YouTube facade pattern: thumbnail vía `/_next/image`, iframe solo al hacer click. Elimina cookies de terceros en page load. |
+| 2026-06-05 | `img.youtube.com` agregado a `remotePatterns` en `next.config.ts` para proxy de thumbnail. |
+| 2026-06-05 | GA4 ID hardcodeado en `layout.tsx` — resuelve `id=undefined` en builds de Vercel. |
+| 2026-06-05 | `imageSizes: [16,32,48,64,96,128,256,384]` en `next.config.ts` — product cards sirven `w=256` en lugar de `w=640`. |
+| 2026-06-05 | `display: "swap"` agregado a las 3 fuentes en `layout.tsx`. |
 | 2026-06-05 | Auditoría de contraste WCAG AA: todos los `text-zinc-500/600/700` en superficies oscuras reemplazados por `text-zinc-400` en 19 archivos. |
 | 2026-05-27 | `scripts/validate-data.ts` quedó autocontenido para no romper `npm run build` con imports TS en ESM. |
 | 2026-05-27 | `npm run build` volvió a pasar después de corregir el prebuild de categorías. |
