@@ -11,17 +11,20 @@ import { config } from "@/data/config"
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const spaceMono = Space_Mono({
   variable: "--font-brand",
   subsets: ["latin"],
   weight: ["400", "700"],
+  display: "swap",
 });
 
 const brandTitle = `${config.brand.name} — Productos. Diseños que garpan.`
