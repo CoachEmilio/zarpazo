@@ -18,7 +18,7 @@ function getYouTubeEmbedUrl(videoUrl: string) {
       return ""
     }
 
-    const embedUrl = new URL(`https://www.youtube.com/embed/${videoId}`)
+    const embedUrl = new URL(`https://www.youtube-nocookie.com/embed/${videoId}`)
     embedUrl.searchParams.set("autoplay", "1")
     embedUrl.searchParams.set("mute", "1")
     embedUrl.searchParams.set("loop", "1")
@@ -69,7 +69,7 @@ export default function YoutubeVideoSection() {
             src={embedUrl}
             title="Video de YouTube de Zarpazo"
             className="absolute inset-0 h-full w-full"
-            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+            allow="autoplay; encrypted-media; picture-in-picture"
             allowFullScreen
           />
         </div>
