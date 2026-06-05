@@ -91,7 +91,7 @@ export default function RootLayout({
         <Footer />
         <WhatsAppFloat />
         <Analytics />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+        <GoogleAnalytics gaId="G-0XY9DXNLBQ" />
       </body>
     </html>
   )
