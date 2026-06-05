@@ -3,7 +3,7 @@ export const config = {
     name: "Zarpazo",
     nameUpper: "ZARPAZO",
     siteUrl: "https://www.zarpazo.art",
-    logoPath: "/brand/zarpazo-logov2.png",
+    logoPath: "/brand/zarpazo-logo.png",
     accentColor: "#f1e6cc",
   },
   whatsapp: "5491173746352",
