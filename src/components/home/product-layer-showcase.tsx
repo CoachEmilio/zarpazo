@@ -4,30 +4,22 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
-import { products } from "@/data/products"
+import type { Product } from "@/lib/api"
 import { homeShowcaseCopy } from "@/data/home-showcase-copy"
 import showcase from "@/data/home-showcase.json"
 
-type ShowcaseItem = {
-  slug: string
-  label?: string
-}
+type ShowcaseItem = { slug: string; label?: string }
+type Props = { products: Product[] }
 
-const showcaseItems = (showcase as ShowcaseItem[])
-  .slice(0, 6)
-  .map((item) => {
-    const product = products.find((entry) => entry.slug === item.slug && entry.active)
-
-    if (!product) return null
-
-    return {
-      ...item,
-      product,
-    }
-  })
-  .filter((item): item is { slug: string; label?: string; product: (typeof products)[number] } => Boolean(item))
-
-export default function ProductLayerShowcase() {
+export default function ProductLayerShowcase({ products }: Props) {
+  const showcaseItems = (showcase as ShowcaseItem[])
+    .slice(0, 6)
+    .map((item) => {
+      const product = products.find((entry) => entry.slug === item.slug && entry.active)
+      if (!product) return null
+      return { ...item, product }
+    })
+    .filter((item): item is { slug: string; label?: string; product: Product } => Boolean(item))
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [paused, setPaused] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)

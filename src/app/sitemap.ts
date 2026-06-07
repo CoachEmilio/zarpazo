@@ -1,10 +1,12 @@
 import type { MetadataRoute } from "next"
-import { products } from "@/data/products"
+import { getProducts } from "@/lib/api"
 import { config } from "@/data/config"
 
 const baseUrl = config.brand.siteUrl
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const products = await getProducts()
+
   const staticRoutes = ["/", "/catalogo", "/guia-de-talles", "/nosotros", "/contacto"].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

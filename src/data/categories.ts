@@ -10,7 +10,7 @@ export type CategoryKey = (typeof CATEGORIES)[number]["key"]
 
 export const CATEGORY_KEYS = CATEGORIES.map((c) => c.key)
 
-export function getCategoryLabel(key: CategoryKey) {
+export function getCategoryLabel(key: string) {
   const found = CATEGORIES.find((c) => c.key === key)
   return found ? found.label : key
 }

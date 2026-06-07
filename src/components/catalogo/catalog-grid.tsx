@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { products } from "@/data/products"
+import type { Product } from "@/lib/api"
 import Image from "next/image"
 import Link from "next/link"
 import PriceTag from "@/components/ui/PriceTag"
@@ -12,7 +12,9 @@ import type { CategoryKey } from "@/data/categories"
 
 type Category = "todos" | CategoryKey
 
-export default function CatalogGrid() {
+type Props = { products: Product[] }
+
+export default function CatalogGrid({ products }: Props) {
   const [activeCategory, setActiveCategory] = useState<Category>("todos")
   const [searchQuery, setSearchQuery] = useState<string>("")
 

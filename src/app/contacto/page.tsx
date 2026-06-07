@@ -3,8 +3,11 @@ import ContactHero from "@/components/contact/contact-hero"
 import ContactActions from "@/components/contact/contact-actions"
 import ContactChannels from "@/components/contact/contact-channels"
 import ProductLayerShowcase from "@/components/home/product-layer-showcase"
+import { getProducts } from "@/lib/api"
 
-export default function ContactoPage() {
+export default async function ContactoPage() {
+  const products = await getProducts()
+
   return (
     <main className="flex-1 bg-black text-white">
       <AnnouncementBar />
@@ -13,7 +16,7 @@ export default function ContactoPage() {
         <ContactActions />
       </div>
       <ContactChannels />
-      <ProductLayerShowcase />
+      <ProductLayerShowcase products={products} />
     </main>
   )
 }

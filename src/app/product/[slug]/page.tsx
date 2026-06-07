@@ -1,4 +1,4 @@
-import { products } from "@/data/products"
+import { getProducts, getProductBySlug } from "@/lib/api"
 import { notFound } from "next/navigation"
 import ProductActions from "@/components/product/product-actions"
 import { config } from "@/data/config"
@@ -11,12 +11,13 @@ type Props = {
 }
 
 export async function generateStaticParams() {
+  const products = await getProducts()
   return products.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params
-  const product = products.find((p) => p.slug === slug)
+  const product = await getProductBySlug(slug)
   if (!product) return {}
   return {
     title: `${product.title} — ${config.brand.name}`,
@@ -26,7 +27,10 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params }: Props) {
   const { slug } = await params
-  const product = products.find((p) => p.slug === slug)
+  const [product, allProducts] = await Promise.all([
+    getProductBySlug(slug),
+    getProducts(),
+  ])
   if (!product) notFound()
 
   return (
@@ -42,7 +46,7 @@ export default async function ProductPage({ params }: Props) {
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}
         />
-        <RelatedProducts currentSlug={slug} />
+        <RelatedProducts currentSlug={slug} products={allProducts} />
       </div>
 
       <div className="max-w-4xl mx-auto mt-16 pt-12 border-t border-zinc-800 flex justify-center">
@@ -54,7 +58,7 @@ export default async function ProductPage({ params }: Props) {
         </Link>
       </div>
       <div className="max-w-4xl mx-auto mt-16">
-        <Carousel />
+        <Carousel products={allProducts} />
       </div>
     </main>
   )

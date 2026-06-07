@@ -1,13 +1,14 @@
 import Link from "next/link"
 import Image from "next/image"
-import { products } from "@/data/products"
+import type { Product } from "@/lib/api"
 import PriceTag from "@/components/ui/PriceTag"
 
 type Props = {
   currentSlug: string
+  products: Product[]
 }
 
-export default function RelatedProducts({ currentSlug }: Props) {
+export default function RelatedProducts({ currentSlug, products }: Props) {
   const related = products
     .filter((p) => p.active && p.slug !== currentSlug)
     .slice(0, 4)

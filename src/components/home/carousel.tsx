@@ -3,12 +3,13 @@
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { products } from "@/data/products"
+import type { Product } from "@/lib/api"
 import PriceTag from "@/components/ui/PriceTag"
 
-const featured = products.filter((p) => p.active).slice(0, 5)
+type Props = { products: Product[] }
 
-export default function Carousel() {
+export default function Carousel({ products }: Props) {
+  const featured = products.filter((p) => p.active).slice(0, 5)
   const [current, setCurrent] = useState(0)
   const [animating, setAnimating] = useState(false)
   const [direction, setDirection] = useState<"next" | "prev">("next")
