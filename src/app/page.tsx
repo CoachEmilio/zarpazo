@@ -6,6 +6,7 @@ import OrderCTA from "@/components/home/order-cta"
 import YoutubeVideoSection from "@/components/home/youtube-video-section"
 import Carousel from "@/components/home/carousel"
 import AnnouncementBar from "@/components/layout/announcement-bar"
+import InstagramGrid from "@/components/home/instagram-grid"
 import { getProducts } from "@/lib/api"
 
 export default async function Home() {
@@ -19,6 +20,7 @@ export default async function Home() {
       <YoutubeVideoSection />
       <Carousel products={products} />
       <HowItWorks />
+      <InstagramGrid />
       <FaqSection />
       <OrderCTA />
     </main>
