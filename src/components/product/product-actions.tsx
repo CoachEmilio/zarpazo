@@ -35,12 +35,12 @@ export default function ProductActions({ productTitle, productDescription, price
   const touchStartX = useRef<number | null>(null)
   const touchStartY = useRef<number | null>(null)
 
-  function handleTouchStart(e: { touches: TouchList }) {
+  function handleTouchStart(e: React.TouchEvent<HTMLDivElement>) {
     touchStartX.current = e.touches[0].clientX
     touchStartY.current = e.touches[0].clientY
   }
 
-  function handleTouchEnd(e: { changedTouches: TouchList }) {
+  function handleTouchEnd(e: React.TouchEvent<HTMLDivElement>) {
     if (!colors || colors.length < 2 || touchStartX.current === null || touchStartY.current === null) return
     const dx = e.changedTouches[0].clientX - touchStartX.current
     const dy = e.changedTouches[0].clientY - touchStartY.current
