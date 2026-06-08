@@ -1,19 +1,19 @@
 "use client"
 
 import React from "react"
-import { CATEGORIES, type CategoryKey } from "@/data/categories"
 
-type Category = "todos" | CategoryKey
+type CategoryOption = { key: string; label: string }
 
 type Props = {
-  activeCategory: Category
-  onCategoryChange: (c: Category) => void
+  categories: CategoryOption[]
+  activeCategory: string
+  onCategoryChange: (c: string) => void
 }
 
-export default function CatalogFilters({ activeCategory, onCategoryChange }: Props) {
-  const buttons: { key: Category; label: string }[] = [
+export default function CatalogFilters({ categories, activeCategory, onCategoryChange }: Props) {
+  const buttons: CategoryOption[] = [
     { key: "todos", label: "Todos" },
-    ...CATEGORIES.map((c) => ({ key: c.key as CategoryKey, label: c.label })),
+    ...categories,
   ]
 
   return (

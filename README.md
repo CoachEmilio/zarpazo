@@ -61,7 +61,7 @@ npm run dev   # http://localhost:3000
 
 ```bash
 npm run dev        # desarrollo con hot reload
-npm run build      # build de producción (incluye validación de categorías)
+npm run build      # build de producción
 npm run lint       # ESLint
 ```
 
@@ -77,16 +77,33 @@ npm run lint       # ESLint
 | `/contacto` | SSG | Canales de contacto |
 | `/api/revalidate` | Dynamic | Webhook ISR (llamado por el backend) |
 
-## Fetch de productos
+## Fetch de datos
 
-Los productos vienen del backend en tiempo de build y se revalidan cada hora (ISR).
+Productos y categorías vienen del backend en tiempo de build y se revalidan cada hora (ISR).
 
 ```typescript
 // src/lib/api.ts
-const res = await fetch(`${API_URL}/api/products`, { next: { revalidate: 3600 } })
+const [products, categories] = await Promise.all([
+  getProducts(),    // GET /api/products   — ISR 1h
+  getCategories(),  // GET /api/categories — ISR 1h
+])
 ```
 
 Cuando se crea/edita un producto en el admin panel, el backend llama automáticamente a `/api/revalidate` y Next.js regenera las páginas afectadas sin redeploy.
+
+### Categorías dinámicas
+
+Las categorías se obtienen de la API, no de un archivo hardcodeado. `CatalogGrid` recibe la lista como prop y construye los filtros y los labels en tiempo de render. Agregar o renombrar una categoría desde `/admin/categories` se refleja en el catálogo en la siguiente revalidación ISR (≤ 1 hora), sin redeploy.
+
+```
+GET /api/categories → [{ key, label, sortOrder }]
+    ↓ catalogo/page.tsx (server component)
+    ↓ CatalogGrid (recibe categories prop)
+    ↓ CatalogFilters (botones de filtro)
+       getCategoryLabel (lookup local por key)
+```
+
+`src/data/categories.ts` se mantiene para la sección de productos del home (datos estáticos locales). No es la fuente de verdad del catálogo.
 
 ## Lighthouse
 
@@ -120,7 +137,7 @@ src/
   app/
     layout.tsx             ← metadata global, fuentes, analytics
     page.tsx               ← home (server component, fetch productos)
-    catalogo/page.tsx      ← server component, fetch productos
+    catalogo/page.tsx      ← server component, fetch productos + categorías
     product/[slug]/
       page.tsx             ← generateStaticParams + fetch por slug
     nosotros/page.tsx
@@ -130,24 +147,28 @@ src/
       route.ts             ← webhook ISR del backend
 
   lib/
-    api.ts                 ← getProducts() / getProductBySlug() con ISR
+    api.ts                 ← getProducts() / getProductBySlug() / getCategories() con ISR
 
   components/
     layout/                ← navbar, footer, announcement-bar
     home/                  ← hero, carousel, product-layer-showcase, ...
-    catalogo/              ← catalog-grid, catalog-filters, catalog-search
+    catalogo/
+      catalog-grid.tsx     ← recibe products + categories; filtros y búsqueda client-side
+      catalog-filters.tsx  ← botones de categoría desde prop (dinámico)
+      catalog-search.tsx
+      catalog-header.tsx
     product/               ← color-selector, size-selector, product-actions
     ui/                    ← PriceTag, WhatsAppFloat, button
 
   data/
     config.ts              ← contacto, marca, URLs
-    categories.ts          ← dev | gaming | conurbano | borges | zarpazo
+    categories.ts          ← lista estática para el home (no es fuente del catálogo)
     faq.json
     home-showcase.json
     size-guide.json
 
 scripts/
-  validate-data.ts         ← prebuild: valida categorías
+  validate-data.ts         ← prebuild: valida datos estáticos
 ```
 
 ## SEO y Social Preview
@@ -184,6 +205,9 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-07 | Categorías dinámicas: `getCategories()` en `api.ts`, `CatalogGrid` y `CatalogFilters` reciben categorías como prop desde la API. |
+| 2026-06-07 | `catalogo/page.tsx` hace `Promise.all([getProducts(), getCategories()])` con ISR 1h. |
+| 2026-06-07 | `CategoryKey` eliminado de los componentes del catálogo — categorías son `string` dinámico. |
 | 2026-06-07 | Frontend consume API en producción. `products.ts` hardcodeado reemplazado por `src/lib/api.ts`. |
 | 2026-06-07 | Webhook ISR `/api/revalidate` implementado. El backend revalida el catálogo al mutar productos. |
 | 2026-06-07 | Favicons renombrados (removido sufijo "copy") — corrige 404 silenciosas en webmanifest. |
