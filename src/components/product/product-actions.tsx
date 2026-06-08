@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image"
 import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
@@ -32,9 +32,33 @@ export default function ProductActions({ productTitle, productDescription, price
   const imageSrc = selectedColor?.image ?? productImage
   const selectedColorName = selectedColor?.name ?? null
 
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
+  function handleTouchStart(e: { touches: TouchList }) {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  function handleTouchEnd(e: { changedTouches: TouchList }) {
+    if (!colors || colors.length < 2 || touchStartX.current === null || touchStartY.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    const dy = e.changedTouches[0].clientY - touchStartY.current
+    if (Math.abs(dy) > Math.abs(dx) || Math.abs(dx) < 40) return
+    const currentIndex = colors.findIndex((c) => c.name === selectedColor?.name)
+    if (dx < 0 && currentIndex < colors.length - 1) setSelectedColor(colors[currentIndex + 1])
+    if (dx > 0 && currentIndex > 0) setSelectedColor(colors[currentIndex - 1])
+    touchStartX.current = null
+    touchStartY.current = null
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div className="relative aspect-square w-full">
+      <div
+        className="relative aspect-square w-full"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <Image
           src={imageSrc}
           alt={selectedColorName ? `${productTitle} - ${selectedColorName}` : productTitle}

@@ -24,7 +24,7 @@ export type Product = {
 const SIZES = ["S", "M", "L", "XL", "XXL"]
 const DISCOUNT = 0.10 // 10% — cambiás esto y se aplica a todos
 const BASE_PRICE = 40000
-const DISCOUNT_LABEL = "Oferta de lanzamiento"
+const DISCOUNT_LABEL = "Oferta -10%"
 
 const makeVariants = (slug: string): ProductVariant[] =>
   SIZES.map((size) => ({ id: `${slug}-${size}`, size }))

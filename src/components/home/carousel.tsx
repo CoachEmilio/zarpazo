@@ -135,18 +135,20 @@ export default function Carousel({ products }: Props) {
                   key={i}
                   type="button"
                   onClick={() => go(i, i > current ? "next" : "prev")}
-                  className="relative flex-1 h-0.5 bg-zinc-800 rounded-full overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
+                  className="relative flex-1 min-h-12 flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
                   aria-label={`Ir al producto ${i + 1}`}
                 >
-                  {i === current && (
-                    <span
-                      className="absolute inset-y-0 left-0 bg-white rounded-full"
-                      style={{ animation: "progress 5s linear forwards" }}
-                    />
-                  )}
-                  {i < current && (
-                    <span className="absolute inset-0 bg-zinc-500 rounded-full" />
-                  )}
+                  <span className="relative w-full h-0.5 bg-zinc-800 rounded-full overflow-hidden">
+                    {i === current && (
+                      <span
+                        className="absolute inset-y-0 left-0 bg-white rounded-full"
+                        style={{ animation: "progress 5s linear forwards" }}
+                      />
+                    )}
+                    {i < current && (
+                      <span className="absolute inset-0 bg-zinc-500 rounded-full" />
+                    )}
+                  </span>
                 </button>
               ))}
             </div>

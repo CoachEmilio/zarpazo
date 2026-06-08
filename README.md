@@ -69,7 +69,7 @@ npm run lint       # ESLint
 
 | Ruta | Tipo | Descripción |
 |---|---|---|
-| `/` | SSG | Home: hero, carousel, showcase, FAQ, CTAs |
+| `/` | SSG | Home: hero, carousel, showcase, grilla Instagram, FAQ, CTAs |
 | `/catalogo` | SSG + ISR 1h | Catálogo filtrable y buscable |
 | `/product/[slug]` | SSG + ISR 1h | Detalle de producto |
 | `/guia-de-talles` | SSG | Guía de medidas |
@@ -118,6 +118,7 @@ Score 100/100 en todas las categorías (mobile y desktop):
 
 **Optimizaciones clave:**
 - YouTube facade pattern: thumbnail via `/_next/image`, iframe solo al hacer click
+- Instagram grid: fotos propias en `public/instagram/` servidas por Next.js Image — cero scripts de terceros
 - Fuentes con `display: "swap"`
 - `imageSizes: [16,32,48,64,96,128,256,384]` en `next.config.ts`
 - Contraste WCAG AA auditado en todos los componentes
@@ -128,6 +129,8 @@ Score 100/100 en todas las categorías (mobile y desktop):
 public/
   brand/
     zarpazo-logo.png
+  instagram/               ← fotos UGC (800×800 WebP) — servidas por Next.js Image
+    foto-1.webp … foto-6.webp
   products/[slug]/         ← imágenes locales (referencia; CDN en producción)
   opengraph-image.png      ← social preview 1200×630
   favicon.ico
@@ -151,7 +154,9 @@ src/
 
   components/
     layout/                ← navbar, footer, announcement-bar
-    home/                  ← hero, carousel, product-layer-showcase, ...
+    home/
+      instagram-grid.tsx   ← grilla 6 fotos UGC, hover effect, links a posts IG
+      ...                  ← hero, carousel, product-layer-showcase, ...
     catalogo/
       catalog-grid.tsx     ← recibe products + categories; filtros y búsqueda client-side
       catalog-filters.tsx  ← botones de categoría desde prop (dinámico)
@@ -205,6 +210,11 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-08 | Sección "La comunidad zarpazo": grilla 6 fotos UGC en `public/instagram/`, hover con ícono IG, cada foto linkea a su post. Cero scripts de terceros — Lighthouse 100 intacto. |
+| 2026-06-08 | `BENCHMARK.md` agregado: análisis competitivo vs Carpincho Indumentaria y Ey Mira el Estampado. |
+| 2026-06-08 | `DISCOUNT_LABEL` cambiado de "Oferta de lanzamiento" a "Oferta -10%" en `products.ts` — se propaga a todos los productos. |
+| 2026-06-08 | Swipe horizontal en página de producto: deslizar izquierda/derecha sobre la imagen navega entre variantes de color. |
+| 2026-06-08 | Touch targets del carrusel corregidos: botones indicadores pasan de `h-0.5` (2px) a `min-h-12` (48px) con barra visual interna — fix de Lighthouse Accessibility + Best Practices. |
 | 2026-06-07 | Categorías dinámicas: `getCategories()` en `api.ts`, `CatalogGrid` y `CatalogFilters` reciben categorías como prop desde la API. |
 | 2026-06-07 | `catalogo/page.tsx` hace `Promise.all([getProducts(), getCategories()])` con ISR 1h. |
 | 2026-06-07 | `CategoryKey` eliminado de los componentes del catálogo — categorías son `string` dinámico. |
