@@ -45,10 +45,11 @@ Vercel Blob CDN
 ## Variables de entorno
 
 ```bash
-NEXT_PUBLIC_API_URL=https://api.zarpazo.art   # URL del backend
-NEXT_PUBLIC_GA_ID=G-0XY9DXNLBQ               # Google Analytics 4
+NEXT_PUBLIC_API_URL=https://api.zarpazo.art   # URL del backend (fallback: https://zarpazo-backend.fly.dev)
 REVALIDATE_TOKEN=                              # clave compartida con el backend para ISR
 ```
+
+> `NEXT_PUBLIC_GA_ID` no es necesaria — el GA ID está hardcodeado en `src/app/layout.tsx`.
 
 ## Primeros pasos
 
@@ -69,7 +70,7 @@ npm run lint       # ESLint
 
 | Ruta | Tipo | Descripción |
 |---|---|---|
-| `/` | SSG | Home: hero, carousel, showcase, grilla Instagram, FAQ, CTAs |
+| `/` | ISR 1h | Home: hero, carousel, showcase, grilla Instagram, FAQ, CTAs |
 | `/catalogo` | SSG + ISR 1h | Catálogo filtrable y buscable |
 | `/product/[slug]` | SSG + ISR 1h | Detalle de producto |
 | `/guia-de-talles` | SSG | Guía de medidas |
@@ -186,7 +187,7 @@ scripts/
 ## Analytics
 
 - `@vercel/analytics` — server-side, no bloqueado por ad blockers
-- `@next/third-parties/google` — GA4 (`G-0XY9DXNLBQ`)
+- `@next/third-parties/google` — GA4 (`G-0XY9DXNLBQ`, hardcodeado en `layout.tsx`)
 - Eventos enriquecidos en `src/lib/analytics.ts`
 
 ## Despliegue (Vercel)
@@ -210,6 +211,9 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-09 | `src/data/products.ts` y `src/components/home/product-grid.tsx` eliminados — código muerto, datos vienen del backend desde 2026-06-07. |
+| 2026-06-09 | Archivos con sufijo " copy" eliminados de `public/` (5 PNG de favicon). |
+| 2026-06-09 | README: `/` corregido de SSG a ISR 1h; fallback URL del API documentado; nota GA4 hardcodeado. |
 | 2026-06-08 | Sección "La comunidad zarpazo": grilla 6 fotos UGC en `public/instagram/`, hover con ícono IG, cada foto linkea a su post. Cero scripts de terceros — Lighthouse 100 intacto. |
 | 2026-06-08 | `BENCHMARK.md` agregado: análisis competitivo vs Carpincho Indumentaria y Ey Mira el Estampado. |
 | 2026-06-08 | `DISCOUNT_LABEL` cambiado de "Oferta de lanzamiento" a "Oferta -10%" en `products.ts` — se propaga a todos los productos. |

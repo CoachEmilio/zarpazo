@@ -5,10 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "npm run validate-data",
     "start": "next start",
-    "lint": "eslint",
-    "validate-data": "ts-node --esm scripts/validate-data.ts"
+    "lint": "eslint"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.6",
