@@ -6,7 +6,7 @@ export const config = {
     logoPath: "/brand/zarpazo-logo.png",
     accentColor: "#f1e6cc",
   },
-  whatsapp: "5491173746352",
+  whatsapp: "56929961782",
   correo: "infozarpazo@gmail.com",
   instagram: "https://instagram.com/zarpazo.art",
   youtubeChannelUrl: "https://www.youtube.com/@ZarpazoArt",
