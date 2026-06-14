@@ -10,5 +10,5 @@ export const config = {
   correo: "infozarpazo@gmail.com",
   instagram: "https://instagram.com/zarpazo.art",
   youtubeChannelUrl: "https://www.youtube.com/@ZarpazoArt",
-  youtubeUrl: "https://youtu.be/CEJawOzI18s"
+  youtubeUrl: "https://youtu.be/BxUj_mPED_M"
 }

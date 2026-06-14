@@ -59,6 +59,7 @@ export default function Footer() {
             <Link href="/guia-de-talles" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Guía de talles</Link>
             <Link href="/nosotros" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Nosotros</Link>
             <Link href="/contacto" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Contacto</Link>
+            <Link href="/legal" className="font-mono text-sm text-zinc-400 hover:text-white transition-colors duration-200">Políticas y términos</Link>
           </div>
         </div>
 
@@ -81,7 +82,10 @@ export default function Footer() {
       <div className="border-t border-zinc-900 px-6 py-5">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           <span className="font-mono text-zinc-400 text-xs">© 2026 {config.brand.name}. Todos los derechos reservados.</span>
-          <span className="font-mono text-zinc-400 text-xs">Hecho con ☕ en Argentina</span>
+          <div className="flex items-center gap-4">
+            <Link href="/legal" className="font-mono text-zinc-500 text-xs hover:text-zinc-300 transition-colors duration-200">Políticas y términos</Link>
+            <span className="font-mono text-zinc-400 text-xs">Hecho con ☕ en Argentina</span>
+          </div>
         </div>
       </div>
     </footer>

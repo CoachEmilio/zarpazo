@@ -3,9 +3,10 @@ import { Space_Grotesk, Geist_Mono, Space_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar/navbar";
 import Footer from "@/components/layout/footer";
-import WhatsAppFloat from "@/components/ui/WhatsAppFloat";
+import WhatsAppFloat from "@/components/ui/WhatsAppFloat"
+import TabTitleHook from "@/components/layout/tab-title-hook";
 import { Analytics } from "@vercel/analytics/next"
-import { GoogleAnalytics } from "@next/third-parties/google"
+import CookieBanner from "@/components/layout/cookie-banner"
 import { config } from "@/data/config"
 
 const spaceGrotesk = Space_Grotesk({
@@ -90,8 +91,9 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppFloat />
+        <TabTitleHook />
         <Analytics />
-        <GoogleAnalytics gaId="G-0XY9DXNLBQ" />
+        <CookieBanner />
       </body>
     </html>
   )
