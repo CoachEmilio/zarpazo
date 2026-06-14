@@ -49,7 +49,7 @@ NEXT_PUBLIC_API_URL=https://api.zarpazo.art   # URL del backend (fallback: https
 REVALIDATE_TOKEN=                              # clave compartida con el backend para ISR
 ```
 
-> `NEXT_PUBLIC_GA_ID` no es necesaria — el GA ID está hardcodeado en `src/app/layout.tsx`.
+> `NEXT_PUBLIC_GA_ID` no es necesaria — el GA ID está hardcodeado en `src/components/layout/cookie-banner.tsx`.
 
 ## Primeros pasos
 
@@ -70,12 +70,13 @@ npm run lint       # ESLint
 
 | Ruta | Tipo | Descripción |
 |---|---|---|
-| `/` | ISR 1h | Home: hero, carousel, showcase, grilla Instagram, FAQ, CTAs |
+| `/` | ISR 1h | Home: hero, promo-slider, carousel, showcase, grilla Instagram, FAQ, CTAs |
 | `/catalogo` | SSG + ISR 1h | Catálogo filtrable y buscable |
 | `/product/[slug]` | SSG + ISR 1h | Detalle de producto |
 | `/guia-de-talles` | SSG | Guía de medidas |
 | `/nosotros` | SSG | Historia y valores de la marca |
 | `/contacto` | SSG | Canales de contacto |
+| `/legal` | SSG | Devoluciones, privacidad y términos (no indexada por robots) |
 | `/api/revalidate` | Dynamic | Webhook ISR (llamado por el backend) |
 
 ## Fetch de datos
@@ -154,9 +155,13 @@ src/
     api.ts                 ← getProducts() / getProductBySlug() / getCategories() con ISR
 
   components/
-    layout/                ← navbar, footer, announcement-bar
+    layout/
+      navbar, footer, announcement-bar
+      tab-title-hook.tsx   ← parpadeo "Volvé a Zarpazo 🐱" al cambiar de pestaña
+      cookie-banner.tsx    ← banner de consentimiento + carga condicional de GA4
     home/
       instagram-grid.tsx   ← grilla 6 fotos UGC, hover effect, links a posts IG
+      promo-slider.tsx     ← slider promocional (hoodies, personalizados, talle mujer)
       ...                  ← hero, carousel, product-layer-showcase, ...
     catalogo/
       catalog-grid.tsx     ← recibe products + categories; filtros y búsqueda client-side
@@ -167,9 +172,10 @@ src/
     ui/                    ← PriceTag, WhatsAppFloat, button
 
   data/
-    config.ts              ← contacto, marca, URLs
+    config.ts              ← contacto, marca, URLs, YouTube
     categories.ts          ← lista estática para el home (no es fuente del catálogo)
-    faq.json
+    faq.json               ← preguntas frecuentes editables sin tocar componentes
+    promo-slides.ts        ← tipos + datos del PromoSlider (banners del home)
     home-showcase.json
     size-guide.json
 
@@ -186,9 +192,9 @@ scripts/
 
 ## Analytics
 
-- `@vercel/analytics` — server-side, no bloqueado por ad blockers
-- `@next/third-parties/google` — GA4 (`G-0XY9DXNLBQ`, hardcodeado en `layout.tsx`)
-- Eventos enriquecidos en `src/lib/analytics.ts`
+- `@vercel/analytics` — server-side, no bloqueado por ad blockers, no requiere consentimiento
+- GA4 (`G-0XY9DXNLBQ`) — cargado condicionalmente desde `CookieBanner` solo si el usuario acepta cookies. El consentimiento se guarda en `localStorage` (`zarpazo_cookie_consent`).
+- `@next/third-parties/google` removido del layout — GA ya no se carga sin consentimiento.
 
 ## Despliegue (Vercel)
 
@@ -211,6 +217,12 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-14 | `PromoSlider` agregado al home: slider automático con 3 banners (hoodies, diseño personalizado, talle mujer). Datos en `src/data/promo-slides.ts`, componente desacoplado en `SlideLeft` / `SlideRight` / `NavDots`. |
+| 2026-06-14 | `CookieBanner`: GA4 ahora se carga solo si el usuario acepta. Consentimiento guardado en `localStorage`. `@next/third-parties/google` removido del layout. |
+| 2026-06-14 | `TabTitleHook`: parpadeo "Volvé a Zarpazo 🐱" al cambiar de pestaña del navegador. |
+| 2026-06-14 | `/legal` agregada: política de devoluciones (retiro Defensa 657 domingos 10-18hs), privacidad y términos. `robots: noindex`. Link en footer. |
+| 2026-06-14 | FAQ: nuevas entradas sobre DTF personalizado, hoodies y remeras solo negras. |
+| 2026-06-14 | `config.ts`: número de WhatsApp y URL de YouTube actualizados. |
 | 2026-06-09 | `src/data/products.ts` y `src/components/home/product-grid.tsx` eliminados — código muerto, datos vienen del backend desde 2026-06-07. |
 | 2026-06-09 | Archivos con sufijo " copy" eliminados de `public/` (5 PNG de favicon). |
 | 2026-06-09 | README: `/` corregido de SSG a ISR 1h; fallback URL del API documentado; nota GA4 hardcodeado. |
