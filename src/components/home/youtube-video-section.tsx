@@ -35,7 +35,6 @@ function getYouTubeEmbedUrl(videoId: string): string {
 
 export default function YoutubeVideoSection() {
   const [playing, setPlaying] = useState(false)
-  const [thumbError, setThumbError] = useState(false)
 
   const sourceUrl = config.youtubeUrl
   if (!sourceUrl) return null
@@ -44,7 +43,7 @@ export default function YoutubeVideoSection() {
   if (!videoId) return null
 
   const embedUrl = getYouTubeEmbedUrl(videoId)
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/${thumbError ? "hqdefault" : "maxresdefault"}.jpg`
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
 
   return (
     <section className="px-6 py-16 border-b border-zinc-900">
@@ -85,7 +84,6 @@ export default function YoutubeVideoSection() {
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 1024px"
-                onError={() => setThumbError(true)}
               />
               <div className="absolute inset-0 bg-black/30 group-hover:bg-black/20 transition-colors duration-200" />
               <div className="absolute inset-0 flex items-center justify-center">
