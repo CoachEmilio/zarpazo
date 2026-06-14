@@ -67,7 +67,7 @@ export default function CookieBanner() {
           <div className="max-w-2xl mx-auto bg-zinc-950 border border-zinc-800 rounded-2xl p-5 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center gap-4">
             <p className="font-mono text-xs text-zinc-400 leading-relaxed flex-1">
               Usamos{" "}
-              <Link href="/legal#privacidad" className="text-[#f1e6cc] hover:underline">
+              <Link href="/legal#privacidad" className="text-[#f1e6cc] underline underline-offset-2">
                 cookies de análisis
               </Link>{" "}
               (Google Analytics) para entender cómo se usa el sitio. No recolectamos datos personales.

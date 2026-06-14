@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           <span className="font-mono text-zinc-400 text-xs">© 2026 {config.brand.name}. Todos los derechos reservados.</span>
           <div className="flex items-center gap-4">
-            <Link href="/legal" className="font-mono text-zinc-500 text-xs hover:text-zinc-300 transition-colors duration-200">Políticas y términos</Link>
+            <Link href="/legal" className="font-mono text-zinc-400 text-xs hover:text-zinc-200 transition-colors duration-200">Políticas y términos</Link>
             <span className="font-mono text-zinc-400 text-xs">Hecho con ☕ en Argentina</span>
           </div>
         </div>

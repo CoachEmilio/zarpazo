@@ -13,7 +13,7 @@ function SlideLeft({ slide, animating }: { slide: PromoSlide; animating: boolean
 
   return (
     <div className="flex flex-col items-center text-center md:items-start md:text-left justify-center gap-6 px-8 py-14 md:py-20 order-2 md:order-1">
-      <span className="font-mono text-xs tracking-widest uppercase text-black/40">
+      <span className="font-mono text-xs tracking-widest uppercase text-black/60">
         {slide.badge}
       </span>
 
@@ -31,7 +31,7 @@ function SlideLeft({ slide, animating }: { slide: PromoSlide; animating: boolean
         <ol className={`flex flex-col gap-3 text-left ${fade("delay-100")}`} aria-label="Pasos del proceso">
           {slide.steps.map((step, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="font-mono text-lg font-bold text-black/20 tabular-nums w-7 shrink-0 leading-tight">
+              <span className="font-mono text-lg font-bold text-black/50 tabular-nums w-7 shrink-0 leading-tight">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="font-mono text-xs text-black/60 leading-relaxed pt-1">{step}</p>
@@ -85,7 +85,7 @@ function SlideRight({ slide, animating, isFirst }: { slide: PromoSlide; animatin
         <div className="flex flex-col justify-center gap-6 px-8 py-14 md:px-12 w-full">
           {slide.steps.map((step, i) => (
             <div key={i} className="flex items-start gap-4">
-              <span className="font-mono text-3xl font-bold text-black/15 tabular-nums w-10 shrink-0 leading-tight">
+              <span className="font-mono text-3xl font-bold text-black/40 tabular-nums w-10 shrink-0 leading-tight">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="font-mono text-sm text-black/65 leading-relaxed pt-1.5">{step}</p>
@@ -110,10 +110,12 @@ function NavDots({ total, current, onGo }: { total: number; current: number; onG
           aria-selected={i === current}
           aria-label={`Banner ${i + 1}`}
           onClick={() => onGo(i)}
-          className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black ${
-            i === current ? "bg-black w-5" : "bg-black/30 w-2 hover:bg-black/60"
-          }`}
-        />
+          className="min-h-12 min-w-6 flex items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black rounded"
+        >
+          <span className={`h-2 rounded-full transition-all duration-300 ${
+            i === current ? "bg-black w-5" : "bg-black/40 w-2 hover:bg-black/70"
+          }`} />
+        </button>
       ))}
     </div>
   )
