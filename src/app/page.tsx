@@ -14,6 +14,17 @@ export default async function Home() {
   const products = await getProducts()
 
   return (
+    <>
+    {/* Preload LCP: primera imagen del PromoSlider — priority en use client no genera preload en SSR head */}
+    <link
+      rel="preload"
+      as="image"
+      href="/_next/image?url=%2Fhoddie%2Fhoddie.webp&w=640&q=75"
+      // @ts-expect-error — imageSrcSet/imageSizes son atributos HTML válidos no tipados en React
+      imageSrcSet="/_next/image?url=%2Fhoddie%2Fhoddie.webp&w=640&q=75 640w, /_next/image?url=%2Fhoddie%2Fhoddie.webp&w=750&q=75 750w, /_next/image?url=%2Fhoddie%2Fhoddie.webp&w=1080&q=75 1080w"
+      imageSizes="(max-width: 768px) 80vw, 50vw"
+      fetchPriority="high"
+    />
     <main className="flex-1 bg-black text-white">
       <AnnouncementBar />
       <Hero />
@@ -26,5 +37,6 @@ export default async function Home() {
       <FaqSection />
       <OrderCTA />
     </main>
+    </>
   )
 }

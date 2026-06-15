@@ -9,7 +9,7 @@ import { slides, type PromoSlide } from "@/data/promo-slides"
 
 function SlideLeft({ slide, animating }: { slide: PromoSlide; animating: boolean }) {
   const fade = (delay = "") =>
-    `transition-all duration-500 ease-out ${delay} ${animating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`
+    `transition-[opacity,transform] duration-500 ease-out ${delay} ${animating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"}`
 
   return (
     <div className="flex flex-col items-center text-center md:items-start md:text-left justify-center gap-6 px-8 py-14 md:py-20 order-2 md:order-1">
@@ -70,14 +70,14 @@ function SlideRight({ slide, animating, isFirst }: { slide: PromoSlide; animatin
 
   return (
     <div
-      className={`absolute inset-0 flex transition-all duration-500 ease-out ${animating ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"}`}
+      className={`absolute inset-0 flex transition-[opacity,transform] duration-500 ease-out ${animating ? "opacity-0 translate-x-4" : "opacity-100 translate-x-0"}`}
     >
       {slide.image ? (
         <Image
           src={slide.image}
           alt={slide.imageAlt ?? slide.title}
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 80vw, 50vw"
           className={isCover ? "object-cover object-center" : "object-contain p-6 md:p-10"}
           priority={isFirst}
         />
