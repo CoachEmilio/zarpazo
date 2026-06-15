@@ -8,6 +8,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?logo=tailwindcss&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-deploy-black?logo=vercel)
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-100%2F100%2F100%2F100-00C853?logo=lighthouse&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 Frontend de [zarpazo.art](https://zarpazo.art) — marca argentina de remeras estampadas bajo demanda.
 
@@ -248,3 +249,11 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 ## Referencias
 
 - [Backend repo](https://github.com/CoachEmilio/zarpazo-backend)
+
+## Autor
+
+Emilio Romero — [LinkedIn](https://www.linkedin.com/in/coachemilio/) · [GitHub](https://github.com/CoachEmilio)
+
+## Licencia
+
+MIT © 2026 Emilio Romero — ver [LICENSE](LICENSE)
