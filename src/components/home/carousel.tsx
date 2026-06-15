@@ -24,8 +24,8 @@ export default function Carousel({ products }: Props) {
     }, 400)
   }, [animating])
 
-  const next = useCallback(() => go(current === featured.length - 1 ? 0 : current + 1, "next"), [current, go])
-  const prev = useCallback(() => go(current === 0 ? featured.length - 1 : current - 1, "prev"), [current, go])
+  const next = useCallback(() => go(current === featured.length - 1 ? 0 : current + 1, "next"), [current, go, featured.length])
+  const prev = useCallback(() => go(current === 0 ? featured.length - 1 : current - 1, "prev"), [current, go, featured.length])
 
   useEffect(() => {
     const timer = setInterval(next, 5000)

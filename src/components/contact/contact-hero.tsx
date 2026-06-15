@@ -1,6 +1,3 @@
-import Link from "next/link"
-import { config } from "@/data/config"
-
 export default function ContactHero() {
   return (
     <section className="px-6 py-20 border-b border-zinc-900">

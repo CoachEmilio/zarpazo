@@ -36,7 +36,7 @@ export default function WhatsappButton({ productTitle, selectedSize, selectedCol
       )}
       {selectedSize && selectedColor && (
         <p className="font-mono text-zinc-400 text-xs">
-          Se abrirá WhatsApp con un mensaje y tus opciones"
+          Se abrirá WhatsApp con un mensaje y tus opciones
         </p>
       )}
     </div>

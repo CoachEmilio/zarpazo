@@ -44,7 +44,7 @@ export default function CatalogGrid({ products, categories }: Props) {
 
       {filtered.length === 0 ? (
         <div className="max-w-7xl mx-auto px-6 py-20 flex flex-col items-center gap-3">
-          <span className="font-mono text-zinc-400 text-sm">No encontramos "{searchQuery}"</span>
+          <span className="font-mono text-zinc-400 text-sm">No encontramos &quot;{searchQuery}&quot;</span>
           <button onClick={() => setSearchQuery("")} className="font-mono text-xs text-zinc-400 hover:text-white transition-colors underline">
             Limpiar búsqueda
           </button>
