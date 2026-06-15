@@ -60,7 +60,7 @@ export const slides: PromoSlide[] = [
   },
   {
     badge: "Servicio exclusivo",
-    title: "Tu diseño, tu producto",
+    title: "Mandanos tu diseño propio",
     image: "/personalized/personalized.webp",
     imageAlt: "Producto personalizado Zarpazo con diseño propio",
     imageFit: "contain",
@@ -78,13 +78,13 @@ export const slides: PromoSlide[] = [
   },
   {
     badge: "También para ellas",
-    title: "Todos los diseños en talle mujer",
+    title: "Todos los diseños en corte de dama",
     body: "Cada diseño disponible en remera de mujer. Consultanos por WhatsApp y te asesoramos con el talle.",
-    image: "/personalized/woman-tshirt.webp",
+    image: "/personalized/11.webp",
     imageAlt: "Mujer con remera Zarpazo",
-    imageFit: "cover",
+    imageFit: "contain",
     primaryCta: {
-      label: "Consultar talle por WhatsApp",
+      label: "Consulta en WhatsApp",
       href: `https://wa.me/${config.whatsapp}?text=${WOMAN_MSG}`,
       external: true,
     },

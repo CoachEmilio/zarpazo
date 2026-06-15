@@ -31,7 +31,7 @@ function SlideLeft({ slide, animating }: { slide: PromoSlide; animating: boolean
         <ol className={`flex flex-col gap-3 text-left ${fade("delay-100")}`} aria-label="Pasos del proceso">
           {slide.steps.map((step, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="font-mono text-lg font-bold text-black/50 tabular-nums w-7 shrink-0 leading-tight">
+              <span className="font-mono text-lg font-bold text-black/70 tabular-nums w-7 shrink-0 leading-tight">
                 {String(i + 1).padStart(2, "0")}
               </span>
               <p className="font-mono text-xs text-black/60 leading-relaxed pt-1">{step}</p>
@@ -80,6 +80,7 @@ function SlideRight({ slide, animating, isFirst }: { slide: PromoSlide; animatin
           sizes="(max-width: 768px) 80vw, 50vw"
           className={isCover ? "object-cover object-center" : "object-contain p-6 md:p-10"}
           priority={isFirst}
+          loading={isFirst ? undefined : "eager"}
         />
       ) : slide.steps ? (
         <div className="flex flex-col justify-center gap-6 px-8 py-14 md:px-12 w-full">
@@ -151,7 +152,7 @@ export default function PromoSlider() {
     <section aria-labelledby="promo-slider-title" className="w-full border-t border-b border-black/10" style={{ backgroundColor: "#f1e6cc" }}>
       <div className="max-w-6xl mx-auto flex flex-col md:grid md:grid-cols-2 md:min-h-145">
         <SlideLeft slide={slide} animating={animating} />
-        <div className="relative overflow-hidden order-1 md:order-2 md:h-full" style={{ minHeight: "clamp(300px, 50vw, 580px)" }} aria-live="polite" aria-atomic="true">
+        <div className="relative overflow-hidden order-1 md:order-2" style={{ minHeight: "clamp(360px, 50vw, 580px)" }} aria-live="polite" aria-atomic="true">
           <SlideRight slide={slide} animating={animating} isFirst={current === 0} />
           <NavDots total={slides.length} current={current} onGo={go} />
         </div>

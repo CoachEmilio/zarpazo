@@ -17,12 +17,12 @@ export default async function Home() {
     <main className="flex-1 bg-black text-white">
       <AnnouncementBar />
       <Hero />
-      <PromoSlider />
       <ProductLayerShowcase products={products} />
       <YoutubeVideoSection />
       <Carousel products={products} />
       <HowItWorks />
       <InstagramGrid />
+      <PromoSlider />
       <FaqSection />
       <OrderCTA />
     </main>
