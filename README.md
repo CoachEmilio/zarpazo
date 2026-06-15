@@ -46,10 +46,9 @@ Vercel Blob CDN
 
 ```bash
 NEXT_PUBLIC_API_URL=https://api.zarpazo.art   # URL del backend (fallback: https://zarpazo-backend.fly.dev)
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX                # Google Analytics 4 Measurement ID
 REVALIDATE_TOKEN=                              # clave compartida con el backend para ISR
 ```
-
-> `NEXT_PUBLIC_GA_ID` no es necesaria — el GA ID está hardcodeado en `src/components/layout/cookie-banner.tsx`.
 
 ## Primeros pasos
 
@@ -249,5 +248,3 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 ## Referencias
 
 - [Backend repo](https://github.com/CoachEmilio/zarpazo-backend)
-- [AGENTS.md](AGENTS.md)
-- [CLAUDE.md](CLAUDE.md)

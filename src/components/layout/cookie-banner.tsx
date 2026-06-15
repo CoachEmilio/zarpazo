@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Script from "next/script"
 import Link from "next/link"
 
-const GA_ID = "G-0XY9DXNLBQ"
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? ""
 const CONSENT_KEY = "zarpazo_cookie_consent"
 
 export default function CookieBanner() {
