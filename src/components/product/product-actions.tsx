@@ -3,7 +3,8 @@
 import { useState, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
+import ProductImageZoom from "@/components/product/product-image-zoom"
 import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
 import WhatsappButton from "@/components/product/whatsapp-button"
@@ -38,6 +39,7 @@ export default function ProductActions({ productTitle, productDescription, price
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
   const [direction, setDirection] = useState<"next" | "prev">("next")
+  const [isZoomOpen, setIsZoomOpen] = useState(false)
   const imageSrc = selectedColor?.image ?? productImage
   const selectedColorName = selectedColor?.name ?? null
 
@@ -75,12 +77,14 @@ export default function ProductActions({ productTitle, productDescription, price
   }
 
   return (
+    <>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
       <div className="flex flex-col gap-3">
         <div
-          className="relative aspect-square w-full overflow-hidden rounded-lg"
+          className="relative aspect-square w-full overflow-hidden rounded-lg cursor-zoom-in"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
+          onClick={() => setIsZoomOpen(true)}
         >
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -103,11 +107,16 @@ export default function ProductActions({ productTitle, productDescription, price
             </motion.div>
           </AnimatePresence>
 
+          {/* Zoom hint */}
+          <div className="absolute bottom-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white/70 pointer-events-none">
+            <ZoomIn size={13} />
+          </div>
+
           {colors && colors.length > 1 && (
             <>
               <button
                 type="button"
-                onClick={() => goTo("prev")}
+                onClick={(e) => { e.stopPropagation(); goTo("prev") }}
                 aria-label="Color anterior"
                 className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white hover:bg-black/80 hover:border-zinc-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               >
@@ -115,7 +124,7 @@ export default function ProductActions({ productTitle, productDescription, price
               </button>
               <button
                 type="button"
-                onClick={() => goTo("next")}
+                onClick={(e) => { e.stopPropagation(); goTo("next") }}
                 aria-label="Color siguiente"
                 className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white hover:bg-black/80 hover:border-zinc-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
               >
@@ -181,5 +190,13 @@ export default function ProductActions({ productTitle, productDescription, price
         />
       </div>
     </div>
+
+    <ProductImageZoom
+      src={imageSrc}
+      alt={selectedColorName ? `${productTitle} - ${selectedColorName}` : productTitle}
+      isOpen={isZoomOpen}
+      onClose={() => setIsZoomOpen(false)}
+    />
+    </>
   )
 }
