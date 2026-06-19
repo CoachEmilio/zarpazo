@@ -1,4 +1,5 @@
 import Hero from "@/components/home/hero"
+import CategoryDiscovery from "@/components/home/category-discovery"
 import ProductLayerShowcase from "@/components/home/product-layer-showcase"
 import HowItWorks from "@/components/home/how-it-works"
 import FaqSection from "@/components/home/faq-section"
@@ -8,6 +9,7 @@ import Carousel from "@/components/home/carousel"
 import PromoSlider from "@/components/home/promo-slider"
 import AnnouncementBar from "@/components/layout/announcement-bar"
 import InstagramGrid from "@/components/home/instagram-grid"
+import ReviewsSection from "@/components/home/reviews-section"
 import { getProducts } from "@/lib/api"
 
 export default async function Home() {
@@ -17,14 +19,16 @@ export default async function Home() {
     <main className="flex-1 bg-black text-white">
       <AnnouncementBar />
       <Hero />
+      <CategoryDiscovery />
       <ProductLayerShowcase products={products} />
       <YoutubeVideoSection />
       <Carousel products={products} />
       <HowItWorks />
-      <InstagramGrid />
+      <ReviewsSection />
       <PromoSlider />
       <FaqSection />
       <OrderCTA />
+      <InstagramGrid />
     </main>
   )
 }

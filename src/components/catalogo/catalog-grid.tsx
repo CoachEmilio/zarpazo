@@ -6,10 +6,10 @@ import ProductCard from "@/components/ui/ProductCard"
 import CatalogFilters from "./catalog-filters"
 import CatalogSearch from "./catalog-search"
 
-type Props = { products: Product[]; categories: Category[] }
+type Props = { products: Product[]; categories: Category[]; initialCategory?: string }
 
-export default function CatalogGrid({ products, categories }: Props) {
-  const [activeCategory, setActiveCategory] = useState<string>("todos")
+export default function CatalogGrid({ products, categories, initialCategory }: Props) {
+  const [activeCategory, setActiveCategory] = useState<string>(initialCategory ?? "todos")
   const [searchQuery, setSearchQuery] = useState<string>("")
 
   const labelMap = new Map(categories.map((c) => [c.key, c.label]))
