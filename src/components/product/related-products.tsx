@@ -1,7 +1,5 @@
-import Link from "next/link"
-import Image from "next/image"
 import type { Product } from "@/lib/api"
-import PriceTag from "@/components/ui/PriceTag"
+import ProductCard from "@/components/ui/ProductCard"
 
 type Props = {
   currentSlug: string
@@ -22,33 +20,11 @@ export default function RelatedProducts({ currentSlug, products }: Props) {
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {related.map((product) => (
-          <Link
+          <ProductCard
             key={product.id}
-            href={`/product/${product.slug}`}
-            className="flex flex-col gap-3 border border-zinc-800 rounded-lg p-4 hover:border-zinc-600 transition-colors"
-          >
-            <div className="relative aspect-square w-full overflow-hidden rounded-md">
-              <Image
-                src={product.image}
-                alt={product.title}
-                fill
-                sizes="(max-width: 639px) 50vw, 25vw"
-                className="object-contain"
-              />
-            </div>
-            <div className="flex flex-col gap-1">
-              <span className="font-mono text-sm font-bold">{product.title}</span>
-              <span className="font-mono text-zinc-400 text-xs">{product.description}</span>
-              <div className="mt-1">
-                <PriceTag
-                  price={product.price}
-                  price_original={product.price_original}
-                  discount_label={product.discount_label}
-                  variant="compact"
-                />
-              </div>
-            </div>
-          </Link>
+            product={product}
+            sizes="(max-width: 639px) 50vw, 25vw"
+          />
         ))}
       </div>
     </section>
