@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import type { Product, Category } from "@/lib/api"
 import ProductCard from "@/components/ui/ProductCard"
 import CatalogFilters from "./catalog-filters"
@@ -11,6 +11,10 @@ type Props = { products: Product[]; categories: Category[]; initialCategory?: st
 export default function CatalogGrid({ products, categories, initialCategory }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>(initialCategory ?? "todos")
   const [searchQuery, setSearchQuery] = useState<string>("")
+
+  useEffect(() => {
+    setActiveCategory(initialCategory ?? "todos")
+  }, [initialCategory])
 
   const labelMap = new Map(categories.map((c) => [c.key, c.label]))
 

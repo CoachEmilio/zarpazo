@@ -20,12 +20,12 @@ export default async function Home() {
       <AnnouncementBar />
       <Hero />
       <CategoryDiscovery />
-      <ProductLayerShowcase products={products} />
       <YoutubeVideoSection />
       <Carousel products={products} />
       <HowItWorks />
       <ReviewsSection />
       <PromoSlider />
+      <ProductLayerShowcase products={products} />
       <FaqSection />
       <OrderCTA />
       <InstagramGrid />

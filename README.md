@@ -133,6 +133,10 @@ public/
     zarpazo-logo.png
   instagram/               ← fotos UGC (800×800 WebP) — servidas por Next.js Image
     foto-1.webp … foto-6.webp
+  reviews/                 ← fotos de clientes con producto (800×800 WebP)
+    review-1.webp … review-4.webp
+  categorydiscovery/       ← imágenes hero por categoría (800×800 WebP, sin fondo)
+    ct1.webp … ct3.webp
   products/[slug]/         ← imágenes locales (referencia; CDN en producción)
   opengraph-image.png      ← social preview 1200×630
   favicon.ico
@@ -142,7 +146,7 @@ src/
   app/
     layout.tsx             ← metadata global, fuentes, analytics
     page.tsx               ← home (server component, fetch productos)
-    catalogo/page.tsx      ← server component, fetch productos + categorías
+    catalogo/page.tsx      ← server component, lee searchParams.categoria, fetch productos + categorías
     product/[slug]/
       page.tsx             ← generateStaticParams + fetch por slug
     nosotros/page.tsx
@@ -160,19 +164,33 @@ src/
       tab-title-hook.tsx   ← parpadeo "Volvé a Zarpazo 🐱" al cambiar de pestaña
       cookie-banner.tsx    ← banner de consentimiento + carga condicional de GA4
     home/
-      instagram-grid.tsx   ← grilla 6 fotos UGC, hover effect, links a posts IG
-      promo-slider.tsx     ← slider promocional (hoodies, personalizados, talle mujer)
-      ...                  ← hero, carousel, product-layer-showcase, ...
+      category-discovery.tsx ← sección de categorías con draft por card, links a /catalogo?categoria=X
+      reviews-section.tsx    ← prueba social con draft por review, datos en src/data/reviews.ts
+      instagram-grid.tsx     ← grilla 6 fotos UGC, hover effect, links a posts IG
+      promo-slider.tsx       ← slider promocional (hoodies, personalizados, talle mujer)
+      ...                    ← hero, carousel, product-layer-showcase, ...
     catalogo/
-      catalog-grid.tsx     ← recibe products + categories; filtros y búsqueda client-side
+      catalog-grid.tsx     ← recibe products + categories + initialCategory; filtros y búsqueda client-side
       catalog-filters.tsx  ← botones de categoría desde prop (dinámico)
       catalog-search.tsx
       catalog-header.tsx
-    product/               ← color-selector, size-selector, product-actions
-    ui/                    ← PriceTag, WhatsAppFloat, button
+    product/
+      product-actions.tsx    ← coordinador: color/talle/zoom; slide animado con Framer Motion
+      product-image-zoom.tsx ← modal de zoom con AnimatePresence, ESC, backdrop click, X button
+      color-selector.tsx
+      size-selector.tsx
+      whatsapp-button.tsx
+      related-products.tsx
+    ui/
+      ProductCard.tsx      ← card reutilizable compartida por CatalogGrid y RelatedProducts
+      PriceTag.tsx
+      WhatsAppFloat.tsx
+      button.tsx
 
   data/
     config.ts              ← contacto, marca, URLs, YouTube
+    reviews.ts             ← datos de reviews con flag draft por entrada
+    category-discovery.ts  ← datos de categorías del home con flag draft por card
     categories.ts          ← lista estática para el home (no es fuente del catálogo)
     faq.json               ← preguntas frecuentes editables sin tocar componentes
     promo-slides.ts        ← tipos + datos del PromoSlider (banners del home)
@@ -217,6 +235,14 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-19 | `CategoryDiscovery`: nueva sección en home debajo del Hero con tarjetas por categoría. Cada card linkea a `/catalogo?categoria=X`. Draft flag por card en `src/data/category-discovery.ts`. Server Component puro, hover con Tailwind `group`. |
+| 2026-06-19 | Filtrado por URL en catálogo: `CatalogoPage` lee `searchParams.categoria` y lo pasa como `initialCategory` a `CatalogGrid`. `/catalogo?categoria=gatos` ahora aterriza con el filtro activo. |
+| 2026-06-19 | `ReviewsSection`: sección de prueba social con 4 reviews de clientes. Draft flag por review en `src/data/reviews.ts`. La sección no aparece si todos son draft. Server Component, Lighthouse 100 intacto. |
+| 2026-06-19 | `ProductImageZoom`: modal de zoom en página de producto. Click en imagen abre zoom full-screen. Cierre por ESC, click en backdrop o botón X. `body.overflow` bloqueado mientras está abierto. Animación fade + scale con Framer Motion `AnimatePresence`. |
+| 2026-06-19 | Thumbnails de color bajo imagen de producto: al tener variantes de color, aparecen miniaturas clickeables debajo de la imagen principal. Click en thumbnail anima con dirección correcta. |
+| 2026-06-19 | Slide animado entre variantes de color: flechas `‹` `›` sobre la imagen con `ChevronLeft`/`ChevronRight` de Lucide. Cambio de color animado con Framer Motion `AnimatePresence` (slide direccional izquierda/derecha, 280ms). Swipe táctil circular (wrap-around). `framer-motion` agregado al proyecto. |
+| 2026-06-19 | Fix hidratación `CookieBanner`: `useState` arranca con `visible: false`, `useEffect` lee `localStorage` post-mount. Elimina el mismatch server/client que causaba el error de hidratación. |
+| 2026-06-19 | `ProductCard` extraído como componente reutilizable en `src/components/ui/ProductCard.tsx`. Elimina duplicación entre `CatalogGrid` y `RelatedProducts`. Props: `product`, `categoryLabel?`, `priority?`, `sizes?`. |
 | 2026-06-14 | `PromoSlider` agregado al home: slider automático con 3 banners (hoodies, diseño personalizado, talle mujer). Datos en `src/data/promo-slides.ts`, componente desacoplado en `SlideLeft` / `SlideRight` / `NavDots`. |
 | 2026-06-14 | `CookieBanner`: GA4 ahora se carga solo si el usuario acepta. Consentimiento guardado en `localStorage`. `@next/third-parties/google` removido del layout. |
 | 2026-06-14 | `TabTitleHook`: parpadeo "Volvé a Zarpazo 🐱" al cambiar de pestaña del navegador. |
