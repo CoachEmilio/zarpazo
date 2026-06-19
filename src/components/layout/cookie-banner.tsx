@@ -1,22 +1,23 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Script from "next/script"
 import Link from "next/link"
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? ""
 const CONSENT_KEY = "zarpazo_cookie_consent"
 
-function getInitialState() {
-  if (typeof window === "undefined") return { consent: null as boolean | null, visible: false }
-  const stored = localStorage.getItem(CONSENT_KEY)
-  return stored === null
-    ? { consent: null as boolean | null, visible: true }
-    : { consent: stored === "true", visible: false }
-}
-
 export default function CookieBanner() {
-  const [{ consent, visible }, setCookieState] = useState(getInitialState)
+  const [{ consent, visible }, setCookieState] = useState<{ consent: boolean | null; visible: boolean }>({ consent: null, visible: false })
+
+  useEffect(() => {
+    const stored = localStorage.getItem(CONSENT_KEY)
+    if (stored === null) {
+      setCookieState({ consent: null, visible: true })
+    } else {
+      setCookieState({ consent: stored === "true", visible: false })
+    }
+  }, [])
 
   const accept = () => {
     localStorage.setItem(CONSENT_KEY, "true")

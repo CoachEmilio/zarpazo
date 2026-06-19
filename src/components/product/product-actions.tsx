@@ -2,10 +2,18 @@
 
 import { useState, useRef } from "react"
 import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
 import WhatsappButton from "@/components/product/whatsapp-button"
 import PriceTag from "@/components/ui/PriceTag"
+
+const slideVariants = {
+  enter: (dir: "next" | "prev") => ({ x: dir === "next" ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit: (dir: "next" | "prev") => ({ x: dir === "next" ? "-100%" : "100%", opacity: 0 }),
+}
 
 type Color = {
   name: string
@@ -29,8 +37,24 @@ export default function ProductActions({ productTitle, productDescription, price
     colors ? colors[0] : null
   )
   const [selectedSize, setSelectedSize] = useState<string | null>(null)
+  const [direction, setDirection] = useState<"next" | "prev">("next")
   const imageSrc = selectedColor?.image ?? productImage
   const selectedColorName = selectedColor?.name ?? null
+
+  function goTo(dir: "prev" | "next") {
+    if (!colors || colors.length < 2) return
+    const currentIndex = colors.findIndex((c) => c.name === selectedColor?.name)
+    setDirection(dir)
+    if (dir === "prev") setSelectedColor(colors[(currentIndex - 1 + colors.length) % colors.length])
+    if (dir === "next") setSelectedColor(colors[(currentIndex + 1) % colors.length])
+  }
+
+  function goToIndex(index: number) {
+    if (!colors) return
+    const currentIndex = colors.findIndex((c) => c.name === selectedColor?.name)
+    setDirection(index > currentIndex ? "next" : "prev")
+    setSelectedColor(colors[index])
+  }
 
   const touchStartX = useRef<number | null>(null)
   const touchStartY = useRef<number | null>(null)
@@ -45,27 +69,88 @@ export default function ProductActions({ productTitle, productDescription, price
     const dx = e.changedTouches[0].clientX - touchStartX.current
     const dy = e.changedTouches[0].clientY - touchStartY.current
     if (Math.abs(dy) > Math.abs(dx) || Math.abs(dx) < 40) return
-    const currentIndex = colors.findIndex((c) => c.name === selectedColor?.name)
-    if (dx < 0 && currentIndex < colors.length - 1) setSelectedColor(colors[currentIndex + 1])
-    if (dx > 0 && currentIndex > 0) setSelectedColor(colors[currentIndex - 1])
+    goTo(dx < 0 ? "next" : "prev")
     touchStartX.current = null
     touchStartY.current = null
   }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div
-        className="relative aspect-square w-full"
-        onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}
-      >
-        <Image
-          src={imageSrc}
-          alt={selectedColorName ? `${productTitle} - ${selectedColorName}` : productTitle}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover rounded-lg"
-        />
+      <div className="flex flex-col gap-3">
+        <div
+          className="relative aspect-square w-full overflow-hidden rounded-lg"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={imageSrc}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.28, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={imageSrc}
+                alt={selectedColorName ? `${productTitle} - ${selectedColorName}` : productTitle}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+          {colors && colors.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={() => goTo("prev")}
+                aria-label="Color anterior"
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white hover:bg-black/80 hover:border-zinc-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
+              >
+                <ChevronLeft size={16} />
+              </button>
+              <button
+                type="button"
+                onClick={() => goTo("next")}
+                aria-label="Color siguiente"
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white hover:bg-black/80 hover:border-zinc-400 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60"
+              >
+                <ChevronRight size={16} />
+              </button>
+            </>
+          )}
+        </div>
+
+        {colors && colors.length > 1 && (
+          <div className="flex gap-2 justify-center">
+            {colors.map((color, index) => (
+              <button
+                key={color.name}
+                type="button"
+                onClick={() => goToIndex(index)}
+                aria-label={`Color ${color.name}`}
+                aria-pressed={selectedColor?.name === color.name}
+                className={`relative w-14 h-14 rounded-md overflow-hidden border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f1e6cc]/60 ${
+                  selectedColor?.name === color.name
+                    ? "border-white"
+                    : "border-zinc-700 hover:border-zinc-500"
+                }`}
+              >
+                <Image
+                  src={color.image}
+                  alt={color.name}
+                  fill
+                  sizes="56px"
+                  className="object-cover"
+                />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-6">
