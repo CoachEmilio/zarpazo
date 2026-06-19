@@ -2,6 +2,7 @@ import CatalogHeader from "@/components/catalogo/catalog-header"
 import CatalogGrid from "@/components/catalogo/catalog-grid"
 import OrderCTA from "@/components/home/order-cta"
 import { getProducts, getCategories } from "@/lib/api"
+import CategoryDiscovery from "@/components/home/category-discovery"
 
 type Props = {
   searchParams: Promise<{ categoria?: string }>
@@ -14,6 +15,7 @@ export default async function CatalogoPage({ searchParams }: Props) {
   return (
     <main className="flex-1 bg-black text-white">
       <CatalogHeader />
+      <CategoryDiscovery />
       <CatalogGrid products={products} categories={categories} initialCategory={categoria} />
       <OrderCTA />
     </main>

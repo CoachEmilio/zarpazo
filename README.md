@@ -28,6 +28,7 @@ Vercel Blob CDN
 |---|---|
 | Framework | Next.js 16 (App Router) |
 | UI | React 19 + Tailwind CSS v4 + shadcn/ui |
+| Animaciones | Framer Motion 12 (`AnimatePresence`, slide, fade) |
 | Lenguaje | TypeScript 5 |
 | Fuentes | Space Mono · Space Grotesk · Geist Mono |
 | Analytics | Vercel Analytics + Google Analytics 4 |
@@ -70,8 +71,8 @@ npm run lint       # ESLint
 
 | Ruta | Tipo | Descripción |
 |---|---|---|
-| `/` | ISR 1h | Home: hero, promo-slider, carousel, showcase, grilla Instagram, FAQ, CTAs |
-| `/catalogo` | SSG + ISR 1h | Catálogo filtrable y buscable |
+| `/` | ISR 1h | Home: AnnouncementBar, Hero, CategoryDiscovery, YouTube, Carousel, HowItWorks, ReviewsSection, PromoSlider, ProductLayerShowcase, FAQ, OrderCTA, InstagramGrid |
+| `/catalogo` | Dynamic + ISR 1h | Catálogo filtrable; lee `searchParams.categoria` para filtrado por URL |
 | `/product/[slug]` | SSG + ISR 1h | Detalle de producto |
 | `/guia-de-talles` | SSG | Guía de medidas |
 | `/nosotros` | SSG | Historia y valores de la marca |
@@ -146,7 +147,7 @@ src/
   app/
     layout.tsx             ← metadata global, fuentes, analytics
     page.tsx               ← home (server component, fetch productos)
-    catalogo/page.tsx      ← server component, lee searchParams.categoria, fetch productos + categorías
+    catalogo/page.tsx      ← dynamic, lee searchParams.categoria, fetch productos + categorías; incluye CategoryDiscovery
     product/[slug]/
       page.tsx             ← generateStaticParams + fetch por slug
     nosotros/page.tsx
@@ -235,6 +236,8 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-19 | Fix `CatalogGrid`: `useEffect` sincroniza `activeCategory` cuando `initialCategory` cambia. Resuelve el bug donde navegar desde `CategoryDiscovery` dentro de `/catalogo` no actualizaba el filtro activo. |
+| 2026-06-19 | `CategoryDiscovery` agregada también en `/catalogo` — permite descubrir otras categorías desde el catálogo. |
 | 2026-06-19 | `CategoryDiscovery`: nueva sección en home debajo del Hero con tarjetas por categoría. Cada card linkea a `/catalogo?categoria=X`. Draft flag por card en `src/data/category-discovery.ts`. Server Component puro, hover con Tailwind `group`. |
 | 2026-06-19 | Filtrado por URL en catálogo: `CatalogoPage` lee `searchParams.categoria` y lo pasa como `initialCategory` a `CatalogGrid`. `/catalogo?categoria=gatos` ahora aterriza con el filtro activo. |
 | 2026-06-19 | `ReviewsSection`: sección de prueba social con 4 reviews de clientes. Draft flag por review en `src/data/reviews.ts`. La sección no aparece si todos son draft. Server Component, Lighthouse 100 intacto. |

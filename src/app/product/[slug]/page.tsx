@@ -5,6 +5,7 @@ import { config } from "@/data/config"
 import RelatedProducts from "@/components/product/related-products"
 import Link from "next/link"
 import Carousel from "@/components/home/carousel"
+import CategoryDiscovery from "@/components/home/category-discovery"
 
 type Props = {
   params: Promise<{ slug: string }>
@@ -60,6 +61,7 @@ export default async function ProductPage({ params }: Props) {
       <div className="max-w-4xl mx-auto mt-16">
         <Carousel products={allProducts} />
       </div>
+      <CategoryDiscovery />
     </main>
   )
 }
