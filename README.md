@@ -206,7 +206,8 @@ scripts/
 
 - Metadata global en `src/app/layout.tsx` (OG, Twitter Card)
 - `metadataBase`: `https://www.zarpazo.art`
-- OG image: `public/opengraph-image.png` (1200×630px)
+- OG image global: `public/opengraph-image.png` (1200×630px)
+- OG image por producto: `generateMetadata` en `product/[slug]/page.tsx` inyecta la foto del producto directamente como `og:image` desde Vercel Blob — sin generación dinámica, sin cold start. Funciona en WhatsApp, Telegram e Instagram.
 - `robots.ts` y `sitemap.ts` presentes (sitemap generado desde la API)
 
 ## Analytics
@@ -236,6 +237,10 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-23 | Social preview por producto: `og:image` usa la foto del producto directo desde Vercel Blob en `generateMetadata`. Funciona en WhatsApp, Telegram e Instagram. |
+| 2026-06-23 | Backend: `sharp` instalado — uploads se convierten automáticamente a WEBP antes de subir a Blob. |
+| 2026-06-23 | Backend: `getBySlug` filtrado por `active = 1` — productos en borrador no se exponen públicamente. |
+| 2026-06-23 | Backend: `errorHandler` enmascara mensajes internos en errores 500. |
 | 2026-06-19 | Fix `CatalogGrid`: `useEffect` sincroniza `activeCategory` cuando `initialCategory` cambia. Resuelve el bug donde navegar desde `CategoryDiscovery` dentro de `/catalogo` no actualizaba el filtro activo. |
 | 2026-06-19 | `CategoryDiscovery` agregada también en `/catalogo` — permite descubrir otras categorías desde el catálogo. |
 | 2026-06-19 | `CategoryDiscovery`: nueva sección en home debajo del Hero con tarjetas por categoría. Cada card linkea a `/catalogo?categoria=X`. Draft flag por card en `src/data/category-discovery.ts`. Server Component puro, hover con Tailwind `group`. |
