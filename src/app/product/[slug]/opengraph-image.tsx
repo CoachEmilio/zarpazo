@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import sharp from 'sharp'
 import { getProductBySlug } from '@/lib/api'
 import { config } from '@/data/config'
 
@@ -38,19 +39,18 @@ export default async function Image({ params }: { params: Promise<{ slug: string
       : `${config.brand.siteUrl}${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`
     : null
 
-  // Satori (ImageResponse renderer) has limited support for external WEBP images.
-  // Fetching as ArrayBuffer and passing as data URL ensures it renders correctly.
+  // Satori does not support WEBP. sharp converts the image to JPEG before passing it in.
   let productImageSrc: string | null = null
   if (absoluteImageUrl) {
     try {
       const res = await fetch(absoluteImageUrl)
       if (res.ok) {
         const buffer = await res.arrayBuffer()
-        const base64 = Buffer.from(buffer).toString('base64')
-        productImageSrc = `data:image/webp;base64,${base64}`
+        const jpeg = await sharp(Buffer.from(buffer)).jpeg({ quality: 85 }).toBuffer()
+        productImageSrc = `data:image/jpeg;base64,${jpeg.toString('base64')}`
       }
     } catch {
-      // image fetch failed — render without photo
+      // render without photo if fetch or conversion fails
     }
   }
 
