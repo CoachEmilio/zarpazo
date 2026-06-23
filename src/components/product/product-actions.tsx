@@ -109,8 +109,10 @@ export default function ProductActions({ productTitle, productDescription, price
           </AnimatePresence>
 
           {/* Share button */}
-          <button
+          <motion.button
             type="button"
+            animate={{ scale: [1, 1.1, 1, 1.1, 1] }}
+            transition={{ delay: 1.2, duration: 1, ease: "easeInOut" }}
             onClick={(e) => {
               e.stopPropagation()
               const url = `https://zarpazo.art/product/${slug}`
@@ -125,7 +127,7 @@ export default function ProductActions({ productTitle, productDescription, price
           >
             <Share2 size={13} />
             <span className="font-mono text-xs">Compartir</span>
-          </button>
+          </motion.button>
 
           {/* Zoom hint */}
           <div className="absolute bottom-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white/70 pointer-events-none">
