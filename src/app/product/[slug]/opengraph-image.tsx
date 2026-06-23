@@ -32,7 +32,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 
   const imagePath = product.image ?? ''
   const absoluteImageUrl = imagePath
-    ? `${config.brand.siteUrl}${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`
+    ? imagePath.startsWith('http')
+      ? imagePath
+      : `${config.brand.siteUrl}${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`
     : null
 
   // Satori (ImageResponse renderer) has limited support for external WEBP images.
