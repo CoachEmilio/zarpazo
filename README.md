@@ -237,6 +237,7 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-23 | Share button: botón pill flotante en top-right de la foto del producto. Web Share API nativa (sheet del SO en mobile) con fallback a WhatsApp en desktop. Animación de latido doble con Framer Motion al cargar (una sola vez). |
 | 2026-06-23 | Telegram OG preview: notificaciones de nuevo producto muestran card con foto del producto. URL del producto suelta al final del mensaje — Telegram la detecta y genera el preview automáticamente. Verificado en producción con "Gato Choripán" ✅ |
 | 2026-06-23 | Grupo Telegram "Zarpazo Team": notificaciones llegan a CEO y dev simultáneamente via `TELEGRAM_CHAT_ID` en Fly.io secrets. |
 | 2026-06-23 | Social preview por producto: `og:image` usa la foto del producto directo desde Vercel Blob en `generateMetadata`. Funciona en WhatsApp, Telegram e Instagram. |
