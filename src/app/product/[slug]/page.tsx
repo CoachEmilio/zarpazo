@@ -73,6 +73,7 @@ export default async function ProductPage({ params }: Props) {
           productImage={product.image}
           colors={product.colors}
           sizes={product.variants.map((v) => v.size)}
+          slug={product.slug}
         />
         <RelatedProducts currentSlug={slug} products={allProducts} />
       </div>

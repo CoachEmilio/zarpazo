@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react"
+import { ChevronLeft, ChevronRight, ZoomIn, Share2 } from "lucide-react"
 import ProductImageZoom from "@/components/product/product-image-zoom"
 import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
@@ -31,9 +31,10 @@ type Props = {
   productImage: string
   colors?: Color[]
   sizes: string[]
+  slug: string
 }
 
-export default function ProductActions({ productTitle, productDescription, price, price_original, discount_label, productImage, colors, sizes }: Props) {
+export default function ProductActions({ productTitle, productDescription, price, price_original, discount_label, productImage, colors, sizes, slug }: Props) {
   const [selectedColor, setSelectedColor] = useState<Color | null>(
     colors ? colors[0] : null
   )
@@ -106,6 +107,25 @@ export default function ProductActions({ productTitle, productDescription, price
               />
             </motion.div>
           </AnimatePresence>
+
+          {/* Share button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              const url = `https://zarpazo.art/product/${slug}`
+              if (typeof navigator !== "undefined" && navigator.share) {
+                navigator.share({ title: productTitle, url }).catch(() => {})
+              } else {
+                window.open(`https://wa.me/?text=${encodeURIComponent(url)}`, "_blank")
+              }
+            }}
+            aria-label="Compartir producto"
+            className="absolute top-2 right-2 z-10 flex items-center gap-1.5 pl-2.5 pr-3 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-zinc-700 text-white/70 hover:text-white hover:border-zinc-400 hover:bg-black/80 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+          >
+            <Share2 size={13} />
+            <span className="font-mono text-xs">Compartir</span>
+          </button>
 
           {/* Zoom hint */}
           <div className="absolute bottom-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-black/60 border border-zinc-700 text-white/70 pointer-events-none">
