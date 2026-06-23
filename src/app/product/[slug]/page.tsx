@@ -20,9 +20,26 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params
   const product = await getProductBySlug(slug)
   if (!product) return {}
+
+  const title = `${product.title} — ${config.brand.name}`
+  const description = `¡Mirá lo que encontré en Zarpazo.art! ${product.title}. ${product.description}`
+
   return {
-    title: `${product.title} — ${config.brand.name}`,
-    description: product.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${config.brand.siteUrl}/product/${slug}`,
+      siteName: config.brand.name,
+      locale: 'es_AR',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
   }
 }
 
