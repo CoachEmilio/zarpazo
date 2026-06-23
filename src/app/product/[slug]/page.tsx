@@ -34,6 +34,16 @@ export async function generateMetadata({ params }: Props) {
       siteName: config.brand.name,
       locale: 'es_AR',
       type: 'website',
+      images: [
+        {
+          url: product.image.startsWith('http')
+            ? product.image
+            : `${config.brand.siteUrl}${product.image}`,
+          width: 800,
+          height: 800,
+          alt: product.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
