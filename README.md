@@ -237,6 +237,7 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-23 | Backend: notificaciones Telegram redirigidas al grupo "Zarpazo Team" (CEO + dev) via `TELEGRAM_CHAT_ID` en Fly.io secrets. |
 | 2026-06-23 | Social preview por producto: `og:image` usa la foto del producto directo desde Vercel Blob en `generateMetadata`. Funciona en WhatsApp, Telegram e Instagram. |
 | 2026-06-23 | Backend: `sharp` instalado — uploads se convierten automáticamente a WEBP antes de subir a Blob. |
 | 2026-06-23 | Backend: `getBySlug` filtrado por `active = 1` — productos en borrador no se exponen públicamente. |
