@@ -237,7 +237,8 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
-| 2026-06-23 | Backend: notificaciones Telegram redirigidas al grupo "Zarpazo Team" (CEO + dev) via `TELEGRAM_CHAT_ID` en Fly.io secrets. |
+| 2026-06-23 | Telegram OG preview: notificaciones de nuevo producto muestran card con foto del producto. URL del producto suelta al final del mensaje — Telegram la detecta y genera el preview automáticamente. Verificado en producción con "Gato Choripán" ✅ |
+| 2026-06-23 | Grupo Telegram "Zarpazo Team": notificaciones llegan a CEO y dev simultáneamente via `TELEGRAM_CHAT_ID` en Fly.io secrets. |
 | 2026-06-23 | Social preview por producto: `og:image` usa la foto del producto directo desde Vercel Blob en `generateMetadata`. Funciona en WhatsApp, Telegram e Instagram. |
 | 2026-06-23 | Backend: `sharp` instalado — uploads se convierten automáticamente a WEBP antes de subir a Blob. |
 | 2026-06-23 | Backend: `getBySlug` filtrado por `active = 1` — productos en borrador no se exponen públicamente. |
