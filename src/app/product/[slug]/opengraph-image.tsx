@@ -10,10 +10,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   const { slug } = await params
   const product = await getProductBySlug(slug)
 
-  const productImageUrl = product?.image
-    ? `${config.brand.siteUrl}${product.image}`
-    : `${config.brand.siteUrl}/opengraph-image.png`
-
   if (!product) {
     return new ImageResponse(
       (
@@ -34,7 +30,28 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     )
   }
 
-  const priceFormatted = product.price.toLocaleString('es-AR')
+  const imagePath = product.image ?? ''
+  const absoluteImageUrl = imagePath
+    ? `${config.brand.siteUrl}${imagePath.startsWith('/') ? imagePath : `/${imagePath}`}`
+    : null
+
+  // Satori (ImageResponse renderer) has limited support for external WEBP images.
+  // Fetching as ArrayBuffer and passing as data URL ensures it renders correctly.
+  let productImageSrc: string | null = null
+  if (absoluteImageUrl) {
+    try {
+      const res = await fetch(absoluteImageUrl)
+      if (res.ok) {
+        const buffer = await res.arrayBuffer()
+        const base64 = Buffer.from(buffer).toString('base64')
+        productImageSrc = `data:image/webp;base64,${base64}`
+      }
+    } catch {
+      // image fetch failed — render without photo
+    }
+  }
+
+  const priceFormatted = (product.price ?? 0).toLocaleString('es-AR')
 
   return new ImageResponse(
     (
@@ -58,7 +75,6 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             flexDirection: 'column',
             flex: 1,
             justifyContent: 'center',
-            gap: '0px',
           }}
         >
           <div
@@ -69,7 +85,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
               marginBottom: '24px',
             }}
           >
-            zarpazo.art
+            {new URL(config.brand.siteUrl).hostname}
           </div>
           <div
             style={{
@@ -114,16 +130,18 @@ export default async function Image({ params }: { params: Promise<{ slug: string
             flexShrink: 0,
           }}
         >
-          <img
-            src={productImageUrl}
-            width={460}
-            height={460}
-            style={{
-              objectFit: 'cover',
-              borderRadius: '16px',
-              border: '1px solid rgba(255,255,255,0.1)',
-            }}
-          />
+          {productImageSrc && (
+            <img
+              src={productImageSrc}
+              width={460}
+              height={460}
+              style={{
+                objectFit: 'cover',
+                borderRadius: '16px',
+                border: '1px solid rgba(255,255,255,0.1)',
+              }}
+            />
+          )}
         </div>
       </div>
     ),
