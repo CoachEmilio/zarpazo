@@ -3,6 +3,8 @@ import sharp from 'sharp'
 import { getProductBySlug } from '@/lib/api'
 import { config } from '@/data/config'
 
+export { generateStaticParams } from './page'
+
 export const runtime = 'nodejs'
 export const alt = 'Zarpazo — Diseños que garpan.'
 export const size = { width: 1200, height: 630 }
