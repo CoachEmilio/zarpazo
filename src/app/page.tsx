@@ -7,7 +7,6 @@ import OrderCTA from "@/components/home/order-cta"
 import YoutubeVideoSection from "@/components/home/youtube-video-section"
 import Carousel from "@/components/home/carousel"
 import PromoSlider from "@/components/home/promo-slider"
-import AnnouncementBar from "@/components/layout/announcement-bar"
 import InstagramGrid from "@/components/home/instagram-grid"
 import ReviewsSection from "@/components/home/reviews-section"
 import { getProducts } from "@/lib/api"
@@ -17,7 +16,6 @@ export default async function Home() {
 
   return (
     <main className="flex-1 bg-black text-white">
-      <AnnouncementBar />
       <Hero />
       <CategoryDiscovery />
       <YoutubeVideoSection />

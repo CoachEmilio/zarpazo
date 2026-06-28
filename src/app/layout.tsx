@@ -7,6 +7,7 @@ import WhatsAppFloat from "@/components/ui/WhatsAppFloat"
 import TabTitleHook from "@/components/layout/tab-title-hook";
 import { Analytics } from "@vercel/analytics/next"
 import CookieBanner from "@/components/layout/cookie-banner"
+import AnnouncementBar from "@/components/layout/announcement-bar"
 import { config } from "@/data/config"
 
 const spaceGrotesk = Space_Grotesk({
@@ -87,6 +88,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${geistMono.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <AnnouncementBar />
         <Navbar />
         {children}
         <Footer />
