@@ -237,6 +237,10 @@ Verificar Lighthouse en producción y confirmar 100/100/100/100.
 
 | Fecha | Cambio |
 |---|---|
+| 2026-06-28 | Fix: `AnnouncementBar` movido al layout global (`layout.tsx`) sobre el Navbar — aparece una sola vez en todas las rutas. Antes se renderizaba dos veces en el home (page.tsx + footer.tsx). |
+| 2026-06-28 | Fix: imagen de producto en página de detalle usa `object-contain` en lugar de `object-cover` — consistente con `ProductCard` en el catálogo. |
+| 2026-06-28 | Fix: share button URL usa `config.brand.siteUrl` en lugar de dominio hardcodeado `zarpazo.art` — consistente con sitemap y OG metadata. |
+| 2026-06-28 | WhatsApp CTA: animación de doble latido con pausa en el botón "Pedir por WhatsApp". Framer Motion keyframes con `times` para beat-beat-pausa continuo. `drop-shadow` filter en lugar de `box-shadow` para glow suave y difuso. |
 | 2026-06-23 | Share button: botón pill flotante en top-right de la foto del producto. Web Share API nativa (sheet del SO en mobile) con fallback a WhatsApp en desktop. Animación de latido doble con Framer Motion al cargar (una sola vez). |
 | 2026-06-23 | Telegram OG preview: notificaciones de nuevo producto muestran card con foto del producto. URL del producto suelta al final del mensaje — Telegram la detecta y genera el preview automáticamente. Verificado en producción con "Gato Choripán" ✅ |
 | 2026-06-23 | Grupo Telegram "Zarpazo Team": notificaciones llegan a CEO y dev simultáneamente via `TELEGRAM_CHAT_ID` en Fly.io secrets. |
