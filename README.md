@@ -42,7 +42,7 @@ Vercel Blob CDN
 |---|---|
 | Producción | https://zarpazo.art |
 | API backend | https://api.zarpazo.art |
-| Admin panel | https://api.zarpazo.art/admin |
+| Admin panel | https://admin.zarpazo.art |
 
 ## Variables de entorno
 
