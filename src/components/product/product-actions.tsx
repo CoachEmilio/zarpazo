@@ -9,6 +9,7 @@ import ColorSelector from "@/components/product/color-selector"
 import SizeSelector from "@/components/product/size-selector"
 import WhatsappButton from "@/components/product/whatsapp-button"
 import PriceTag from "@/components/ui/PriceTag"
+import { config } from "@/data/config"
 
 const slideVariants = {
   enter: (dir: "next" | "prev") => ({ x: dir === "next" ? "100%" : "-100%", opacity: 0 }),
@@ -115,7 +116,7 @@ export default function ProductActions({ productTitle, productDescription, price
             transition={{ delay: 1.2, duration: 1, ease: "easeInOut" }}
             onClick={(e) => {
               e.stopPropagation()
-              const url = `https://zarpazo.art/product/${slug}`
+              const url = `${config.brand.siteUrl}/product/${slug}`
               if (typeof navigator !== "undefined" && navigator.share) {
                 navigator.share({ title: productTitle, url }).catch(() => {})
               } else {
