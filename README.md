@@ -12,6 +12,21 @@
 
 Frontend de [zarpazo.art](https://zarpazo.art) — marca argentina de remeras estampadas bajo demanda.
 
+## Versiones
+
+| Versión | Fecha | Descripción |
+|---|---|---|
+| v1.0.0 | 2026-06-28 | Release inicial — Next.js 16 + ISR + Lighthouse 100/100/100/100 |
+
+**Convención:** `vMAJOR.MINOR.PATCH` — PATCH = bug fix, MINOR = feature nueva, MAJOR = cambio que rompe compatibilidad.
+
+```bash
+git tag v1.1.0
+git push origin v1.1.0
+```
+
+Tags en GitHub → [Releases](https://github.com/CoachEmilio/zarpazo/tags).
+
 ## Arquitectura
 
 ```
